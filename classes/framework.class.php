@@ -358,7 +358,7 @@ class CSFramework extends CSFramework_Abstract {
       settings_fields( $this->unique. '_group' );
 
       echo '<header class="cs-header">';
-      echo '<h1>Codestar Framework <small>by Codestar</small></h1>';
+      echo '<h1>Skelet Framework <small>by PressApps</small></h1>';
       echo '<fieldset>';
       echo ( $this->settings['ajax_save'] === true ) ? '<span id="cs-save-ajax">'. __( 'Settings saved.', CS_TEXTDOMAIN ) .'</span>' : '';
       submit_button( __( 'Save', CS_TEXTDOMAIN ), 'primary', 'save', false, array( 'data-ajax' => $this->settings['ajax_save'], 'data-save' => __( 'Saving...', CS_TEXTDOMAIN ) ) );
@@ -450,7 +450,7 @@ class CSFramework extends CSFramework_Abstract {
       echo '</div>'; // end .cs-body
 
       echo '<footer class="cs-footer">';
-      echo 'Codestar Framework <strong>v'. CS_VERSION .' by Codestar</strong>';
+      echo 'Skelet Framework <strong>v'. CS_VERSION .' by PressApps</strong>';
       echo '</footer>'; // end .cs-footer
 
       echo '</form>'; // end form
