@@ -9,8 +9,8 @@
 include_once dirname( __FILE__ ) .'/path.php';
 // ------------------------------------------------------------------------------------------------
 
-if( ! function_exists( 'cs_framework_init' ) && ! class_exists( 'CSFramework' ) ) {
-  function cs_framework_init() {
+if( ! function_exists( 'skelet_framework_init' ) && ! class_exists( 'CSFramework' ) ) {
+  function skelet_framework_init() {
 
     // active modules
     defined( 'CS_ACTIVE_FRAMEWORK' )  or  define( 'CS_ACTIVE_FRAMEWORK',  true );
@@ -41,5 +41,5 @@ if( ! function_exists( 'cs_framework_init' ) && ! class_exists( 'CSFramework' ) 
     cs_locate_template ( '../../includes/admin/options/customize.config.php'  );
     
   }
-  add_action( 'init', 'cs_framework_init', 10 );
+  add_action( 'init', 'skelet_framework_init', 10 );
 }
