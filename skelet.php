@@ -40,12 +40,17 @@ if(! class_exists( 'Skelet_LoadConfig' ) ){
                         cs_locate_template ( 'classes/metabox.class.php'    ,$skelet_path);
                         cs_locate_template ( 'classes/shortcode.class.php'  ,$skelet_path);
                         cs_locate_template ( 'classes/customize.class.php'  ,$skelet_path);
+                        cs_locate_template ( 'classes/widget.class.php'     ,$skelet_path);
+                        cs_locate_template ( 'classes/taxonomy.class.php'   ,$skelet_path);
                       
                         // configs
                         cs_locate_template ( '../../includes/admin/options/framework.config.php'  ,$skelet_path);
                         cs_locate_template ( '../../includes/admin/options/metabox.config.php'    ,$skelet_path);
                         cs_locate_template ( '../../includes/admin/options/shortcode.config.php'  ,$skelet_path);
                         cs_locate_template ( '../../includes/admin/options/customize.config.php'  ,$skelet_path);
+                        cs_locate_template ( '../../includes/admin/options/widget.config.php'  ,$skelet_path);
+                        cs_locate_template ( '../../includes/admin/options/taxonomy.config.php'  ,$skelet_path);
+                   
                     }
 
             }
