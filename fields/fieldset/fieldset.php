@@ -7,32 +7,35 @@
  * @version 1.0.0
  *
  */
-class CSFramework_Option_fieldset extends CSFramework_Options {
+if(!class_exists("CSFramework_Option_fieldset")){
 
-  public function __construct( $field, $value = '', $unique = '' ) {
-    parent::__construct( $field, $value, $unique );
-  }
+  class CSFramework_Option_fieldset extends CSFramework_Options {
 
-  public function output() {
+    public function __construct( $field, $value = '', $unique = '' ) {
+      parent::__construct( $field, $value, $unique );
+    }
 
-    echo $this->element_before();
+    public function output() {
 
-    echo '<div class="cs-inner">';
+      echo $this->element_before();
 
-    foreach ( $this->field['fields'] as $field ) {
+      echo '<div class="cs-inner">';
 
-      $field_id    = ( isset( $field['id'] ) ) ? $field['id'] : '';
-      $field_value = ( isset( $this->value[$field_id] ) ) ? $this->value[$field_id] : '';
-      $unique_id   = $this->unique .'['. $this->field['id'] .']';
+      foreach ( $this->field['fields'] as $field ) {
 
-      echo cs_add_element( $field, $field_value, $unique_id );
+        $field_id    = ( isset( $field['id'] ) ) ? $field['id'] : '';
+        $field_value = ( isset( $this->value[$field_id] ) ) ? $this->value[$field_id] : '';
+        $unique_id   = $this->unique .'['. $this->field['id'] .']';
+
+        echo cs_add_element( $field, $field_value, $unique_id );
+
+      }
+
+      echo '</div>';
+
+      echo $this->element_after();
 
     }
 
-    echo '</div>';
-
-    echo $this->element_after();
-
   }
-
 }

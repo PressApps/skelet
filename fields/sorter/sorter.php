@@ -7,48 +7,51 @@
  * @version 1.0.0
  *
  */
-class CSFramework_Option_Sorter extends CSFramework_Options {
+if(!class_exists("CSFramework_Option_Sorter")){
 
-  public function __construct( $field, $value = '', $unique = '' ) {
-    parent::__construct( $field, $value, $unique );
-  }
+  class CSFramework_Option_Sorter extends CSFramework_Options {
 
-  public function output(){
-
-    echo $this->element_before();
-
-    $value          = $this->element_value();
-    $value          = ( ! empty( $value ) ) ? $value : $this->field['default'];
-    $enabled        = ( ! empty( $value['enabled'] ) ) ? $value['enabled'] : array();
-    $disabled       = ( ! empty( $value['disabled'] ) ) ? $value['disabled'] : array();
-    $enabled_title  = ( isset( $this->field['enabled_title'] ) ) ? $this->field['enabled_title'] : __( 'Enabled Modules', CS_TEXTDOMAIN );
-    $disabled_title = ( isset( $this->field['disabled_title'] ) ) ? $this->field['disabled_title'] : __( 'Disabled Modules', CS_TEXTDOMAIN );
-
-    echo '<div class="cs-modules">';
-    echo '<h3>'. $enabled_title .'</h3>';
-    echo '<ul class="cs-enabled">';
-    if( ! empty( $enabled ) ) {
-      foreach( $enabled as $en_id => $en_name ) {
-        echo '<li><input type="hidden" name="'. $this->element_name( '[enabled]['. $en_id .']' ) .'" value="'. $en_name .'"/><label>'. $en_name .'</label></li>';
-      }
+    public function __construct( $field, $value = '', $unique = '' ) {
+      parent::__construct( $field, $value, $unique );
     }
-    echo '</ul>';
-    echo '</div>';
 
-    echo '<div class="cs-modules">';
-    echo '<h3>'. $disabled_title .'</h3>';
-    echo '<ul class="cs-disabled">';
-    if( ! empty( $disabled ) ) {
-      foreach( $disabled as $dis_id => $dis_name ) {
-        echo '<li><input type="hidden" name="'. $this->element_name( '[disabled]['. $dis_id .']' ) .'" value="'. $dis_name .'"/><label>'. $dis_name .'</label></li>';
+    public function output(){
+
+      echo $this->element_before();
+
+      $value          = $this->element_value();
+      $value          = ( ! empty( $value ) ) ? $value : $this->field['default'];
+      $enabled        = ( ! empty( $value['enabled'] ) ) ? $value['enabled'] : array();
+      $disabled       = ( ! empty( $value['disabled'] ) ) ? $value['disabled'] : array();
+      $enabled_title  = ( isset( $this->field['enabled_title'] ) ) ? $this->field['enabled_title'] : __( 'Enabled Modules', CS_TEXTDOMAIN );
+      $disabled_title = ( isset( $this->field['disabled_title'] ) ) ? $this->field['disabled_title'] : __( 'Disabled Modules', CS_TEXTDOMAIN );
+
+      echo '<div class="cs-modules">';
+      echo '<h3>'. $enabled_title .'</h3>';
+      echo '<ul class="cs-enabled">';
+      if( ! empty( $enabled ) ) {
+        foreach( $enabled as $en_id => $en_name ) {
+          echo '<li><input type="hidden" name="'. $this->element_name( '[enabled]['. $en_id .']' ) .'" value="'. $en_name .'"/><label>'. $en_name .'</label></li>';
+        }
       }
-    }
-    echo '</ul>';
-    echo '</div>';
-    echo '<div class="clear"></div>';
+      echo '</ul>';
+      echo '</div>';
 
-    echo $this->element_after();
+      echo '<div class="cs-modules">';
+      echo '<h3>'. $disabled_title .'</h3>';
+      echo '<ul class="cs-disabled">';
+      if( ! empty( $disabled ) ) {
+        foreach( $disabled as $dis_id => $dis_name ) {
+          echo '<li><input type="hidden" name="'. $this->element_name( '[disabled]['. $dis_id .']' ) .'" value="'. $dis_name .'"/><label>'. $dis_name .'</label></li>';
+        }
+      }
+      echo '</ul>';
+      echo '</div>';
+      echo '<div class="clear"></div>';
+
+      echo $this->element_after();
+
+    }
 
   }
-
 }

@@ -7,43 +7,46 @@
  * @version 1.0.0
  *
  */
-class CSFramework_Option_Gallery extends CSFramework_Options {
+if(!class_exists("CSFramework_Option_Gallery")){
 
-  public function __construct( $field, $value = '', $unique = '' ) {
-    parent::__construct( $field, $value, $unique );
-  }
+  class CSFramework_Option_Gallery extends CSFramework_Options {
 
-  public function output(){
+    public function __construct( $field, $value = '', $unique = '' ) {
+      parent::__construct( $field, $value, $unique );
+    }
 
-    echo $this->element_before();
+    public function output(){
 
-    $value  = $this->element_value();
-    $add    = ( ! empty( $this->field['add_title'] ) ) ? $this->field['add_title'] : __( 'Add Gallery', CS_TEXTDOMAIN );
-    $edit   = ( ! empty( $this->field['edit_title'] ) ) ? $this->field['edit_title'] : __( 'Edit Gallery', CS_TEXTDOMAIN );
-    $clear  = ( ! empty( $this->field['clear_title'] ) ) ? $this->field['clear_title'] : __( 'Clear', CS_TEXTDOMAIN );
-    $hidden = ( empty( $value ) ) ? ' hidden' : '';
+      echo $this->element_before();
 
-    echo '<ul>';
+      $value  = $this->element_value();
+      $add    = ( ! empty( $this->field['add_title'] ) ) ? $this->field['add_title'] : __( 'Add Gallery', CS_TEXTDOMAIN );
+      $edit   = ( ! empty( $this->field['edit_title'] ) ) ? $this->field['edit_title'] : __( 'Edit Gallery', CS_TEXTDOMAIN );
+      $clear  = ( ! empty( $this->field['clear_title'] ) ) ? $this->field['clear_title'] : __( 'Clear', CS_TEXTDOMAIN );
+      $hidden = ( empty( $value ) ) ? ' hidden' : '';
 
-    if( ! empty( $value ) ) {
+      echo '<ul>';
 
-      $values = explode( ',', $value );
+      if( ! empty( $value ) ) {
 
-      foreach ( $values as $id ) {
-        $attachment = wp_get_attachment_image_src( $id, 'thumbnail' );
-        echo '<li><img src="'. $attachment[0] .'" alt="" /></li>';
+        $values = explode( ',', $value );
+
+        foreach ( $values as $id ) {
+          $attachment = wp_get_attachment_image_src( $id, 'thumbnail' );
+          echo '<li><img src="'. $attachment[0] .'" alt="" /></li>';
+        }
+
       }
+
+      echo '</ul>';
+      echo '<a href="#" class="button button-primary cs-add">'. $add .'</a>';
+      echo '<a href="#" class="button cs-edit'. $hidden .'">'. $edit .'</a>';
+      echo '<a href="#" class="button cs-warning-primary cs-remove'. $hidden .'">'. $clear .'</a>';
+      echo '<input type="text" name="'. $this->element_name() .'" value="'. $value .'"'. $this->element_class() . $this->element_attributes() .'/>';
+
+      echo $this->element_after();
 
     }
 
-    echo '</ul>';
-    echo '<a href="#" class="button button-primary cs-add">'. $add .'</a>';
-    echo '<a href="#" class="button cs-edit'. $hidden .'">'. $edit .'</a>';
-    echo '<a href="#" class="button cs-warning-primary cs-remove'. $hidden .'">'. $clear .'</a>';
-    echo '<input type="text" name="'. $this->element_name() .'" value="'. $value .'"'. $this->element_class() . $this->element_attributes() .'/>';
-
-    echo $this->element_after();
-
   }
-
 }

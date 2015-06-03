@@ -7,24 +7,27 @@
  * @version 1.0.0
  *
  */
-class CSFramework_Option_textarea extends CSFramework_Options {
+if(!class_exists("CSFramework_Option_textarea")){
 
-  public function __construct( $field, $value = '', $unique = '' ) {
-    parent::__construct( $field, $value, $unique );
-  }
+  class CSFramework_Option_textarea extends CSFramework_Options {
 
-  public function output() {
+    public function __construct( $field, $value = '', $unique = '' ) {
+      parent::__construct( $field, $value, $unique );
+    }
 
-    echo $this->element_before();
-    echo $this->shortcode_generator();
-    echo '<textarea name="'. $this->element_name() .'"'. $this->element_class() . $this->element_attributes() .'>'. $this->element_value() .'</textarea>';
-    echo $this->element_after();
+    public function output() {
 
-  }
+      echo $this->element_before();
+      echo $this->shortcode_generator();
+      echo '<textarea name="'. $this->element_name() .'"'. $this->element_class() . $this->element_attributes() .'>'. $this->element_value() .'</textarea>';
+      echo $this->element_after();
 
-  public function shortcode_generator() {
-    if( isset( $this->field['shortcode'] ) && CS_ACTIVE_SHORTCODE ) {
-      echo '<a href="#" class="button button-primary cs-shortcode cs-shortcode-textarea">'. __( 'Add Shortcode', CS_TEXTDOMAIN ) .'</a>';
+    }
+
+    public function shortcode_generator() {
+      if( isset( $this->field['shortcode'] ) && CS_ACTIVE_SHORTCODE ) {
+        echo '<a href="#" class="button button-primary cs-shortcode cs-shortcode-textarea">'. __( 'Add Shortcode', CS_TEXTDOMAIN ) .'</a>';
+      }
     }
   }
 }

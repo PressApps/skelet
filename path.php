@@ -8,52 +8,12 @@
  *
  */
 defined( 'CS_VERSION' )     or  define( 'CS_VERSION',     '1.0.0' );
-defined( 'CS_TEXTDOMAIN' )  or  define( 'CS_TEXTDOMAIN',  'skelet' );
-defined( 'CS_OPTION' )      or  define( 'CS_OPTION',      '_cs_options' );
-defined( 'CS_CUSTOMIZE' )   or  define( 'CS_CUSTOMIZE',   '_cs_customize_options' );
+defined( 'CS_TEXTDOMAIN' )  or  define( 'CS_TEXTDOMAIN',  'skelet2' );
+defined( 'CS_OPTION' )      or  define( 'CS_OPTION',      '_cs_options2' );
+defined( 'CS_CUSTOMIZE' )   or  define( 'CS_CUSTOMIZE',   '_cs_customize_options2' );
 
-/**
- *
- * Framework path finder
- *
- * @since 1.0.0
- * @version 1.0.0
- *
- */
-if( ! function_exists( 'cs_get_path_locate' ) ) {
-  function cs_get_path_locate() {
-
-  
-          $basename = 'skelet';
-          $dir      = PAGLOBAL_PLUGIN_DIR.'/includes/'.$basename;
-          $uri      = PAGLOBAL_PLUGIN_URL.'/includes/'.$basename;
-       
-
-
-    return apply_filters( 'cs_get_path_locate', array(
-      'basename' => wp_normalize_path( $basename ),
-      'dir'      => wp_normalize_path( $dir ),
-      'uri'      => $uri
-    ) );
-
-  }
-}
-
-/**
- *
- * Framework set paths
- *
- * @since 1.0.0
- * @version 1.0.0
- *
- *
- */
-$get_path = cs_get_path_locate();
-
-defined( 'CS_BASENAME' )  or  define( 'CS_BASENAME',  $get_path['basename'] );
-defined( 'CS_DIR' )       or  define( 'CS_DIR',       $get_path['dir'] );
-defined( 'CS_URI' )       or  define( 'CS_URI',       $get_path['uri'] );
-
+  global $skelet_path;
+   
 /**
  *
  * Framework locate template and override files
@@ -63,15 +23,16 @@ defined( 'CS_URI' )       or  define( 'CS_URI',       $get_path['uri'] );
  *
  */
 if( ! function_exists( 'cs_locate_template' ) ) {
-  function cs_locate_template( $template_name ) {
-
+  function cs_locate_template( $template_name = '', $path = array('dir' => '', 'uri' => '','basename' =>'') ) {
+    
+    
     $located      = '';
     $override     = apply_filters( 'cs_framework_override', 'skelet-override' );
-    $dir_plugin   = PAGLOBAL_PLUGIN_DIR.'/includes/';
+    $dir_plugin   = $path['dir'];
     $dir_theme    = get_template_directory();
     $dir_child    = get_stylesheet_directory();
     $dir_override = '/'. $override .'/'. $template_name;
-    $dir_template = CS_BASENAME .'/'. $template_name;
+    $dir_template = $path['basename'] .'/'. $template_name;
 
     // child theme override
     $child_force_overide    = $dir_child . $dir_override;
@@ -84,36 +45,55 @@ if( ! function_exists( 'cs_locate_template' ) ) {
     // plugin override
     $plugin_force_override  = $dir_plugin . $dir_override;
     $plugin_normal_override = $dir_plugin . $dir_template;
+    $is_located = false;
 
+/*     print_r(array( 
+        $child_force_overide."=".(file_exists($child_force_overide)?true:false),
+        $child_normal_override."=".(file_exists($child_normal_override)?true:false),
+        $theme_force_override."=".(file_exists($theme_force_override)?true:false),
+        $theme_normal_override."=".(file_exists($theme_normal_override)?true:false),
+        $plugin_force_override."=".(file_exists($plugin_force_override)?true:false),
+        $plugin_normal_override."=".(file_exists($plugin_normal_override)?true:false)
+      ));
+*/
     if ( file_exists( $child_force_overide ) ) {
 
       $located = $child_force_overide;
+       $is_located = true;
 
     } else if ( file_exists( $child_normal_override ) ) {
 
       $located = $child_normal_override;
+       $is_located = true;
 
     } else if ( file_exists( $theme_force_override ) ) {
 
       $located = $theme_force_override;
+       $is_located = true;
 
     } else if ( file_exists( $theme_normal_override ) ) {
 
       $located = $theme_normal_override;
+       $is_located = true;
 
     } else if ( file_exists( $plugin_force_override ) ) {
 
       $located =  $plugin_force_override;
+       $is_located = true;
 
     } else if ( file_exists( $plugin_normal_override ) ) {
 
       $located =  $plugin_normal_override;
+       $is_located = true;
     }
-
+   
+ 
     $located = apply_filters( 'cs_locate_template', $located, $template_name );
 
     if ( ! empty( $located ) ) {
       load_template( $located, true );
+
+    
     }
 
     return $located;
@@ -369,48 +349,51 @@ if ( ! function_exists( 'cs_language_defaults' ) ) {
  * @version 1.0.0
  *
  */
-function cs_get_locale() {
 
-  global $locale, $wp_local_package;
+if(!function_exists("cs_get_locale")){
+  function cs_get_locale() {
 
-  if ( isset( $locale ) ) {
+    global $locale, $wp_local_package;
+
+    if ( isset( $locale ) ) {
+      return apply_filters( 'locale', $locale );
+    }
+
+    if ( isset( $wp_local_package ) ) {
+      $locale = $wp_local_package;
+    }
+
+    if ( defined( 'WPLANG' ) ) {
+      $locale = WPLANG;
+    }
+
+    if ( is_multisite() ) {
+
+      if ( defined( 'WP_INSTALLING' ) || ( false === $ms_locale = get_option( 'WPLANG' ) ) ) {
+        $ms_locale = get_site_option( 'WPLANG' );
+      }
+
+      if ( $ms_locale !== false ) {
+        $locale = $ms_locale;
+      }
+
+    } else {
+
+      $db_locale = get_option( 'WPLANG' );
+
+      if ( $db_locale !== false ) {
+        $locale = $db_locale;
+      }
+
+    }
+
+    if ( empty( $locale ) ) {
+      $locale = 'en_US';
+    }
+
     return apply_filters( 'locale', $locale );
-  }
-
-  if ( isset( $wp_local_package ) ) {
-    $locale = $wp_local_package;
-  }
-
-  if ( defined( 'WPLANG' ) ) {
-    $locale = WPLANG;
-  }
-
-  if ( is_multisite() ) {
-
-    if ( defined( 'WP_INSTALLING' ) || ( false === $ms_locale = get_option( 'WPLANG' ) ) ) {
-      $ms_locale = get_site_option( 'WPLANG' );
-    }
-
-    if ( $ms_locale !== false ) {
-      $locale = $ms_locale;
-    }
-
-  } else {
-
-    $db_locale = get_option( 'WPLANG' );
-
-    if ( $db_locale !== false ) {
-      $locale = $db_locale;
-    }
 
   }
-
-  if ( empty( $locale ) ) {
-    $locale = 'en_US';
-  }
-
-  return apply_filters( 'locale', $locale );
-
 }
 
 /**
@@ -421,4 +404,4 @@ function cs_get_locale() {
  * @version 1.0.0
  *
  */
-load_textdomain( CS_TEXTDOMAIN, CS_DIR . '/languages/'. cs_get_locale() .'.mo' );
+load_textdomain( CS_TEXTDOMAIN, $skelet_path['dir'] . '/languages/'. cs_get_locale() .'.mo' );

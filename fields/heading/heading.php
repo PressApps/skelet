@@ -7,18 +7,21 @@
  * @version 1.0.0
  *
  */
-class CSFramework_Option_heading extends CSFramework_Options {
+if(!class_exists("CSFramework_Option_heading")){
 
-  public function __construct( $field, $value = '', $unique = '' ) {
-    parent::__construct( $field, $value, $unique );
-  }
+	class CSFramework_Option_heading extends CSFramework_Options {
 
-  public function output() {
+	  public function __construct( $field, $value = '', $unique = '' ) {
+	    parent::__construct( $field, $value, $unique );
+	  }
 
-    echo $this->element_before();
-    echo $this->field['content'];
-    echo $this->element_after();
+	  public function output() {
 
-  }
+	    echo $this->element_before();
+	    echo $this->field['content'];
+	    echo $this->element_after();
 
+	  }
+
+	}
 }

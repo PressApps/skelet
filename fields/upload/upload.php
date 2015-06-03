@@ -7,27 +7,30 @@
  * @version 1.0.0
  *
  */
-class CSFramework_Option_upload extends CSFramework_Options {
+if(!class_exists("CSFramework_Option_upload")){
 
-  public function __construct( $field, $value = '', $unique = '' ) {
-    parent::__construct( $field, $value, $unique );
-  }
+  class CSFramework_Option_upload extends CSFramework_Options {
 
-  public function output() {
+    public function __construct( $field, $value = '', $unique = '' ) {
+      parent::__construct( $field, $value, $unique );
+    }
 
-    echo $this->element_before();
+    public function output() {
 
-    if( isset( $this->field['settings'] ) ) { extract( $this->field['settings'] ); }
+      echo $this->element_before();
 
-    $upload_type  = ( isset( $upload_type  ) ) ? $upload_type  : 'image';
-    $button_title = ( isset( $button_title ) ) ? $button_title : __( 'Upload', CS_TEXTDOMAIN );
-    $frame_title  = ( isset( $frame_title  ) ) ? $frame_title  : __( 'Upload', CS_TEXTDOMAIN );
-    $insert_title = ( isset( $insert_title ) ) ? $insert_title : __( 'Use Image', CS_TEXTDOMAIN );
+      if( isset( $this->field['settings'] ) ) { extract( $this->field['settings'] ); }
 
-    echo '<input type="text" name="'. $this->element_name() .'" value="'. $this->element_value() .'"'. $this->element_class() . $this->element_attributes() .'/>';
-    echo '<a href="#" class="button cs-add" data-frame-title="'. $frame_title .'" data-upload-type="'. $upload_type .'" data-insert-title="'. $insert_title .'">'. $button_title .'</a>';
+      $upload_type  = ( isset( $upload_type  ) ) ? $upload_type  : 'image';
+      $button_title = ( isset( $button_title ) ) ? $button_title : __( 'Upload', CS_TEXTDOMAIN );
+      $frame_title  = ( isset( $frame_title  ) ) ? $frame_title  : __( 'Upload', CS_TEXTDOMAIN );
+      $insert_title = ( isset( $insert_title ) ) ? $insert_title : __( 'Use Image', CS_TEXTDOMAIN );
 
-    echo $this->element_after();
+      echo '<input type="text" name="'. $this->element_name() .'" value="'. $this->element_value() .'"'. $this->element_class() . $this->element_attributes() .'/>';
+      echo '<a href="#" class="button cs-add" data-frame-title="'. $frame_title .'" data-upload-type="'. $upload_type .'" data-insert-title="'. $insert_title .'">'. $button_title .'</a>';
 
+      echo $this->element_after();
+
+    }
   }
 }

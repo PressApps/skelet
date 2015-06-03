@@ -7,6 +7,8 @@
  * @version 1.0.0
  *
  */
+if(!class_exists("CSFramework_Option_select")){
+
 class CSFramework_Option_select extends CSFramework_Options {
 
   public function __construct( $field, $value = '', $unique = '' ) {
@@ -42,5 +44,7 @@ class CSFramework_Option_select extends CSFramework_Options {
     echo $this->element_after();
 
   }
+
+}
 
 }

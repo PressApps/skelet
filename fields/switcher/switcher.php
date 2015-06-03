@@ -7,6 +7,8 @@
  * @version 1.0.0
  *
  */
+if(!class_exists("CSFramework_Option_switcher")){
+
 class CSFramework_Option_switcher extends CSFramework_Options {
 
   public function __construct( $field, $value = '', $unique = '' ) {
@@ -21,5 +23,7 @@ class CSFramework_Option_switcher extends CSFramework_Options {
     echo $this->element_after();
 
   }
+
+}
 
 }

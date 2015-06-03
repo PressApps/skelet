@@ -7,31 +7,34 @@
  * @version 1.0.0
  *
  */
-class CSFramework_Option_Wysiwyg extends CSFramework_Options {
+if(!class_exists("CSFramework_Option_Wysiwyg")){
 
-  public function __construct( $field, $value = '', $unique = '' ) {
-    parent::__construct( $field, $value, $unique );
-  }
+  class CSFramework_Option_Wysiwyg extends CSFramework_Options {
 
-  public function output() {
+    public function __construct( $field, $value = '', $unique = '' ) {
+      parent::__construct( $field, $value, $unique );
+    }
 
-    echo $this->element_before();
+    public function output() {
 
-    $defaults = array(
-      'textarea_rows' => 10,
-      'textarea_name' => $this->element_name()
-    );
+      echo $this->element_before();
 
-    $settings    = ( ! empty( $this->field['settings'] ) ) ? $this->field['settings'] : array();
-    $settings    = wp_parse_args( $settings, $defaults );
+      $defaults = array(
+        'textarea_rows' => 10,
+        'textarea_name' => $this->element_name()
+      );
 
-    $field_id    = ( ! empty( $this->field['id'] ) ) ? $this->field['id'] : '';
-    $field_value = $this->element_value();
+      $settings    = ( ! empty( $this->field['settings'] ) ) ? $this->field['settings'] : array();
+      $settings    = wp_parse_args( $settings, $defaults );
 
-    wp_editor( $field_value, $field_id, $settings );
+      $field_id    = ( ! empty( $this->field['id'] ) ) ? $this->field['id'] : '';
+      $field_value = $this->element_value();
 
-    echo $this->element_after();
+      wp_editor( $field_value, $field_id, $settings );
 
+      echo $this->element_after();
+
+    }
   }
 
 }

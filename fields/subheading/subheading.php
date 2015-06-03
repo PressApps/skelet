@@ -7,6 +7,8 @@
  * @version 1.0.0
  *
  */
+if(!class_exists("CSFramework_Option_subheading")){
+
 class CSFramework_Option_subheading extends CSFramework_Options {
 
   public function __construct( $field, $value = '', $unique = '' ) {
@@ -21,4 +23,5 @@ class CSFramework_Option_subheading extends CSFramework_Options {
 
   }
 
+}
 }

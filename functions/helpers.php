@@ -7,8 +7,10 @@
  * @version 1.0.0
  *
  */
+
 if ( ! function_exists( 'cs_add_element' ) ) {
   function cs_add_element( $field = array(), $value = '', $unique = '' ) {
+    global $skelet_path;
 
     $output     = '';
     $depend     = '';
@@ -19,7 +21,7 @@ if ( ! function_exists( 'cs_add_element' ) ) {
     $wrap_class = ( isset( $field['wrap_class'] ) ) ? ' ' . $field['wrap_class'] : '';
     $hidden     = ( isset( $field['show_only_language'] ) && ( $field['show_only_language'] != $languages['current'] ) ) ? ' hidden' : '';
     $is_pseudo  = ( isset( $field['pseudo'] ) ) ? ' cs-pseudo-field' : '';
-
+   
     if ( isset( $field['dependency'] ) ) {
       $hidden  = ' hidden';
       $depend .= ' data-'. $sub .'controller="'. $field['dependency'][0] .'"';
@@ -175,24 +177,23 @@ if ( ! function_exists( 'cs_array_search' ) ) {
  */
 if ( ! function_exists( 'cs_load_option_fields' ) ) {
   function cs_load_option_fields() {
-
+    global $skelet_path;
+   
     $located_fields = array();
-
-    foreach ( glob( CS_DIR .'/fields/*/*.php' ) as $cs_field ) {
+    foreach ( glob( $skelet_path["dir"] .'skelet/fields/*/*.php' ) as $cs_field ) {
       $located_fields[] = basename( $cs_field );
-      cs_locate_template( str_replace(  CS_DIR, '', $cs_field ) );
+      cs_locate_template( str_replace(  $skelet_path["dir"].'skelet/', '', $cs_field ) ,$skelet_path);
     }
 
     $override_name = apply_filters( 'cs_framework_override', 'cs-framework-override' );
-    $override_dir  = get_template_directory() .'/'. $override_name .'/fields';
-
+    $override_dir  = get_template_directory() .'/skelet/'. $override_name .'/fields';
     if( is_dir( $override_dir ) ) {
 
       foreach ( glob( $override_dir .'/*/*.php' ) as $override_field ) {
 
         if( ! in_array( basename( $override_field ), $located_fields ) ) {
 
-          cs_locate_template( str_replace(  CS_DIR .'-override', '', $override_field ) );
+          cs_locate_template( str_replace(  $skelet_path["dir"] .'-override', '', $override_field ) );
 
         }
 

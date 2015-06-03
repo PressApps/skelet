@@ -7,18 +7,21 @@
  * @version 1.0.0
  *
  */
-class CSFramework_Option_notice extends CSFramework_Options {
+if(!class_exists("CSFramework_Option_notice")){
 
-  public function __construct( $field, $value = '', $unique = '' ) {
-    parent::__construct( $field, $value, $unique );
-  }
+	class CSFramework_Option_notice extends CSFramework_Options {
 
-  public function output() {
+	  public function __construct( $field, $value = '', $unique = '' ) {
+	    parent::__construct( $field, $value, $unique );
+	  }
 
-    echo $this->element_before();
-    echo '<div class="cs-notice cs-'. $this->field['class'] .'">'. $this->field['content'] .'</div>';
-    echo $this->element_after();
+	  public function output() {
 
-  }
+	    echo $this->element_before();
+	    echo '<div class="cs-notice cs-'. $this->field['class'] .'">'. $this->field['content'] .'</div>';
+	    echo $this->element_after();
 
+	  }
+
+	}
 }
