@@ -32,6 +32,7 @@ if(! class_exists( 'Skelet_LoadConfig' ) ){
                         cs_locate_template ( 'functions/enqueue.php'        ,$skelet_path);
                         cs_locate_template ( 'functions/sanitize.php'       ,$skelet_path);
                         cs_locate_template ( 'functions/validate.php'       ,$skelet_path);
+                        cs_locate_template ( 'functions/customize.php'       ,$skelet_path);
 
                         // classes
                         cs_locate_template ( 'classes/abstract.class.php'   ,$skelet_path);
