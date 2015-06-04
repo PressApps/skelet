@@ -1,4 +1,5 @@
 <?php 
+
 /**
  *
  * Skelet Framework Example Widget
@@ -16,8 +17,6 @@ if( ! class_exists( 'CS_Widget' ) ) {
      
       parent::__construct( 'cs_widget', 'Skelet Framework Widget', $widget_ops );
 
-       $widget = new CS_Widget;
-     
     }
 
     function widget( $args, $instance ) {

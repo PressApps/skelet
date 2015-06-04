@@ -17,6 +17,8 @@ if(! class_exists( 'Skelet_LoadConfig' ) ){
                     defined( 'CS_ACTIVE_METABOX'   )  or  define( 'CS_ACTIVE_METABOX',    true );
                     defined( 'CS_ACTIVE_SHORTCODE' )  or  define( 'CS_ACTIVE_SHORTCODE',  true );
                     defined( 'CS_ACTIVE_CUSTOMIZE' )  or  define( 'CS_ACTIVE_CUSTOMIZE',  true );
+                    defined( 'CS_ACTIVE_WIDGET'    )  or  define( 'CS_ACTIVE_WIDGET',     true );
+                    defined( 'CS_ACTIVE_TAXONOMY'    )  or  define( 'CS_ACTIVE_TAXONOMY', true );
                    
                    foreach ($skelet_paths as $path) {
 
