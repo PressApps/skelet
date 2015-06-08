@@ -6,7 +6,12 @@
  * 
  */
  global $skelet_paths,$skelet_path;
-                   
+
+// Widget should be included on widgets init action.
+include_once wp_normalize_path(plugin_dir_path(__FILE__ ).'/classes/widget.class.php');
+include_once wp_normalize_path(dirname( __DIR__ ) .'/admin/options/widget.config.php');
+ 
+
 if(! class_exists( 'Skelet_LoadConfig' ) ){
     class Skelet_LoadConfig{
             public static function instance(){
@@ -43,7 +48,6 @@ if(! class_exists( 'Skelet_LoadConfig' ) ){
                         cs_locate_template ( 'classes/metabox.class.php'    ,$skelet_path);
                         cs_locate_template ( 'classes/shortcode.class.php'  ,$skelet_path);
                         cs_locate_template ( 'classes/customize.class.php'  ,$skelet_path);
-                        cs_locate_template ( 'classes/widget.class.php'     ,$skelet_path);
                         cs_locate_template ( 'classes/taxonomy.class.php'   ,$skelet_path);
                       
                         // configs
@@ -51,7 +55,6 @@ if(! class_exists( 'Skelet_LoadConfig' ) ){
                         cs_locate_template ( '../../includes/admin/options/metabox.config.php'    ,$skelet_path);
                         cs_locate_template ( '../../includes/admin/options/shortcode.config.php'  ,$skelet_path);
                         cs_locate_template ( '../../includes/admin/options/customize.config.php'  ,$skelet_path);
-                        cs_locate_template ( '../../includes/admin/options/widget.config.php'  ,$skelet_path);
                         cs_locate_template ( '../../includes/admin/options/taxonomy.config.php'  ,$skelet_path);
                    
                     }

@@ -32,7 +32,7 @@ if(!class_exists("CSFramework_Taxonomy")){
     public function __construct( $options ){
 
       $this->options = apply_filters( 'cs_taxonomy_options', $options );
-      global $wp_filter;
+     
      if( ! empty( $this->options ) ) {
         $taxonomy_options = $this->options;
         foreach($taxonomy_options as $key => $val){
@@ -40,7 +40,7 @@ if(!class_exists("CSFramework_Taxonomy")){
           
 
           //$this->addAction( $taxonomy.'_edit_form_fields', 'edit_taxonomy_box',90,2 );
-          $this->addAction( $taxonomy.'_edit_form', 'edit_taxonomy_box',90,2 );
+          $this->addAction( 'edit_'.$taxonomy.'_form ', 'edit_taxonomy_box',90,2 );
           $this->addAction( 'edited_'.$taxonomy, 'edited_taxonomy_box' , 10, 2);
 
           $this->addAction( $taxonomy.'_add_form_fields', 'add_taxonomy_box',10,2);
