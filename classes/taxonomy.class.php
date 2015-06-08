@@ -7,8 +7,8 @@
  * @version 1.0.0
  *
  */
-if(!class_exists("CSFramework_Taxonomy")){
-  class CSFramework_Taxonomy extends CSFramework_Abstract{
+if(!class_exists("SkeletFramework_Taxonomy")){
+  class SkeletFramework_Taxonomy extends SkeletFramework_Abstract{
 
     /**
      *
@@ -31,7 +31,7 @@ if(!class_exists("CSFramework_Taxonomy")){
     // run taxonomy construct
     public function __construct( $options ){
 
-      $this->options = apply_filters( 'cs_taxonomy_options', $options );
+      $this->options = apply_filters( 'sk_taxonomy_options', $options );
      
      if( ! empty( $this->options ) ) {
         $taxonomy_options = $this->options;
@@ -52,7 +52,7 @@ if(!class_exists("CSFramework_Taxonomy")){
 
     // instance
     public static function instance( $options = array() ){
-      if ( is_null( self::$instance ) && CS_ACTIVE_TAXONOMY ) {
+      if ( is_null( self::$instance ) && SK_ACTIVE_TAXONOMY ) {
         self::$instance = new self( $options );
       }
       return self::$instance;
@@ -73,7 +73,7 @@ if(!class_exists("CSFramework_Taxonomy")){
                     $default    = ( isset( $field['default'] ) ) ? $field['default'] : '';
                     $elem_id    = ( isset( $field['id'] ) ) ? $field['id'] : '';
                     $elem_value = ( is_array( $meta_value ) && isset( $meta_value[$elem_id] ) ) ? $meta_value[$elem_id] : $default;
-                    echo cs_add_element( $field, $elem_value, $unique );
+                    echo sk_add_element( $field, $elem_value, $unique );
 
           }
         }
@@ -104,7 +104,7 @@ if(!class_exists("CSFramework_Taxonomy")){
                         $default    = ( isset( $field['default'] ) ) ? $field['default'] : '';
                         $elem_id    = ( isset( $field['id'] ) ) ? $field['id'] : '';
                         $elem_value =  $default;
-                        echo cs_add_element( $field, $elem_value, $unique );
+                        echo sk_add_element( $field, $elem_value, $unique );
 
               }
             }

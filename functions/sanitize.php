@@ -7,11 +7,11 @@
  * @version 1.0.0
  *
  */
-if( ! function_exists( 'cs_sanitize_text' ) ) {
-  function cs_sanitize_text( $value, $field ) {
+if( ! function_exists( 'sk_sanitize_text' ) ) {
+  function sk_sanitize_text( $value, $field ) {
     return wp_filter_nohtml_kses( $value );
   }
-  add_filter( 'cs_sanitize_text', 'cs_sanitize_text', 10, 2 );
+  add_filter( 'sk_sanitize_text', 'sk_sanitize_text', 10, 2 );
 }
 
 /**
@@ -22,14 +22,14 @@ if( ! function_exists( 'cs_sanitize_text' ) ) {
  * @version 1.0.0
  *
  */
-if( ! function_exists( 'cs_sanitize_textarea' ) ) {
-  function cs_sanitize_textarea( $value ) {
+if( ! function_exists( 'sk_sanitize_textarea' ) ) {
+  function sk_sanitize_textarea( $value ) {
 
     global $allowedposttags;
     return wp_kses( $value, $allowedposttags );
 
   }
-  add_filter( 'cs_sanitize_textarea', 'cs_sanitize_textarea' );
+  add_filter( 'sk_sanitize_textarea', 'sk_sanitize_textarea' );
 }
 
 /**
@@ -41,8 +41,8 @@ if( ! function_exists( 'cs_sanitize_textarea' ) ) {
  * @version 1.0.0
  *
  */
-if( ! function_exists( 'cs_sanitize_checkbox' ) ) {
-  function cs_sanitize_checkbox( $value ) {
+if( ! function_exists( 'sk_sanitize_checkbox' ) ) {
+  function sk_sanitize_checkbox( $value ) {
 
     if( ! empty( $value ) && $value == 1 ) {
       $value = true;
@@ -55,8 +55,8 @@ if( ! function_exists( 'cs_sanitize_checkbox' ) ) {
     return $value;
 
   }
-  add_filter( 'cs_sanitize_checkbox', 'cs_sanitize_checkbox' );
-  add_filter( 'cs_sanitize_switcher', 'cs_sanitize_checkbox' );
+  add_filter( 'sk_sanitize_checkbox', 'sk_sanitize_checkbox' );
+  add_filter( 'sk_sanitize_switcher', 'sk_sanitize_checkbox' );
 }
 
 /**
@@ -69,8 +69,8 @@ if( ! function_exists( 'cs_sanitize_checkbox' ) ) {
  * @version 1.0.0
  *
  */
-if( ! function_exists( 'cs_sanitize_image_select' ) ) {
-  function cs_sanitize_image_select( $value ) {
+if( ! function_exists( 'sk_sanitize_image_select' ) ) {
+  function sk_sanitize_image_select( $value ) {
 
     if( isset( $value ) && is_array( $value ) ) {
       if( count( $value ) ) {
@@ -85,7 +85,7 @@ if( ! function_exists( 'cs_sanitize_image_select' ) ) {
     return $value;
 
   }
-  add_filter( 'cs_sanitize_image_select', 'cs_sanitize_image_select' );
+  add_filter( 'sk_sanitize_image_select', 'sk_sanitize_image_select' );
 }
 
 /**
@@ -97,11 +97,11 @@ if( ! function_exists( 'cs_sanitize_image_select' ) ) {
  * @version 1.0.0
  *
  */
-if( ! function_exists( 'cs_sanitize_group' ) ) {
-  function cs_sanitize_group( $value ) {
+if( ! function_exists( 'sk_sanitize_group' ) ) {
+  function sk_sanitize_group( $value ) {
     return ( empty( $value ) ) ? '' : $value;
   }
-  add_filter( 'cs_sanitize_group', 'cs_sanitize_group' );
+  add_filter( 'sk_sanitize_group', 'sk_sanitize_group' );
 }
 
 /**
@@ -112,11 +112,11 @@ if( ! function_exists( 'cs_sanitize_group' ) ) {
  * @version 1.0.0
  *
  */
-if( ! function_exists( 'cs_sanitize_title' ) ) {
-  function cs_sanitize_title( $value ) {
+if( ! function_exists( 'sk_sanitize_title' ) ) {
+  function sk_sanitize_title( $value ) {
     return sanitize_title( $value );
   }
-  add_filter( 'cs_sanitize_title', 'cs_sanitize_title' );
+  add_filter( 'sk_sanitize_title', 'sk_sanitize_title' );
 }
 
 /**
@@ -127,9 +127,9 @@ if( ! function_exists( 'cs_sanitize_title' ) ) {
  * @version 1.0.0
  *
  */
-if( ! function_exists( 'cs_sanitize_clean' ) ) {
-  function cs_sanitize_clean( $value ) {
+if( ! function_exists( 'sk_sanitize_clean' ) ) {
+  function sk_sanitize_clean( $value ) {
     return $value;
   }
-  add_filter( 'cs_sanitize_clean', 'cs_sanitize_clean', 10, 2 );
+  add_filter( 'sk_sanitize_clean', 'sk_sanitize_clean', 10, 2 );
 }

@@ -7,8 +7,8 @@
  * @version 1.0.0
  *
  */
-if(!class_exists("CSFramework")){
-  class CSFramework extends CSFramework_Abstract {
+if(!class_exists("SkeletFramework")){
+  class SkeletFramework extends SkeletFramework_Abstract {
 
     public static $skelet_unique = "";
     /**
@@ -71,15 +71,15 @@ if(!class_exists("CSFramework")){
       self::$skelet_unique = $path["option"];
       $this->unique  = $path["option"];
 
-      $this->settings = apply_filters( 'cs_framework_settings', $settings );
-      $this->options  = apply_filters( 'cs_framework_options', $options );
+      $this->settings = apply_filters( 'sk_framework_settings', $settings );
+      $this->options  = apply_filters( 'sk_framework_options', $options );
      
       if( ! empty( $this->options ) ) {
         $this->sections   = $this->get_sections();
         $this->get_option = get_option( self::$skelet_unique );
         $this->addAction( 'admin_init', 'settings_api' );
         $this->addAction( 'admin_menu', 'admin_menu' );
-        $this->addAction( 'wp_ajax_cs-export-options', 'export' );
+        $this->addAction( 'wp_ajax_sk-export-options', 'export' );
 
       }
 
@@ -92,7 +92,7 @@ if(!class_exists("CSFramework")){
       global $skelet_path;
       
       self::$skelet_unique = $skelet_path["option"];
-      //if ( is_null( self::$instance ) && CS_ACTIVE_FRAMEWORK ) {
+      //if ( is_null( self::$instance ) && SK_ACTIVE_FRAMEWORK ) {
         self::$instance = new self( $settings, $options, $skelet_path );
       //}
       return self::$instance;
@@ -171,23 +171,23 @@ if(!class_exists("CSFramework")){
     public function validate_save( $request ) {
 
       $add_errors = array();
-      $section_id = ( isset( $_POST['cs_section_id'] ) ) ? $_POST['cs_section_id'] : '';
+      $section_id = ( isset( $_POST['sk_section_id'] ) ) ? $_POST['sk_section_id'] : '';
 
       // ignore nonce requests
       if( isset( $request['_nonce'] ) ) { unset( $request['_nonce'] ); }
 
       // import
       if ( isset( $request['import'] ) && ! empty( $request['import'] ) ) {
-        $decode_string = cs_decode_string( $request['import'] );
+        $decode_string = sk_decode_string( $request['import'] );
         if( is_array( $decode_string ) ) {
           return $decode_string;
         }
-        $add_errors[] = $this->add_settings_error( __( 'Success. Imported backup options.', CS_TEXTDOMAIN ), 'updated' );
+        $add_errors[] = $this->add_settings_error( __( 'Success. Imported backup options.', SK_TEXTDOMAIN ), 'updated' );
       }
 
       // reset all options
       if ( isset( $request['resetall'] ) ) {
-        $add_errors[] = $this->add_settings_error( __( 'Default options restored.', CS_TEXTDOMAIN ), 'updated' );
+        $add_errors[] = $this->add_settings_error( __( 'Default options restored.', SK_TEXTDOMAIN ), 'updated' );
         return;
       }
 
@@ -206,7 +206,7 @@ if(!class_exists("CSFramework")){
             }
           }
         }
-        $add_errors[] = $this->add_settings_error( __( 'Default options restored for only this section.', CS_TEXTDOMAIN ), 'updated' );
+        $add_errors[] = $this->add_settings_error( __( 'Default options restored for only this section.', SK_TEXTDOMAIN ), 'updated' );
       }
 
       // option sanitize and validate
@@ -225,14 +225,14 @@ if(!class_exists("CSFramework")){
                 $sanitize_type = ( $field['sanitize'] !== false ) ? $field['sanitize'] : false;
               }
 
-              if( $sanitize_type !== false && has_filter( 'cs_sanitize_'. $sanitize_type ) ) {
-                $request[$field['id']] = apply_filters( 'cs_sanitize_' . $sanitize_type, $request_value, $field, $section['fields'] );
+              if( $sanitize_type !== false && has_filter( 'sk_sanitize_'. $sanitize_type ) ) {
+                $request[$field['id']] = apply_filters( 'sk_sanitize_' . $sanitize_type, $request_value, $field, $section['fields'] );
               }
 
               // validate options
-              if ( isset( $field['validate'] ) && has_filter( 'cs_validate_'. $field['validate'] ) ) {
+              if ( isset( $field['validate'] ) && has_filter( 'sk_validate_'. $field['validate'] ) ) {
 
-                $validate = apply_filters( 'cs_validate_' . $field['validate'], $request_value, $field, $section['fields'] );
+                $validate = apply_filters( 'sk_validate_' . $field['validate'], $request_value, $field, $section['fields'] );
 
                 if( ! empty( $validate ) ) {
                   $add_errors[] = $this->add_settings_error( $validate, 'error', $field['id'] );
@@ -251,11 +251,11 @@ if(!class_exists("CSFramework")){
         }
       }
 
-      $request = apply_filters( 'cs_validate_save', $request );
+      $request = apply_filters( 'sk_validate_save', $request );
 
       // set transient
-      $transient_time = ( cs_language_defaults() !== false ) ? 30 : 10;
-      set_transient( 'cs-framework-transient', array( 'errors' => $add_errors, 'section_id' => $section_id ), $transient_time );
+      $transient_time = ( sk_language_defaults() !== false ) ? 30 : 10;
+      set_transient( 'sk-framework-transient', array( 'errors' => $add_errors, 'section_id' => $section_id ), $transient_time );
 
       return $request;
     }
@@ -263,7 +263,7 @@ if(!class_exists("CSFramework")){
     // field callback classes
     public function field_callback( $field ) {
       $value = ( isset( $field['id'] ) && isset( $this->get_option[$field['id']] ) ) ? $this->get_option[$field['id']] : '';
-      echo cs_add_element( $field, $value, $this->unique );
+      echo sk_add_element( $field, $value, $this->unique );
     }
 
     // settings sections
@@ -307,7 +307,7 @@ if(!class_exists("CSFramework")){
     }
 
     public function add_settings_error( $message, $type = 'error', $id = 'global' ) {
-      return array( 'setting' => 'cs-errors', 'code' => $id, 'message' => $message, 'type' => $type );
+      return array( 'setting' => 'sk-errors', 'code' => $id, 'message' => $message, 'type' => $type );
     }
 
     // adding option page
@@ -336,26 +336,26 @@ if(!class_exists("CSFramework")){
     // option page html output
     public function admin_page() {
 
-      $transient  = get_transient( 'cs-framework-transient' );
-      $has_nav    = ( count( $this->options ) <= 1 ) ? ' cs-show-all' : '';
+      $transient  = get_transient( 'sk-framework-transient' );
+      $has_nav    = ( count( $this->options ) <= 1 ) ? ' sk-show-all' : '';
       $section_id = ( ! empty( $transient['section_id'] ) ) ? $transient['section_id'] : $this->sections[0]['name'];
-      $section_id = ( isset( $_GET['cs-section'] ) ) ? esc_attr( $_GET['cs-section'] ) : $section_id;
+      $section_id = ( isset( $_GET['sk-section'] ) ) ? esc_attr( $_GET['sk-section'] ) : $section_id;
 
-      echo '<div class="cs-framework cs-option-framework">';
+      echo '<div class="sk-framework sk-option-framework">';
 
         echo '<form method="post" action="options.php" enctype="multipart/form-data" id="csframework_form">';
-        echo '<input type="hidden" class="cs-reset" name="cs_section_id" value="'. $section_id .'" />';
+        echo '<input type="hidden" class="sk-reset" name="sk_section_id" value="'. $section_id .'" />';
 
         if( $this->settings['ajax_save'] !== true && ! empty( $transient['errors'] ) ) {
 
-          global $cs_errors;
+          global $sk_errors;
 
-          $cs_errors = $transient['errors'];
+          $sk_errors = $transient['errors'];
 
-          if ( ! empty( $cs_errors ) ) {
-            foreach ( $cs_errors as $error ) {
-              if( in_array( $error['setting'], array( 'general', 'cs-errors' ) ) ) {
-                echo '<div class="cs-settings-error '. $error['type'] .'">';
+          if ( ! empty( $sk_errors ) ) {
+            foreach ( $sk_errors as $error ) {
+              if( in_array( $error['setting'], array( 'general', 'sk-errors' ) ) ) {
+                echo '<div class="sk-settings-error '. $error['type'] .'">';
                 echo '<p><strong>'. $error['message'] .'</strong></p>';
                 echo '</div>';
               }
@@ -366,40 +366,40 @@ if(!class_exists("CSFramework")){
 
         settings_fields( $this->unique. '_group' );
 
-        echo '<header class="cs-header">';
+        echo '<header class="sk-header">';
         echo '<h1>Skelet Framework <small>by PressApps</small></h1>';
         echo '<fieldset>';
-        echo ( $this->settings['ajax_save'] === true ) ? '<span id="cs-save-ajax">'. __( 'Settings saved.', CS_TEXTDOMAIN ) .'</span>' : '';
-        submit_button( __( 'Save', CS_TEXTDOMAIN ), 'primary', 'save', false, array( 'data-ajax' => $this->settings['ajax_save'], 'data-save' => __( 'Saving...', CS_TEXTDOMAIN ) ) );
-        submit_button( __( 'Restore', CS_TEXTDOMAIN ), 'secondary cs-restore cs-reset-confirm', $this->unique .'[reset]', false );
+        echo ( $this->settings['ajax_save'] === true ) ? '<span id="sk-save-ajax">'. __( 'Settings saved.', SK_TEXTDOMAIN ) .'</span>' : '';
+        submit_button( __( 'Save', SK_TEXTDOMAIN ), 'primary', 'save', false, array( 'data-ajax' => $this->settings['ajax_save'], 'data-save' => __( 'Saving...', SK_TEXTDOMAIN ) ) );
+        submit_button( __( 'Restore', SK_TEXTDOMAIN ), 'secondary sk-restore sk-reset-confirm', $this->unique .'[reset]', false );
         echo '</fieldset>';
-        echo ( empty( $has_nav ) ) ? '<a href="#" class="cs-expand-all"><i class="fa fa-eye-slash"></i> '. __( 'show all options', CS_TEXTDOMAIN ) .'</a>' : '';
+        echo ( empty( $has_nav ) ) ? '<a href="#" class="sk-expand-all"><i class="fa fa-eye-slash"></i> '. __( 'show all options', SK_TEXTDOMAIN ) .'</a>' : '';
         echo '<div class="clear"></div>';
-        echo '</header>'; // end .cs-header
+        echo '</header>'; // end .sk-header
 
-        echo '<div class="cs-body'. $has_nav .'">';
+        echo '<div class="sk-body'. $has_nav .'">';
 
-          echo '<div class="cs-nav">';
+          echo '<div class="sk-nav">';
 
             echo '<ul>';
             foreach ( $this->options as $key => $tab ) {
 
               if( ( isset( $tab['sections'] ) ) ) {
 
-                $tab_active   = cs_array_search( $tab['sections'], 'name', $section_id );
+                $tab_active   = sk_array_search( $tab['sections'], 'name', $section_id );
                 $active_style = ( ! empty( $tab_active ) ) ? ' style="display: block;"' : '';
-                $active_list  = ( ! empty( $tab_active ) ) ? ' cs-tab-active' : '';
-                $tab_icon     = ( ! empty( $tab['icon'] ) ) ? '<i class="cs-icon '. $tab['icon'] .'"></i>' : '';
+                $active_list  = ( ! empty( $tab_active ) ) ? ' sk-tab-active' : '';
+                $tab_icon     = ( ! empty( $tab['icon'] ) ) ? '<i class="sk-icon '. $tab['icon'] .'"></i>' : '';
 
-                echo '<li class="cs-sub'. $active_list .'">';
+                echo '<li class="sk-sub'. $active_list .'">';
 
-                  echo '<a href="#" class="cs-arrow">'. $tab_icon . $tab['title'] .'</a>';
+                  echo '<a href="#" class="sk-arrow">'. $tab_icon . $tab['title'] .'</a>';
 
                   echo '<ul'. $active_style .'>';
                   foreach ( $tab['sections'] as $tab_section ) {
 
-                    $active_tab = ( $section_id == $tab_section['name'] ) ? ' class="cs-section-active"' : '';
-                    $icon = ( ! empty( $tab_section['icon'] ) ) ? '<i class="cs-icon '. $tab_section['icon'] .'"></i>' : '';
+                    $active_tab = ( $section_id == $tab_section['name'] ) ? ' class="sk-section-active"' : '';
+                    $icon = ( ! empty( $tab_section['icon'] ) ) ? '<i class="sk-icon '. $tab_section['icon'] .'"></i>' : '';
 
                     echo '<li><a href="#"'. $active_tab .' data-section="'. $tab_section['name'] .'">'. $icon . $tab_section['title'] .'</a></li>';
 
@@ -410,16 +410,16 @@ if(!class_exists("CSFramework")){
 
               } else {
 
-                $icon = ( ! empty( $tab['icon'] ) ) ? '<i class="cs-icon '. $tab['icon'] .'"></i>' : '';
+                $icon = ( ! empty( $tab['icon'] ) ) ? '<i class="sk-icon '. $tab['icon'] .'"></i>' : '';
 
                 if( isset( $tab['fields'] ) ) {
 
-                  $active_list = ( $section_id == $tab['name'] ) ? ' class="cs-section-active"' : '';
+                  $active_list = ( $section_id == $tab['name'] ) ? ' class="sk-section-active"' : '';
                   echo '<li><a href="#"'. $active_list .' data-section="'. $tab['name'] .'">'. $icon . $tab['title'] .'</a></li>';
 
                 } else {
 
-                  echo '<li><div class="cs-seperator">'. $icon . $tab['title'] .'</div></li>';
+                  echo '<li><div class="sk-seperator">'. $icon . $tab['title'] .'</div></li>';
 
                 }
 
@@ -428,19 +428,19 @@ if(!class_exists("CSFramework")){
             }
             echo '</ul>';
 
-          echo '</div>'; // end .cs-nav
+          echo '</div>'; // end .sk-nav
 
-          echo '<div class="cs-content">';
+          echo '<div class="sk-content">';
 
-            echo '<div class="cs-sections">';
+            echo '<div class="sk-sections">';
 
             foreach( $this->sections as $section ) {
 
               if( isset( $section['fields'] ) ) {
 
                 $active_content = ( $section_id == $section['name'] ) ? ' style="display: block;"' : '';
-                echo '<div id="cs-tab-'. $section['name'] .'" class="cs-section"'. $active_content .'>';
-                echo ( isset( $section['title'] ) && empty( $has_nav ) ) ? '<div class="cs-section-title"><h3>'. $section['title'] .'</h3></div>' : '';
+                echo '<div id="sk-tab-'. $section['name'] .'" class="sk-section"'. $active_content .'>';
+                echo ( isset( $section['title'] ) && empty( $has_nav ) ) ? '<div class="sk-section-title"><h3>'. $section['title'] .'</h3></div>' : '';
                 $this->do_settings_sections( $section['name'] . '_section_group' );
                 echo '</div>';
 
@@ -448,25 +448,25 @@ if(!class_exists("CSFramework")){
 
             }
 
-            echo '</div>'; // end .cs-sections
+            echo '</div>'; // end .sk-sections
 
             echo '<div class="clear"></div>';
 
-          echo '</div>'; // end .cs-content
+          echo '</div>'; // end .sk-content
 
-          echo '<div class="cs-nav-background"></div>';
+          echo '<div class="sk-nav-background"></div>';
 
-        echo '</div>'; // end .cs-body
+        echo '</div>'; // end .sk-body
 
-        echo '<footer class="cs-footer">';
-        echo 'Skelet Framework <strong>v'. CS_VERSION .' by PressApps</strong>';
-        echo '</footer>'; // end .cs-footer
+        echo '<footer class="sk-footer">';
+        echo 'Skelet Framework <strong>v'. SK_VERSION .' by PressApps</strong>';
+        echo '</footer>'; // end .sk-footer
 
         echo '</form>'; // end form
 
         echo '<div class="clear"></div>';
 
-      echo '</div>'; // end .cs-framework
+      echo '</div>'; // end .sk-framework
 
     }
 
@@ -479,7 +479,7 @@ if(!class_exists("CSFramework")){
       header('Pragma: no-cache');
       header('Expires: 0');
 
-      echo cs_encode_string( get_option( self::$skelet_unique ) );
+      echo sk_encode_string( get_option( self::$skelet_unique ) );
 
       die();
 

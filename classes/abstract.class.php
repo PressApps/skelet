@@ -8,8 +8,8 @@
  * @version 1.0.0
  *
  */
-if(!class_exists("CSFramework_Abstract")){
-	abstract class CSFramework_Abstract {
+if(!class_exists("SkeletFramework_Abstract")){
+	abstract class SkeletFramework_Abstract {
 
 	  public function __construct() {}
 

@@ -7,8 +7,8 @@
  * @version 1.0.0
  *
  */
-if(!class_exists("CSFramework_Options")){
-  abstract class CSFramework_Options extends CSFramework_Abstract {
+if(!class_exists("SkeletFramework_Options")){
+  abstract class SkeletFramework_Options extends SkeletFramework_Abstract {
 
     public function __construct( $field = array(), $value = '', $unique = '' ) {
       $this->field      = $field;
@@ -104,7 +104,7 @@ if(!class_exists("CSFramework_Options")){
 
     public function element_after() {
 
-      $out  = ( isset( $this->field['info'] ) ) ? '<p class="cs-text-desc">'. $this->field['info'] .'</p>' : '';
+      $out  = ( isset( $this->field['info'] ) ) ? '<p class="sk-text-desc">'. $this->field['info'] .'</p>' : '';
       $out .= ( isset( $this->field['after'] ) ) ? $this->field['after'] : '';
       $out .= $this->element_after_multilang();
       $out .= $this->element_get_error();
@@ -118,24 +118,24 @@ if(!class_exists("CSFramework_Options")){
 
       $out = '';
 
-      if( ( isset( $this->field['debug'] ) && $this->field['debug'] === true ) || ( defined( 'CS_OPTIONS_DEBUG' ) && CS_OPTIONS_DEBUG ) ) {
+      if( ( isset( $this->field['debug'] ) && $this->field['debug'] === true ) || ( defined( 'SK_OPTIONS_DEBUG' ) && SK_OPTIONS_DEBUG ) ) {
 
         $value = $this->element_value();
 
         $out .= "<pre>";
-        $out .= "<strong>". __( 'CONFIG', CS_TEXTDOMAIN ) .":</strong>";
+        $out .= "<strong>". __( 'CONFIG', SK_TEXTDOMAIN ) .":</strong>";
         $out .= "\n";
         ob_start();
         var_export( $this->field );
         $out .= htmlspecialchars( ob_get_clean() );
         $out .= "\n\n";
-        $out .= "<strong>". __( 'USAGE', CS_TEXTDOMAIN ) .":</strong>";
+        $out .= "<strong>". __( 'USAGE', SK_TEXTDOMAIN ) .":</strong>";
         $out .= "\n";
-        $out .= ( isset( $this->field['id'] ) ) ? "cs_get_option( '". $this->field['id'] ."' );" : '';
+        $out .= ( isset( $this->field['id'] ) ) ? "sk_get_option( '". $this->field['id'] ."' );" : '';
 
         if( ! empty( $value ) ) {
           $out .= "\n\n";
-          $out .= "<strong>". __( 'VALUE', CS_TEXTDOMAIN ) .":</strong>";
+          $out .= "<strong>". __( 'VALUE', SK_TEXTDOMAIN ) .":</strong>";
           $out .= "\n";
           ob_start();
           var_export( $value );
@@ -152,14 +152,14 @@ if(!class_exists("CSFramework_Options")){
 
     public function element_get_error() {
 
-      global $cs_errors;
+      global $sk_errors;
 
       $out = '';
 
-      if( ! empty( $cs_errors ) ) {
-        foreach ( $cs_errors as $key => $value ) {
+      if( ! empty( $sk_errors ) ) {
+        foreach ( $sk_errors as $key => $value ) {
           if( isset( $this->field['id'] ) && $value['code'] == $this->field['id'] ) {
-            $out .= '<p class="cs-text-warning">'. $value['message'] .'</p>';
+            $out .= '<p class="sk-text-warning">'. $value['message'] .'</p>';
           }
         }
       }
@@ -169,7 +169,7 @@ if(!class_exists("CSFramework_Options")){
     }
 
     public function element_help() {
-      return ( isset( $this->field['help'] ) ) ? '<span class="cs-help" data-title="'. $this->field['help'] .'"><span class="fa fa-question-circle"></span></span>' : '';
+      return ( isset( $this->field['help'] ) ) ? '<span class="sk-help" data-title="'. $this->field['help'] .'"><span class="fa fa-question-circle"></span></span>' : '';
     }
 
     public function element_after_multilang() {
@@ -199,7 +199,7 @@ if(!class_exists("CSFramework_Options")){
             unset( $cache_field['multilang'] );
             $cache_field['name'] = $this->element_name( '['. $key .']', true );
 
-            $class = 'CSFramework_Option_' . $this->field['type'];
+            $class = 'SkeletFramework_Option_' . $this->field['type'];
             $element = new $class( $cache_field, $value, $this->unique );
 
             ob_start();
@@ -211,7 +211,7 @@ if(!class_exists("CSFramework_Options")){
 
         $out .= '<input type="hidden" name="'. $this->element_name( '[multilang]', true ) .'" value="true" />';
         $out .= '</fieldset>';
-        $out .= '<p class="cs-text-desc">'. sprintf( __( 'You are editing language: ( <strong>%s</strong> )', CS_TEXTDOMAIN ), $this->multilang['current'] ) .'</p>';
+        $out .= '<p class="sk-text-desc">'. sprintf( __( 'You are editing language: ( <strong>%s</strong> )', SK_TEXTDOMAIN ), $this->multilang['current'] ) .'</p>';
 
       }
 
@@ -308,11 +308,11 @@ if(!class_exists("CSFramework_Options")){
     }
 
     public function element_multilang() {
-      return ( isset( $this->field['multilang'] ) ) ? cs_language_defaults() : false;
+      return ( isset( $this->field['multilang'] ) ) ? sk_language_defaults() : false;
     }
 
   }
 }
 
 // load all of fields
-cs_load_option_fields();
+sk_load_option_fields();

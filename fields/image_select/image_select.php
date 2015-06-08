@@ -7,9 +7,9 @@
  * @version 1.0.0
  *
  */
-if(!class_exists("CSFramework_Option_image_select")){
+if(!class_exists("SkeletFramework_Option_image_select")){
 
-  class CSFramework_Option_image_select extends CSFramework_Options {
+  class SkeletFramework_Option_image_select extends SkeletFramework_Options {
 
     public function __construct( $field, $value = '', $unique = '' ) {
       parent::__construct( $field, $value, $unique );
@@ -21,7 +21,7 @@ if(!class_exists("CSFramework_Option_image_select")){
       $input_attr  = ( ! empty( $this->field['multi_select'] ) ) ? '[]' : '';
 
       echo $this->element_before();
-      echo ( empty( $input_attr ) ) ? '<div class="cs-field-image-select">' : '';
+      echo ( empty( $input_attr ) ) ? '<div class="sk-field-image-select">' : '';
 
       if( isset( $this->field['options'] ) ) {
         $options  = $this->field['options'];

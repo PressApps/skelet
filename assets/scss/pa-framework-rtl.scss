@@ -1,11 +1,11 @@
 @import "compass";
 @import "vendor/mixins";
 
-.cs-framework{
+.sk-framework{
   margin-left: 20px;
   margin-right: 0;
 
-  .cs-header{
+  .sk-header{
     h1{
       float: right;
     }
@@ -15,27 +15,27 @@
     }
   }
 
-  .cs-nav{
+  .sk-nav{
     float: right;
 
     ul{
       clear: right;
 
       li{
-        .cs-section-active:after{
+        .sk-section-active:after{
           right: auto;
           left: 0;
           border-left-color: #fff;
           border-right-color: transparent;
         }
 
-        .cs-arrow:after{
+        .sk-arrow:after{
           content: "\f053";
           right: auto;
           left: 10px;
         }
 
-        &.cs-tab-active .cs-arrow:after{
+        &.sk-tab-active .sk-arrow:after{
           @include transform( rotate(-90deg) );
         }
       }
@@ -55,97 +55,97 @@
       }
     }
 
-    .cs-icon{
+    .sk-icon{
       margin-left: 5px;
       margin-right: 0;
     }
   }
 
-  .cs-nav-background{
+  .sk-nav-background{
     left: auto;
     right: 0;
   }
 
-  .cs-content{
+  .sk-content{
     margin-left: 0;
     margin-right: 225px;
 
-    .cs-sections{
+    .sk-sections{
       float: right;
     }
   }
 
-  .cs-show-all .cs-content {
+  .sk-show-all .sk-content {
     margin-right: 0;
     overflow: hidden;
   }
 
-  .cs-expand-all {
+  .sk-expand-all {
     right: auto;
     left: 40px;
   }
 
-  .cs-footer{
+  .sk-footer{
     text-align: left;
   }
 }
 
-.cs-metabox-framework{
+.sk-metabox-framework{
   margin: -6px -12px -12px -12px;
 
-  .cs-content{
-    .cs-section-title{
+  .sk-content{
+    .sk-section-title{
       padding: 20px;
     }
   }
 }
 
-.cs-element{
-  .cs-title{
+.sk-element{
+  .sk-title{
     float: right;
   }
 
-  .cs-fieldset{
+  .sk-fieldset{
     margin-left: 0;
     margin-right: 30%;
   }
 }
 
-.cs-pseudo-field{
+.sk-pseudo-field{
   padding: 0 0 0 5px !important;
 }
 
-.cs-field-number em{
+.sk-field-number em{
   margin-left: 0;
   margin-right: 5px;
 }
 
-.cs-field-typography select,
-.cs-field-typography .chosen-container{
+.sk-field-typography select,
+.sk-field-typography .chosen-container{
   margin-right: 0;
   margin-left: 5px;
 }
 
-.cs-field-checkbox .horizontal li,
-.cs-field-radio .horizontal li{
+.sk-field-checkbox .horizontal li,
+.sk-field-radio .horizontal li{
   margin-right: 0;
   margin-left: 15px;
 }
 
-.cs-field-switcher{
+.sk-field-switcher{
   label{
     float: right;
   }
 
-  .cs-text-desc{
+  .sk-text-desc{
     float: right;
     margin-left: 0;
     margin-right: 5px;
   }
 }
 
-.cs-field-color_picker{
-  .cs-alpha-slider{
+.sk-field-color_picker{
+  .sk-alpha-slider{
     margin-left: 0;
     margin-right: 2px;
 
@@ -154,17 +154,17 @@
     }
   }
 
-  .cs-alpha-slider-offset{
+  .sk-alpha-slider-offset{
     background-position: center right;
   }
 
-  .cs-alpha-text{
+  .sk-alpha-text{
     right: auto;
     left: 10px;
   }
 }
 
-.cs-field-group{
+.sk-field-group{
   .ui-accordion-icons{
     padding-left: 0;
     padding-right: 30px;
@@ -180,24 +180,24 @@
   }
 }
 
-.cs-help{
+.sk-help{
   right: auto;
   left: 5px;
 }
 
-.cs-field-icon{
+.sk-field-icon{
   .button{
     margin-right: 0;
     margin-left: 5px;
   }
 
-  .cs-icon-preview i{
+  .sk-icon-preview i{
     margin-right: 0;
     margin-left: 5px;
   }
 }
 
-.cs-field-gallery{
+.sk-field-gallery{
   ul li{
     margin-right: 0;
     margin-left: 5px;
@@ -209,44 +209,44 @@
   }
 }
 
-.cs-field-sorter .cs-modules{
+.sk-field-sorter .sk-modules{
   float: right;
   margin-right: 0;
   margin-left: 10px;
 }
 
-#cs-save-ajax{
+#sk-save-ajax{
   right: auto;
   left: 5px;
 }
 
-.cs-dialog{
-  .cs-element{
+.sk-dialog{
+  .sk-element{
     padding-right: 15px;
     padding-left: 30px;
   }
 
-  .cs-shortcode-clone .cs-remove-clone{
+  .sk-shortcode-clone .sk-remove-clone{
     right: auto;
     left: 5px;
   }
 }
 
-#customize-controls .cs-element .cs-fieldset,
-.widget-content .cs-element .cs-fieldset,
-#side-sortables .cs-element .cs-fieldset{
+#customize-controls .sk-element .sk-fieldset,
+.widget-content .sk-element .sk-fieldset,
+#side-sortables .sk-element .sk-fieldset{
   margin-right: 0;
 }
 
 @media only screen and (max-width:1200px){
-  .cs-metabox-framework .cs-element .cs-fieldset{
+  .sk-metabox-framework .sk-element .sk-fieldset{
     margin-left: 0;
   }
 }
 
 @media only screen and (max-width:782px){
-  .cs-framework .cs-fieldset,
-  .cs-framework .cs-content{
+  .sk-framework .sk-fieldset,
+  .sk-framework .sk-content{
       margin-right: 0;
   }
 }

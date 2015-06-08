@@ -13,8 +13,8 @@
  * @deprecated 1.0.0
  *
  */
-if(!function_exists("cs_is_googe_font")){
-	function cs_is_googe_font() {
+if(!function_exists("sk_is_googe_font")){
+	function sk_is_googe_font() {
 	  _deprecated_function( __FUNCTION__, '1.0.0' );
 	}
 }
@@ -27,8 +27,8 @@ if(!function_exists("cs_is_googe_font")){
  * @deprecated 1.0.0
  *
  */
-if(!function_exists("cs_get_websafe_fonts")){
-	function cs_get_websafe_fonts() {
+if(!function_exists("sk_get_websafe_fonts")){
+	function sk_get_websafe_fonts() {
 	  _deprecated_function( __FUNCTION__, '1.0.0' );
 	}
 }

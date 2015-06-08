@@ -7,9 +7,9 @@
  * @version 1.0.0
  *
  */
-if(!class_exists("CSFramework_Option_Gallery")){
+if(!class_exists("SkeletFramework_Option_Gallery")){
 
-  class CSFramework_Option_Gallery extends CSFramework_Options {
+  class SkeletFramework_Option_Gallery extends SkeletFramework_Options {
 
     public function __construct( $field, $value = '', $unique = '' ) {
       parent::__construct( $field, $value, $unique );
@@ -20,9 +20,9 @@ if(!class_exists("CSFramework_Option_Gallery")){
       echo $this->element_before();
 
       $value  = $this->element_value();
-      $add    = ( ! empty( $this->field['add_title'] ) ) ? $this->field['add_title'] : __( 'Add Gallery', CS_TEXTDOMAIN );
-      $edit   = ( ! empty( $this->field['edit_title'] ) ) ? $this->field['edit_title'] : __( 'Edit Gallery', CS_TEXTDOMAIN );
-      $clear  = ( ! empty( $this->field['clear_title'] ) ) ? $this->field['clear_title'] : __( 'Clear', CS_TEXTDOMAIN );
+      $add    = ( ! empty( $this->field['add_title'] ) ) ? $this->field['add_title'] : __( 'Add Gallery', SK_TEXTDOMAIN );
+      $edit   = ( ! empty( $this->field['edit_title'] ) ) ? $this->field['edit_title'] : __( 'Edit Gallery', SK_TEXTDOMAIN );
+      $clear  = ( ! empty( $this->field['clear_title'] ) ) ? $this->field['clear_title'] : __( 'Clear', SK_TEXTDOMAIN );
       $hidden = ( empty( $value ) ) ? ' hidden' : '';
 
       echo '<ul>';
@@ -39,9 +39,9 @@ if(!class_exists("CSFramework_Option_Gallery")){
       }
 
       echo '</ul>';
-      echo '<a href="#" class="button button-primary cs-add">'. $add .'</a>';
-      echo '<a href="#" class="button cs-edit'. $hidden .'">'. $edit .'</a>';
-      echo '<a href="#" class="button cs-warning-primary cs-remove'. $hidden .'">'. $clear .'</a>';
+      echo '<a href="#" class="button button-primary sk-add">'. $add .'</a>';
+      echo '<a href="#" class="button sk-edit'. $hidden .'">'. $edit .'</a>';
+      echo '<a href="#" class="button sk-warning-primary sk-remove'. $hidden .'">'. $clear .'</a>';
       echo '<input type="text" name="'. $this->element_name() .'" value="'. $value .'"'. $this->element_class() . $this->element_attributes() .'/>';
 
       echo $this->element_after();

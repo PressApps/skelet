@@ -7,9 +7,9 @@
  * @version 1.0.0
  *
  */
-if(!class_exists("CSFramework_Option_Image")){
+if(!class_exists("SkeletFramework_Option_Image")){
 
-  class CSFramework_Option_Image extends CSFramework_Options {
+  class SkeletFramework_Option_Image extends SkeletFramework_Options {
 
     public function __construct( $field, $value = '', $unique = '' ) {
       parent::__construct( $field, $value, $unique );
@@ -21,7 +21,7 @@ if(!class_exists("CSFramework_Option_Image")){
 
       $preview = '';
       $value   = $this->element_value();
-      $add     = ( ! empty( $this->field['add_title'] ) ) ? $this->field['add_title'] : __( 'Add Image', CS_TEXTDOMAIN );
+      $add     = ( ! empty( $this->field['add_title'] ) ) ? $this->field['add_title'] : __( 'Add Image', SK_TEXTDOMAIN );
       $hidden  = ( empty( $value ) ) ? ' hidden' : '';
 
       if( ! empty( $value ) ) {
@@ -29,8 +29,8 @@ if(!class_exists("CSFramework_Option_Image")){
         $preview    = $attachment[0];
       }
 
-      echo '<div class="cs-image-preview'. $hidden .'"><div class="cs-preview"><i class="fa fa-times cs-remove"></i><img src="'. $preview .'" alt="preview" /></div></div>';
-      echo '<a href="#" class="button button-primary cs-add">'. $add .'</a>';
+      echo '<div class="sk-image-preview'. $hidden .'"><div class="sk-preview"><i class="fa fa-times sk-remove"></i><img src="'. $preview .'" alt="preview" /></div></div>';
+      echo '<a href="#" class="button button-primary sk-add">'. $add .'</a>';
       echo '<input type="text" name="'. $this->element_name() .'" value="'. $this->element_value() .'"'. $this->element_class() . $this->element_attributes() .'/>';
 
       echo $this->element_after();

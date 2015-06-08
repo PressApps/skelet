@@ -155,7 +155,7 @@ class SkeletFramework_Widget{
                                             'options' => isset(\$field['control']['options'])?\$field['control']['options']:null
                                           ));
                                           
-                                          echo   cs_add_element( \$field, \$value );
+                                          echo   sk_add_element( \$field, \$value );
                                         
                                  
                                 }

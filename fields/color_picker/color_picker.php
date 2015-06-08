@@ -7,8 +7,8 @@
  * @version 1.0.0
  *
  */
-if(!class_exists("CSFramework_Option_color_picker")){
-  class CSFramework_Option_color_picker extends CSFramework_Options {
+if(!class_exists("SkeletFramework_Option_color_picker")){
+  class SkeletFramework_Option_color_picker extends SkeletFramework_Options {
 
     public function __construct( $field, $value = '', $unique = '' ) {
       parent::__construct( $field, $value, $unique );
@@ -17,7 +17,7 @@ if(!class_exists("CSFramework_Option_color_picker")){
     public function output() {
 
       echo $this->element_before();
-      echo '<input type="text" name="'. $this->element_name() .'" value="'. $this->element_value() .'"'. $this->element_class( 'cs-field-color-picker' ) . $this->element_attributes( $this->extra_attributes() ) .'/>';
+      echo '<input type="text" name="'. $this->element_name() .'" value="'. $this->element_value() .'"'. $this->element_class( 'sk-field-color-picker' ) . $this->element_attributes( $this->extra_attributes() ) .'/>';
       echo $this->element_after();
 
     }

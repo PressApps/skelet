@@ -7,8 +7,8 @@
  * @version 1.0.0
  *
  */
-if(!class_exists("CSFramework_Option_checkbox")){
-  class CSFramework_Option_checkbox extends CSFramework_Options {
+if(!class_exists("SkeletFramework_Option_checkbox")){
+  class SkeletFramework_Option_checkbox extends SkeletFramework_Options {
 
     public function __construct( $field, $value = '', $unique = '' ) {
       parent::__construct( $field, $value, $unique );

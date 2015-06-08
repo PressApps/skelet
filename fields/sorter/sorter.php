@@ -7,9 +7,9 @@
  * @version 1.0.0
  *
  */
-if(!class_exists("CSFramework_Option_Sorter")){
+if(!class_exists("SkeletFramework_Option_Sorter")){
 
-  class CSFramework_Option_Sorter extends CSFramework_Options {
+  class SkeletFramework_Option_Sorter extends SkeletFramework_Options {
 
     public function __construct( $field, $value = '', $unique = '' ) {
       parent::__construct( $field, $value, $unique );
@@ -23,12 +23,12 @@ if(!class_exists("CSFramework_Option_Sorter")){
       $value          = ( ! empty( $value ) ) ? $value : $this->field['default'];
       $enabled        = ( ! empty( $value['enabled'] ) ) ? $value['enabled'] : array();
       $disabled       = ( ! empty( $value['disabled'] ) ) ? $value['disabled'] : array();
-      $enabled_title  = ( isset( $this->field['enabled_title'] ) ) ? $this->field['enabled_title'] : __( 'Enabled Modules', CS_TEXTDOMAIN );
-      $disabled_title = ( isset( $this->field['disabled_title'] ) ) ? $this->field['disabled_title'] : __( 'Disabled Modules', CS_TEXTDOMAIN );
+      $enabled_title  = ( isset( $this->field['enabled_title'] ) ) ? $this->field['enabled_title'] : __( 'Enabled Modules', SK_TEXTDOMAIN );
+      $disabled_title = ( isset( $this->field['disabled_title'] ) ) ? $this->field['disabled_title'] : __( 'Disabled Modules', SK_TEXTDOMAIN );
 
-      echo '<div class="cs-modules">';
+      echo '<div class="sk-modules">';
       echo '<h3>'. $enabled_title .'</h3>';
-      echo '<ul class="cs-enabled">';
+      echo '<ul class="sk-enabled">';
       if( ! empty( $enabled ) ) {
         foreach( $enabled as $en_id => $en_name ) {
           echo '<li><input type="hidden" name="'. $this->element_name( '[enabled]['. $en_id .']' ) .'" value="'. $en_name .'"/><label>'. $en_name .'</label></li>';
@@ -37,9 +37,9 @@ if(!class_exists("CSFramework_Option_Sorter")){
       echo '</ul>';
       echo '</div>';
 
-      echo '<div class="cs-modules">';
+      echo '<div class="sk-modules">';
       echo '<h3>'. $disabled_title .'</h3>';
-      echo '<ul class="cs-disabled">';
+      echo '<ul class="sk-disabled">';
       if( ! empty( $disabled ) ) {
         foreach( $disabled as $dis_id => $dis_name ) {
           echo '<li><input type="hidden" name="'. $this->element_name( '[disabled]['. $dis_id .']' ) .'" value="'. $dis_name .'"/><label>'. $dis_name .'</label></li>';

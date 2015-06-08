@@ -7,8 +7,8 @@
  * @version 1.0.0
  *
  */
-if( ! function_exists( 'cs_admin_enqueue_scripts' ) ) {
-  function cs_admin_enqueue_scripts() {
+if( ! function_exists( 'sk_admin_enqueue_scripts' ) ) {
+  function sk_admin_enqueue_scripts() {
     global $skelet_path;
     
     // admin utilities
@@ -19,11 +19,11 @@ if( ! function_exists( 'cs_admin_enqueue_scripts' ) ) {
     wp_enqueue_style( 'wp-jquery-ui-dialog' );
 
     // framework core styles
-    wp_enqueue_style( 'cs-framework', $skelet_path["uri"] .'/assets/css/cs-framework.css', array(), '1.0.0', 'all' );
+    wp_enqueue_style( 'sk-framework', $skelet_path["uri"] .'/assets/css/sk-framework.css', array(), '1.0.0', 'all' );
     wp_enqueue_style( 'font-awesome', $skelet_path["uri"] .'/assets/css/font-awesome.css', array(), '4.2.0', 'all' );
 
     if ( is_rtl() ) {
-      wp_enqueue_style( 'cs-framework-rtl', $skelet_path["uri"] .'/assets/css/cs-framework-rtl.css', array(), '1.0.0', 'all' );
+      wp_enqueue_style( 'sk-framework-rtl', $skelet_path["uri"] .'/assets/css/sk-framework-rtl.css', array(), '1.0.0', 'all' );
     }
 
     // wp core scripts
@@ -33,9 +33,9 @@ if( ! function_exists( 'cs_admin_enqueue_scripts' ) ) {
     wp_enqueue_script( 'jquery-ui-accordion' );
 
     // framework core scripts
-    wp_enqueue_script( 'cs-plugins',    $skelet_path["uri"] .'/assets/js/cs-plugins.js',    array(), '1.0.0', true );
-    wp_enqueue_script( 'cs-framework',  $skelet_path["uri"] .'/assets/js/cs-framework.js',  array( 'cs-plugins' ), '1.0.0', true );
+    wp_enqueue_script( 'sk-plugins',    $skelet_path["uri"] .'/assets/js/sk-plugins.js',    array(), '1.0.0', true );
+    wp_enqueue_script( 'sk-framework',  $skelet_path["uri"] .'/assets/js/sk-framework.js',  array( 'sk-plugins' ), '1.0.0', true );
 
   }
-  add_action( 'admin_enqueue_scripts', 'cs_admin_enqueue_scripts' );
+  add_action( 'admin_enqueue_scripts', 'sk_admin_enqueue_scripts' );
 }

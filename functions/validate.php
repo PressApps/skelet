@@ -7,15 +7,15 @@
  * @version 1.0.0
  *
  */
-if( ! function_exists( 'cs_validate_email' ) ) {
-  function cs_validate_email( $value, $field ) {
+if( ! function_exists( 'sk_validate_email' ) ) {
+  function sk_validate_email( $value, $field ) {
 
     if ( ! sanitize_email( $value ) ) {
-      return __( 'Please write a valid email address!', CS_TEXTDOMAIN );
+      return __( 'Please write a valid email address!', SK_TEXTDOMAIN );
     }
 
   }
-  add_filter( 'cs_validate_email', 'cs_validate_email', 10, 2 );
+  add_filter( 'sk_validate_email', 'sk_validate_email', 10, 2 );
 }
 
 /**
@@ -26,15 +26,15 @@ if( ! function_exists( 'cs_validate_email' ) ) {
  * @version 1.0.0
  *
  */
-if( ! function_exists( 'cs_validate_numeric' ) ) {
-  function cs_validate_numeric( $value, $field ) {
+if( ! function_exists( 'sk_validate_numeric' ) ) {
+  function sk_validate_numeric( $value, $field ) {
 
     if ( ! is_numeric( $value ) ) {
-      return __( 'Please write a numeric data!', CS_TEXTDOMAIN );
+      return __( 'Please write a numeric data!', SK_TEXTDOMAIN );
     }
 
   }
-  add_filter( 'cs_validate_numeric', 'cs_validate_numeric', 10, 2 );
+  add_filter( 'sk_validate_numeric', 'sk_validate_numeric', 10, 2 );
 }
 
 /**
@@ -45,11 +45,11 @@ if( ! function_exists( 'cs_validate_numeric' ) ) {
  * @version 1.0.0
  *
  */
-if( ! function_exists( 'cs_validate_required' ) ) {
-  function cs_validate_required( $value ) {
+if( ! function_exists( 'sk_validate_required' ) ) {
+  function sk_validate_required( $value ) {
     if ( empty( $value ) ) {
-      return __( 'Fatal Error! This field is required!', CS_TEXTDOMAIN );
+      return __( 'Fatal Error! This field is required!', SK_TEXTDOMAIN );
     }
   }
-  add_filter( 'cs_validate_required', 'cs_validate_required' );
+  add_filter( 'sk_validate_required', 'sk_validate_required' );
 }

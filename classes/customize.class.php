@@ -7,8 +7,8 @@
  * @version 1.0.0
  *
  */
-if(!class_exists("CSFramework_Customize")){
-  class CSFramework_Customize extends CSFramework_Abstract {
+if(!class_exists("SkeletFramework_Customize")){
+  class SkeletFramework_Customize extends SkeletFramework_Abstract {
 
     /**
      *
@@ -40,7 +40,7 @@ if(!class_exists("CSFramework_Customize")){
     // run customize construct
     public function __construct( $options ) {
 
-      $this->options = apply_filters( 'cs_customize_options', $options );
+      $this->options = apply_filters( 'sk_customize_options', $options );
 
       if( ! empty( $this->options ) ) {
         $this->addAction( 'customize_register', 'customize_register' );
@@ -50,7 +50,7 @@ if(!class_exists("CSFramework_Customize")){
 
     // instance
     public static function instance( $options = array() ){
-      if ( is_null( self::$instance ) && CS_ACTIVE_CUSTOMIZE ) {
+      if ( is_null( self::$instance ) && SK_ACTIVE_CUSTOMIZE ) {
         self::$instance = new self( $options );
       }
       return self::$instance;
@@ -60,8 +60,8 @@ if(!class_exists("CSFramework_Customize")){
     public function customize_register( $wp_customize ) {
 
       // load extra WP_Customize_Control
-      cs_locate_template ( 'functions/customize.php' );
-      do_action( 'cs_customize_register' );
+      sk_locate_template ( 'functions/customize.php' );
+      do_action( 'sk_customize_register' );
 
       $panel_priority = 1;
 
@@ -111,27 +111,27 @@ if(!class_exists("CSFramework_Customize")){
 
         foreach ( $section['settings'] as $setting ) {
 
-          $setting_name = CS_CUSTOMIZE . '[' . $setting['name'] .']';
+          $setting_name = SK_CUSTOMIZE . '[' . $setting['name'] .']';
 
           // add_setting
           $wp_customize->add_setting( $setting_name,
             wp_parse_args( $setting, array(
                 'type'              => 'option',
                 'capability'        => 'edit_theme_options',
-                'sanitize_callback' => 'cs_sanitize_clean',
+                'sanitize_callback' => 'sk_sanitize_clean',
               )
             )
           );
 
           // add_control
           $control_args = wp_parse_args( $setting['control'], array(
-            'unique'    => CS_CUSTOMIZE,
+            'unique'    => SK_CUSTOMIZE,
             'section'   => $section['name'],
             'settings'  => $setting_name,
             'priority'  => $setting_priority,
           ));
 
-          if( $control_args['type'] == 'cs_field' ) {
+          if( $control_args['type'] == 'sk_field' ) {
 
             $call_class = 'WP_Customize_'. $control_args['type'] .'_Control';
             $wp_customize->add_control( new $call_class( $wp_customize, $setting['name'], $control_args ) );

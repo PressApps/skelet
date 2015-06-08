@@ -1,13 +1,13 @@
-.cs-framework{
+.sk-framework{
   position: relative;
   margin-top: 20px;
   margin-right: 20px;
 
-  .cs-settings-error{
+  .sk-settings-error{
     margin: 0 0 15px 0;
   }
 
-  .cs-header{
+  .sk-header{
     position: relative;
     background-color: #050505;
     padding: 25px;
@@ -38,12 +38,12 @@
     }
   }
 
-  .cs-body{
+  .sk-body{
     position: relative;
     background-color: #fff;
   }
 
-  .cs-nav{
+  .sk-nav{
     display: block;
     position: relative;
     z-index: 10;
@@ -79,7 +79,7 @@
           }
         }
 
-        .cs-section-active{
+        .sk-section-active{
           color: #fff;
           background-color: #111;
 
@@ -98,7 +98,7 @@
           }
         }
 
-        .cs-arrow:after{
+        .sk-arrow:after{
           content: "\f054";
           display: inline-block;
           font-family: "FontAwesome";
@@ -112,7 +112,7 @@
           @include transition(transform 0.2s);
         }
 
-        &.cs-tab-active .cs-arrow:after{
+        &.sk-tab-active .sk-arrow:after{
           @include transform( rotate(90deg) );
         }
       }
@@ -132,7 +132,7 @@
             border-bottom: 1px solid #222;
           }
 
-          .cs-section-active{
+          .sk-section-active{
             background-color: #101010;
           }
 
@@ -154,14 +154,14 @@
       }
     }
 
-    .cs-icon{
+    .sk-icon{
       width: 20px;
       margin-right: 5px;
       font-size: 14px;
       text-align: center;
     }
 
-    .cs-seperator{
+    .sk-seperator{
       color: #fff;
       font-weight: 600;
       text-transform: uppercase;
@@ -170,7 +170,7 @@
     }
   }
 
-  .cs-nav-background{
+  .sk-nav-background{
     position: absolute;
     top: 0;
     left: 0;
@@ -180,16 +180,16 @@
     background-color: #222;
   }
 
-  .cs-content{
+  .sk-content{
     position: relative;
     margin-left: 225px;
 
-    .cs-sections{
+    .sk-sections{
       float: left;
       width: 100%;
     }
 
-    .cs-section-title{
+    .sk-section-title{
       display: none;
       padding: 20px 30px;
       background-color: #5bc0de;
@@ -204,13 +204,13 @@
       }
     }
 
-    .cs-section{
+    .sk-section{
       display:none;
     }
 
   }
 
-  .cs-footer{
+  .sk-footer{
     padding: 20px;
     color: #555;
     text-align: right;
@@ -219,23 +219,23 @@
     @include border-radius(0 0 2px 2px);
   }
 
-  .cs-show-all{
-    .cs-nav-background,
-    .cs-nav{
+  .sk-show-all{
+    .sk-nav-background,
+    .sk-nav{
       display: none;
     }
 
-    .cs-content{
+    .sk-content{
       margin-left: 0;
     }
 
-    .cs-section-title,
-    .cs-section{
+    .sk-section-title,
+    .sk-section{
       display: block !important;
     }
   }
 
-  .cs-expand-all{
+  .sk-expand-all{
     position: absolute;
     right: 40px;
     bottom: 5px;
@@ -254,22 +254,22 @@
     }
   }
 
-  .cs-element:last-child{
+  .sk-element:last-child{
     border-bottom: 0 !important;
   }
 }
 
-.cs-metabox-framework{
+.sk-metabox-framework{
   margin: -6px -12px -12px -12px;
 
-  .cs-content{
-    .cs-section-title{
+  .sk-content{
+    .sk-section-title{
       padding: 20px;
     }
   }
 }
 
-.cs-element{
+.sk-element{
   position: relative;
   padding: 30px;
   border-bottom: 1px solid #eee;
@@ -296,7 +296,7 @@
     margin-top: 0;
   }
 
-  .cs-title{
+  .sk-title{
     position: relative;
     width: 25%;
     float: left;
@@ -307,7 +307,7 @@
     }
   }
 
-  .cs-fieldset{
+  .sk-fieldset{
     margin-left: 30%;
   }
 
@@ -325,32 +325,32 @@
   }
 }
 
-.cs-pseudo-field{
+.sk-pseudo-field{
   padding: 0 5px 0 0 !important;
   border: 0;
   display: inline-block;
 }
 
-.cs-field-text{
+.sk-field-text{
   input{
     width: 340px;
     max-width: 100%;
   }
 }
 
-.cs-field-textarea{
+.sk-field-textarea{
   textarea{
     width: 100%;
     max-width: 100%;
     min-height: 125px;
   }
 
-  .cs-shortcode{
+  .sk-shortcode{
     margin-bottom: 10px;
   }
 }
 
-.cs-field-wysiwyg{
+.sk-field-wysiwyg{
   textarea{
     width: 100%;
     max-width: 100%;
@@ -362,7 +362,7 @@
   }
 }
 
-.cs-field-number{
+.sk-field-number{
   input{
     width: 70px;
   }
@@ -372,25 +372,25 @@
   }
 }
 
-.cs-field-select{
+.sk-field-select{
   select{
     max-width: 100%;
   }
 }
 
-.cs-field-typography{
+.sk-field-typography{
   select,
   .chosen-container{
     margin-right: 5px;
   }
 
-  .cs-typo-variant{
+  .sk-typo-variant{
     min-width: 90px;
   }
 }
 
-.cs-field-checkbox,
-.cs-field-radio{
+.sk-field-checkbox,
+.sk-field-radio{
   ul{
     margin: 0;
     padding: 0;
@@ -406,7 +406,7 @@
   }
 }
 
-.cs-field-switcher{
+.sk-field-switcher{
 
   label{
     float: left;
@@ -482,7 +482,7 @@
     }
   }
 
-  .cs-text-desc{
+  .sk-text-desc{
     float: left;
     margin-left: 5px;
     margin-top: 0;
@@ -490,7 +490,7 @@
   }
 }
 
-.cs-field-image_select{
+.sk-field-image_select{
 
   label{
     display: inline-block;
@@ -516,23 +516,23 @@
   }
 }
 
-.cs-field-upload{
+.sk-field-upload{
   input{
     width: 340px;
     max-width: 100%;
   }
 }
 
-.cs-field-background{
-  .cs-field-color_picker{
+.sk-field-background{
+  .sk-field-color_picker{
     position: relative;
     top: 10px;
   }
 }
 
-.cs-field-color_picker{
+.sk-field-color_picker{
 
-  .cs-alpha-wrap{
+  .sk-alpha-wrap{
     display: none;
     position: relative;
     top: -1px;
@@ -543,7 +543,7 @@
     background-color: #fff;
   }
 
-  .cs-alpha-slider{
+  .sk-alpha-slider{
     position: absolute;
     width: 190px;
     margin-left: 2px;
@@ -579,7 +579,7 @@
     }
   }
 
-  .cs-alpha-slider-offset{
+  .sk-alpha-slider-offset{
     height: 18px;
     width: 200px;
     background: url(../images/checkerboard.png) repeat-y center left scroll #fff;
@@ -587,7 +587,7 @@
     @include border-radius(2px);
   }
 
-  .cs-alpha-text{
+  .sk-alpha-text{
     position: absolute;
     top: 12px;
     right: 10px;
@@ -599,7 +599,7 @@
   }
 }
 
-.cs-field-backup{
+.sk-field-backup{
   textarea{
     width: 100%;
     min-height: 200px;
@@ -616,24 +616,24 @@
   }
 }
 
-.cs-field-fieldset{
-  .cs-inner{
+.sk-field-fieldset{
+  .sk-inner{
     border:1px solid #eee;
     background-color: #fff;
   }
 
-  .cs-element{
+  .sk-element{
     padding: 20px;
   }
 }
 
-.cs-field-group{
+.sk-field-group{
 
-  .cs-element{
+  .sk-element{
     padding: 20px;
   }
 
-  .cs-group{
+  .sk-group{
     display: none;
     position: relative;
     margin-bottom: 5px;
@@ -643,12 +643,12 @@
     }
   }
 
-  .cs-group-content{
+  .sk-group-content{
     border: 1px solid #e5e5e5;
     background: #fff;
   }
 
-  .cs-group-title{
+  .sk-group-title{
     border: 1px solid #e5e5e5;
     background: #fafafa;
     @include transition(border-color 0.15s);
@@ -662,7 +662,7 @@
     }
   }
 
-  .cs-group-title{
+  .sk-group-title{
     display: block;
     cursor: pointer;
     position: relative;
@@ -672,7 +672,7 @@
     font-size: 100%;
   }
 
-  .cs-group-content{
+  .sk-group-content{
     padding: 0;
     border-top: 0;
   }
@@ -681,7 +681,7 @@
     margin-bottom: 8px;
   }
 
-  .ui-accordion .cs-group{
+  .ui-accordion .sk-group{
     display: block;
   }
 
@@ -699,13 +699,13 @@
   }
 
   .ui-sortable-helper{
-    .cs-group-content{
+    .sk-group-content{
       display: none !important;
     }
   }
 }
 
-.cs-help{
+.sk-help{
   position: absolute;
   top: 5px;
   right: 5px;
@@ -714,14 +714,14 @@
   color: #aaa;
 }
 
-.cs-field-heading{
+.sk-field-heading{
   font-size: 1.5em;
   font-weight: bold;
   color: #23282d;
   background-color: #f5f5f5 !important;
 }
 
-.cs-field-subheading{
+.sk-field-subheading{
   font-size: 14px;
   font-weight: bold;
   padding-top: 17px;
@@ -730,37 +730,37 @@
   background-color: #f7f7f7 !important;
 }
 
-.cs-field-notice{
+.sk-field-notice{
   padding: 0 !important;
   border: 0 !important;
   margin-top: -1px;
 
-  .cs-notice{
+  .sk-notice{
     font-size: 12px;
     padding: 17px 30px;
     border-top: 1px solid transparent;
     border-bottom: 1px solid transparent;
   }
 
-  .cs-success{
+  .sk-success{
     color: #3c763d;
     border-color: #d6e9c6;
     background-color: #dff0d8;
   }
 
-  .cs-info{
+  .sk-info{
     color: #31708f;
     border-color: #bce8f1;
     background-color: #d9edf7;
   }
 
-  .cs-warning{
+  .sk-warning{
     color: #8a6d3b;
     border-color: #faebcc;
     background-color: #fcf8e3;
   }
 
-  .cs-danger{
+  .sk-danger{
     color: #a94442;
     border-color: #ebccd1;
     background-color: #f2dede;
@@ -768,7 +768,7 @@
 
 }
 
-.cs-field-icon{
+.sk-field-icon{
 
   input{
     display: none;
@@ -778,7 +778,7 @@
     margin-right: 5px;
   }
 
-  .cs-icon-preview i{
+  .sk-icon-preview i{
     display: inline-block;
     font-size: 14px;
     width: 30px;
@@ -795,13 +795,13 @@
   }
 }
 
-.cs-field-image{
+.sk-field-image{
 
   input{
     display: none;
   }
 
-  .cs-preview{
+  .sk-preview{
     display: inline-block;
     position: relative;
     padding: 4px;
@@ -818,7 +818,7 @@
     }
   }
 
-  .cs-remove{
+  .sk-remove{
     position: absolute;
     top: 4px;
     right: 4px;
@@ -839,7 +839,7 @@
   }
 }
 
-.cs-field-gallery{
+.sk-field-gallery{
 
   input{
     display: none;
@@ -874,7 +874,7 @@
   }
 }
 
-.cs-field-sorter{
+.sk-field-sorter{
 
   .ui-sortable-placeholder{
     height: 20px;
@@ -882,20 +882,20 @@
     background-color: #fffae4;
   }
 
-  .cs-modules{
+  .sk-modules{
     float: left;
     width: 45%;
     margin-right: 10px;
   }
 
-  .cs-disabled,
-  .cs-enabled{
+  .sk-disabled,
+  .sk-enabled{
     padding: 5px 15px;
     border: 1px dashed #ddd;
     background-color: #fff;
   }
 
-  .cs-disabled{
+  .sk-disabled{
     li{
       @include transition(opacity 0.15s);
       @include opacity(0.5);
@@ -934,7 +934,7 @@
   }
 }
 
-.cs-warning-primary{
+.sk-warning-primary{
   color: #fff !important;
   border-color: #d02c21 !important;
   background: #e14d43 !important;
@@ -955,42 +955,42 @@
   }
 }
 
-.cs-text-desc{
+.sk-text-desc{
   font-style: italic;
   font-weight: 400;
   margin-top: 10px;
   color: #999;
 }
 
-.cs-text-success{
+.sk-text-success{
   color: #2b542c;
 }
 
-.cs-text-info{
+.sk-text-info{
   color: #31708f;
 }
 
-.cs-text-warning{
+.sk-text-warning{
   color: #d02c21;
 }
 
-.cs-text-muted{
+.sk-text-muted{
   color: #aaa;
 }
 
-.cs-text-left{
+.sk-text-left{
   text-align: left;
 }
 
-.cs-text-center{
+.sk-text-center{
   text-align: center;
 }
 
-.cs-text-right{
+.sk-text-right{
   text-align: right;
 }
 
-#cs-save-ajax{
+#sk-save-ajax{
   display: none;
   position: relative;
   top: 4px;
@@ -1028,11 +1028,11 @@
   @include border-radius(4px);
 }
 
-.cs-dialog{
+.sk-dialog{
   display: none;
   padding: 0;
 
-  .cs-dialog-header{
+  .sk-dialog-header{
     width: 100%;
     padding: 16px 0;
     background-color: #f5f5f5;
@@ -1046,11 +1046,11 @@
     }
   }
 
-  .cs-element{
+  .sk-element{
     padding: 15px 30px 15px 15px;
   }
 
-  .cs-insert-button{
+  .sk-insert-button{
     text-align: center;
     width: 100%;
     padding: 16px 0;
@@ -1058,22 +1058,22 @@
     border-top: 1px solid #eee;
   }
 
-  .cs-dialog-load{
+  .sk-dialog-load{
     min-height: 250px;
     overflow: hidden;
     overflow-y: auto;
   }
 
-  .cs-clone-button{
+  .sk-clone-button{
     margin: 10px 0;
     text-align: center;
   }
 
-  .cs-shortcode-clone{
+  .sk-shortcode-clone{
     position: relative;
     border-top: 1px dashed #5cb85c;
 
-    .cs-remove-clone{
+    .sk-remove-clone{
       display:none;
       position: absolute;
       right: 5px;
@@ -1110,9 +1110,9 @@
 
 }
 
-#cs-icon-dialog{
+#sk-icon-dialog{
 
-  .cs-icon-search{
+  .sk-icon-search{
     width: 250px;
     height: 40px;
     line-height: 40px;
@@ -1123,7 +1123,7 @@
     padding: 5px;
     cursor: pointer;
 
-    .cs-icon{
+    .sk-icon{
       position: relative;
       padding: 5px;
       display: inline-block;
@@ -1140,20 +1140,20 @@
       @include box-shadow(0 1px 0 rgba(black, 0.08));
     }
 
-    &:hover .cs-icon{
+    &:hover .sk-icon{
       color: #fff;
       border-color: #222;
       background-color: #222;
     }
   }
 
-  .cs-icon-loading{
+  .sk-icon-loading{
     color: #999;
     text-align: center;
     margin-top: 10px;
   }
 
-  .cs-icon-title{
+  .sk-icon-title{
     padding: 15px;
     margin: 10px 0;
     text-align: center;
@@ -1169,8 +1169,8 @@
   }
 }
 
-.cs-shortcode-scrolling,
-.cs-icon-scrolling{
+.sk-shortcode-scrolling,
+.sk-icon-scrolling{
   overflow: hidden;
   height: 100%;
 
@@ -1180,35 +1180,35 @@
 }
 
 #side-sortables{
-  .cs-content .cs-section-title{
+  .sk-content .sk-section-title{
     padding: 12px;
   }
 
-  .cs-element{
+  .sk-element{
     padding: 12px;
 
-    .cs-title{
+    .sk-title{
       float: none;
       width: 100%;
       margin-bottom: 10px;
     }
 
-    .cs-fieldset{
+    .sk-fieldset{
       margin-left: 0;
     }
   }
 
-  .cs-field-upload input{
+  .sk-field-upload input{
     width: 185px;
   }
 
-  .cs-field-notice .cs-notice{
+  .sk-field-notice .sk-notice{
     padding: 12px;
   }
 }
 
 .widget-content{
-  .cs-element{
+  .sk-element{
     position: relative;
     top: -1px;
     margin-right: -15px;
@@ -1219,33 +1219,33 @@
       margin-bottom: 15px;
     }
 
-    .cs-title{
+    .sk-title{
       float: none;
       width: 100%;
       margin-bottom: 5px;
     }
 
-    .cs-fieldset{
+    .sk-fieldset{
       margin-left: 0;
     }
   }
 
-  .cs-field-text input{
+  .sk-field-text input{
     width: 100%;
   }
 
-  .cs-field-upload input{
+  .sk-field-upload input{
     width: 330px;
   }
 
-  .cs-field-notice .cs-notice{
+  .sk-field-notice .sk-notice{
     padding: 15px;
   }
 }
 
 #customize-controls{
 
-  .customize-control-cs_field{
+  .customize-control-sk_field{
     position: relative;
     top: -10px;
     margin-bottom: 0;
@@ -1253,7 +1253,7 @@
     &:last-child{
       margin-bottom: -25px;
 
-      .cs-element{
+      .sk-element{
         border-bottom: none;
       }
     }
@@ -1265,12 +1265,12 @@
     }
   }
 
-  .cs-element{
+  .sk-element{
     margin-right: -20px;
     margin-left: -20px;
     padding: 12px 15px;
 
-    .cs-title{
+    .sk-title{
       float: none;
       width: 100%;
       margin-bottom: 10px;
@@ -1282,61 +1282,61 @@
       }
     }
 
-    .cs-fieldset{
+    .sk-fieldset{
       margin-left: 0;
     }
   }
 
   .widget-content{
-    .cs-element{
+    .sk-element{
       margin-right: -10px;
       margin-left: -10px;
       padding: 10px 12px;
     }
   }
 
-  .cs-field-select select{
+  .sk-field-select select{
     width: 100%;
   }
 
-  .cs-field-upload input{
+  .sk-field-upload input{
     width: 175px;
     margin-right: 5px;
   }
 
-  .cs-field-heading{
+  .sk-field-heading{
     color: inherit;
     font-size: 14px;
     line-height: 1em;
   }
 
-  .cs-field-subheading{
+  .sk-field-subheading{
     color: inherit;
     font-size: 11px;
   }
 
-  .cs-text-desc{
+  .sk-text-desc{
     margin-top: 4px;
     font-size: 12px;
   }
 
-  .cs-field-content,
-  .cs-field-notice .cs-notice{
+  .sk-field-content,
+  .sk-field-notice .sk-notice{
     padding: 15px;
   }
 }
 
 @media only screen and (max-width:1200px){
-  .cs-metabox-framework{
-    .cs-element{
+  .sk-metabox-framework{
+    .sk-element{
 
-      .cs-title{
+      .sk-title{
         float: none;
         width: 100%;
         margin-bottom: 10px;
       }
 
-      .cs-fieldset{
+      .sk-fieldset{
         margin-left: 0;
       }
     }
@@ -1344,8 +1344,8 @@
 }
 
 @media only screen and (max-width:782px){
-  .cs-framework{
-    .cs-header{
+  .sk-framework{
+    .sk-header{
       text-align: center;
 
       h1{
@@ -1358,30 +1358,30 @@
       }
     }
 
-    .cs-expand-all,
-    .cs-nav-background,
-    .cs-nav{
+    .sk-expand-all,
+    .sk-nav-background,
+    .sk-nav{
       display: none;
     }
 
-    .cs-content{
+    .sk-content{
       margin-left: 0;
     }
 
-    .cs-section-title,
-    .cs-section{
+    .sk-section-title,
+    .sk-section{
       display: block !important;
     }
 
-    .cs-element{
+    .sk-element{
 
-      .cs-title{
+      .sk-title{
         float: none;
         width: 100%;
         margin-bottom: 10px;
       }
 
-      .cs-fieldset{
+      .sk-fieldset{
         margin-left: 0;
       }
     }

@@ -7,9 +7,9 @@
  * @version 1.0.0
  *
  */
-if(!class_exists("CSFramework_Option_heading")){
+if(!class_exists("SkeletFramework_Option_heading")){
 
-	class CSFramework_Option_heading extends CSFramework_Options {
+	class SkeletFramework_Option_heading extends SkeletFramework_Options {
 
 	  public function __construct( $field, $value = '', $unique = '' ) {
 	    parent::__construct( $field, $value, $unique );

@@ -7,9 +7,9 @@
  * @version 1.0.0
  *
  */
-if(!class_exists("CSFramework_Option_textarea")){
+if(!class_exists("SkeletFramework_Option_textarea")){
 
-  class CSFramework_Option_textarea extends CSFramework_Options {
+  class SkeletFramework_Option_textarea extends SkeletFramework_Options {
 
     public function __construct( $field, $value = '', $unique = '' ) {
       parent::__construct( $field, $value, $unique );
@@ -25,8 +25,8 @@ if(!class_exists("CSFramework_Option_textarea")){
     }
 
     public function shortcode_generator() {
-      if( isset( $this->field['shortcode'] ) && CS_ACTIVE_SHORTCODE ) {
-        echo '<a href="#" class="button button-primary cs-shortcode cs-shortcode-textarea">'. __( 'Add Shortcode', CS_TEXTDOMAIN ) .'</a>';
+      if( isset( $this->field['shortcode'] ) && SK_ACTIVE_SHORTCODE ) {
+        echo '<a href="#" class="button button-primary sk-shortcode sk-shortcode-textarea">'. __( 'Add Shortcode', SK_TEXTDOMAIN ) .'</a>';
       }
     }
   }

@@ -7,9 +7,9 @@
  * @version 1.0.0
  *
  */
-if(!class_exists("CSFramework_Option_typography")){
+if(!class_exists("SkeletFramework_Option_typography")){
 
-  class CSFramework_Option_typography extends CSFramework_Options {
+  class SkeletFramework_Option_typography extends SkeletFramework_Options {
 
     public function __construct( $field, $value = '', $unique = '' ) {
       parent::__construct( $field, $value, $unique );
@@ -25,7 +25,7 @@ if(!class_exists("CSFramework_Option_typography")){
         'font'    => 'websafe',
       );
 
-      $default_variants = apply_filters( 'cs_websafe_fonts_variants', array(
+      $default_variants = apply_filters( 'sk_websafe_fonts_variants', array(
         'regular',
         'italic',
         '700',
@@ -33,7 +33,7 @@ if(!class_exists("CSFramework_Option_typography")){
         'inherit'
       ));
 
-      $websafe_fonts = apply_filters( 'cs_websafe_fonts', array(
+      $websafe_fonts = apply_filters( 'sk_websafe_fonts', array(
         'Arial',
         'Arial Black',
         'Comic Sans MS',
@@ -54,7 +54,7 @@ if(!class_exists("CSFramework_Option_typography")){
       $variant_value = $value['variant'];
       $is_variant    = ( isset( $this->field['variant'] ) && $this->field['variant'] === false ) ? false : true;
       $is_chosen     = ( isset( $this->field['chosen'] ) && $this->field['chosen'] === false ) ? '' : 'chosen ';
-      $google_json   = cs_get_google_fonts();
+      $google_json   = sk_get_google_fonts();
       $chosen_rtl    = ( is_rtl() && ! empty( $is_chosen ) ) ? 'chosen-rtl ' : '';
 
       if( is_object( $google_json ) ) {
@@ -67,18 +67,18 @@ if(!class_exists("CSFramework_Option_typography")){
 
         $is_google = ( array_key_exists( $family_value, $googlefonts ) ) ? true : false;
 
-        echo '<label class="cs-typography-family">';
-        echo '<select name="'. $this->element_name( '[family]' ) .'" class="'. $is_chosen . $chosen_rtl .'cs-typo-family" data-atts="family"'. $this->element_attributes() .'>';
+        echo '<label class="sk-typography-family">';
+        echo '<select name="'. $this->element_name( '[family]' ) .'" class="'. $is_chosen . $chosen_rtl .'sk-typo-family" data-atts="family"'. $this->element_attributes() .'>';
 
-        do_action( 'cs_typography_family', $family_value, $this );
+        do_action( 'sk_typography_family', $family_value, $this );
 
-        echo '<optgroup label="'. __( 'Web Safe Fonts', CS_TEXTDOMAIN ) .'">';
+        echo '<optgroup label="'. __( 'Web Safe Fonts', SK_TEXTDOMAIN ) .'">';
         foreach ( $websafe_fonts as $websafe_value ) {
           echo '<option value="'. $websafe_value .'" data-variants="'. implode( '|', $default_variants ) .'" data-type="websafe"'. selected( $websafe_value, $family_value, true ) .'>'. $websafe_value .'</option>';
         }
         echo '</optgroup>';
 
-        echo '<optgroup label="'. __( 'Google Fonts', CS_TEXTDOMAIN ) .'">';
+        echo '<optgroup label="'. __( 'Google Fonts', SK_TEXTDOMAIN ) .'">';
         foreach ( $googlefonts as $google_key => $google_value ) {
           echo '<option value="'. $google_key .'" data-variants="'. implode( '|', $google_value ) .'" data-type="google"'. selected( $google_key, $family_value, true ) .'>'. $google_key .'</option>';
         }
@@ -92,8 +92,8 @@ if(!class_exists("CSFramework_Option_typography")){
           $variants = ( $is_google ) ? $googlefonts[$family_value] : $default_variants;
           $variants = ( $value['font'] === 'google' || $value['font'] === 'websafe' ) ? $variants : array( 'regular' );
 
-          echo '<label class="cs-typography-variant">';
-          echo '<select name="'. $this->element_name( '[variant]' ) .'" class="'. $is_chosen . $chosen_rtl .'cs-typo-variant" data-atts="variant">';
+          echo '<label class="sk-typography-variant">';
+          echo '<select name="'. $this->element_name( '[variant]' ) .'" class="'. $is_chosen . $chosen_rtl .'sk-typo-variant" data-atts="variant">';
           foreach ( $variants as $variant ) {
             echo '<option value="'. $variant .'"'. $this->checked( $variant_value, $variant, 'selected' ) .'>'. $variant .'</option>';
           }
@@ -102,11 +102,11 @@ if(!class_exists("CSFramework_Option_typography")){
 
         }
 
-        echo '<input type="text" name="'. $this->element_name( '[font]' ) .'" class="cs-typo-font hidden" data-atts="font" value="'. $value['font'] .'" />';
+        echo '<input type="text" name="'. $this->element_name( '[font]' ) .'" class="sk-typo-font hidden" data-atts="font" value="'. $value['font'] .'" />';
 
       } else {
 
-        echo __( 'Error! Can not load json file.', CS_TEXTDOMAIN );
+        echo __( 'Error! Can not load json file.', SK_TEXTDOMAIN );
 
       }
 

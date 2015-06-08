@@ -155,8 +155,8 @@
 
           /**
            *
-           * Codestar Framework
-           * Added new condition for Codestar Framework
+           * Skelet Framework by PressApps 
+           * Added new condition for Skelet Framework by PressApps 
            *
            * @since 1.0.0
            * @version 1.0.0
@@ -188,7 +188,7 @@
 
         /**
          *
-         * Codestar Framework
+         * Skelet Framework by PressApps 
          * Added Boolean value type checker
          *
          * @since 1.0.0

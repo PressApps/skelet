@@ -7,8 +7,8 @@
  * @version 1.0.0
  *
  */
-if(!class_exists("CSFramework_Metabox")){
-  class CSFramework_Metabox extends CSFramework_Abstract{
+if(!class_exists("SkeletFramework_Metabox")){
+  class SkeletFramework_Metabox extends SkeletFramework_Abstract{
 
     /**
      *
@@ -31,7 +31,7 @@ if(!class_exists("CSFramework_Metabox")){
     // run metabox construct
     public function __construct( $options ){
 
-      $this->options = apply_filters( 'cs_metabox_options', $options );
+      $this->options = apply_filters( 'sk_metabox_options', $options );
 
       if( ! empty( $this->options ) ) {
         $this->addAction( 'add_meta_boxes', 'add_meta_box' );
@@ -42,7 +42,7 @@ if(!class_exists("CSFramework_Metabox")){
 
     // instance
     public static function instance( $options = array() ){
-      if ( is_null( self::$instance ) && CS_ACTIVE_METABOX ) {
+      if ( is_null( self::$instance ) && SK_ACTIVE_METABOX ) {
         self::$instance = new self( $options );
       }
       return self::$instance;
@@ -62,41 +62,41 @@ if(!class_exists("CSFramework_Metabox")){
     // metabox render content
     public function render_meta_box_content( $post, $callback ) {
 
-      global $post, $cs_errors;
+      global $post, $sk_errors;
 
-      wp_nonce_field( 'cs-framework-metabox', 'cs-framework-metabox-nonce' );
+      wp_nonce_field( 'sk-framework-metabox', 'sk-framework-metabox-nonce' );
 
       $unique       = $callback['args']['id'];
       $sections     = $callback['args']['sections'];
       $meta_value   = get_post_meta( $post->ID, $unique, true );
-      $transient    = get_transient( 'cs-metabox-transient' );
-      $cs_errors    = $transient['errors'];
+      $transient    = get_transient( 'sk-metabox-transient' );
+      $sk_errors    = $transient['errors'];
       $has_nav      = ( count( $sections ) >= 2 && $callback['args']['context'] != 'side' ) ? true : false;
-      $show_all     = ( ! $has_nav ) ? ' cs-show-all' : '';
+      $show_all     = ( ! $has_nav ) ? ' sk-show-all' : '';
       $section_name = ( ! empty( $sections[0]['fields'] ) ) ? $sections[0]['name'] : $sections[1]['name'];
       $section_id   = ( ! empty( $transient['ids'][$unique] ) ) ? $transient['ids'][$unique] : $section_name;
-      $section_id   = ( ! empty( $_GET['cs-section'] ) ) ? esc_attr( $_GET['cs-section'] ) : $section_id;
+      $section_id   = ( ! empty( $_GET['sk-section'] ) ) ? esc_attr( $_GET['sk-section'] ) : $section_id;
 
-      echo '<div class="cs-framework cs-metabox-framework">';
+      echo '<div class="sk-framework sk-metabox-framework">';
 
-        echo '<input type="hidden" name="cs_section_id['. $unique .']" class="cs-reset" value="'. $section_id .'">';
+        echo '<input type="hidden" name="sk_section_id['. $unique .']" class="sk-reset" value="'. $section_id .'">';
 
-        echo '<div class="cs-body'. $show_all .'">';
+        echo '<div class="sk-body'. $show_all .'">';
 
           if( $has_nav ) {
 
-            echo '<div class="cs-nav">';
+            echo '<div class="sk-nav">';
 
               echo '<ul>';
               foreach( $sections as $value ) {
 
-                $tab_icon = ( ! empty( $value['icon'] ) ) ? '<i class="cs-icon '. $value['icon'] .'"></i>' : '';
+                $tab_icon = ( ! empty( $value['icon'] ) ) ? '<i class="sk-icon '. $value['icon'] .'"></i>' : '';
 
                 if( isset( $value['fields'] ) ) {
-                  $active_section = ( $section_id == $value['name'] ) ? ' class="cs-section-active"' : '';
+                  $active_section = ( $section_id == $value['name'] ) ? ' class="sk-section-active"' : '';
                   echo '<li><a href="#"'. $active_section .' data-section="'. $value['name'] .'">'. $tab_icon . $value['title'] .'</a></li>';
                 } else {
-                  echo '<li><div class="cs-seperator">'. $tab_icon . $value['title'] .'</div></li>';
+                  echo '<li><div class="sk-seperator">'. $tab_icon . $value['title'] .'</div></li>';
                 }
 
               }
@@ -106,24 +106,24 @@ if(!class_exists("CSFramework_Metabox")){
 
           }
 
-          echo '<div class="cs-content">';
+          echo '<div class="sk-content">';
 
-            echo '<div class="cs-sections">';
+            echo '<div class="sk-sections">';
             foreach( $sections as $val ) {
 
               if( isset( $val['fields'] ) ) {
 
                 $active_content = ( $section_id == $val['name'] ) ? ' style="display: block;"' : '';
 
-                echo '<div id="cs-tab-'. $val['name'] .'" class="cs-section"'. $active_content .'>';
-                echo ( isset( $val['title'] ) ) ? '<div class="cs-section-title"><h3>'. $val['title'] .'</h3></div>' : '';
+                echo '<div id="sk-tab-'. $val['name'] .'" class="sk-section"'. $active_content .'>';
+                echo ( isset( $val['title'] ) ) ? '<div class="sk-section-title"><h3>'. $val['title'] .'</h3></div>' : '';
 
                 foreach ( $val['fields'] as $field_key => $field ) {
 
                   $default    = ( isset( $field['default'] ) ) ? $field['default'] : '';
                   $elem_id    = ( isset( $field['id'] ) ) ? $field['id'] : '';
                   $elem_value = ( is_array( $meta_value ) && isset( $meta_value[$elem_id] ) ) ? $meta_value[$elem_id] : $default;
-                  echo cs_add_element( $field, $elem_value, $unique );
+                  echo sk_add_element( $field, $elem_value, $unique );
 
                 }
                 echo '</div>';
@@ -136,7 +136,7 @@ if(!class_exists("CSFramework_Metabox")){
 
           echo '</div>';
 
-          echo ( $has_nav ) ? '<div class="cs-nav-background"></div>' : '';
+          echo ( $has_nav ) ? '<div class="sk-nav-background"></div>' : '';
 
           echo '<div class="clear"></div>';
 
@@ -151,9 +151,9 @@ if(!class_exists("CSFramework_Metabox")){
 
       if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) { return $post_id; }
 
-      $nonce = ( isset( $_POST['cs-framework-metabox-nonce'] ) ) ? $_POST['cs-framework-metabox-nonce'] : '';
+      $nonce = ( isset( $_POST['sk-framework-metabox-nonce'] ) ) ? $_POST['sk-framework-metabox-nonce'] : '';
 
-      if ( ! wp_verify_nonce( $nonce, 'cs-framework-metabox' ) ) { return $post_id; }
+      if ( ! wp_verify_nonce( $nonce, 'sk-framework-metabox' ) ) { return $post_id; }
 
       $errors = array();
       $post_type = ( isset( $_POST['post_type'] ) ) ? $_POST['post_type'] : '';
@@ -194,14 +194,14 @@ if(!class_exists("CSFramework_Metabox")){
                     $sanitize_type = $field['type'];
                   }
 
-                  if( has_filter( 'cs_sanitize_'. $sanitize_type ) ) {
-                    $request[$field['id']] = apply_filters( 'cs_sanitize_' . $sanitize_type, $field_value, $field, $section['fields'] );
+                  if( has_filter( 'sk_sanitize_'. $sanitize_type ) ) {
+                    $request[$field['id']] = apply_filters( 'sk_sanitize_' . $sanitize_type, $field_value, $field, $section['fields'] );
                   }
 
                   // validate options
-                  if ( isset( $field['validate'] ) && has_filter( 'cs_validate_'. $field['validate'] ) ) {
+                  if ( isset( $field['validate'] ) && has_filter( 'sk_validate_'. $field['validate'] ) ) {
 
-                    $validate = apply_filters( 'cs_validate_' . $field['validate'], $field_value, $field, $section['fields'] );
+                    $validate = apply_filters( 'sk_validate_' . $field['validate'], $field_value, $field, $section['fields'] );
 
                     if( ! empty( $validate ) ) {
 
@@ -221,7 +221,7 @@ if(!class_exists("CSFramework_Metabox")){
 
           }
 
-          $request = apply_filters( 'cs_save_post', $request, $request_key, $meta_value, $this );
+          $request = apply_filters( 'sk_save_post', $request, $request_key, $meta_value, $this );
 
           if( empty( $request ) ) {
 
@@ -241,14 +241,14 @@ if(!class_exists("CSFramework_Metabox")){
 
           }
 
-          $transient['ids'][$request_key] = $_POST['cs_section_id'][$request_key];
+          $transient['ids'][$request_key] = $_POST['sk_section_id'][$request_key];
           $transient['errors'] = $errors;
 
         }
 
       }
 
-      set_transient( 'cs-metabox-transient', $transient, 10 );
+      set_transient( 'sk-metabox-transient', $transient, 10 );
 
     }
 

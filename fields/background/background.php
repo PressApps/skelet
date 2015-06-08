@@ -7,8 +7,8 @@
  * @version 1.0.0
  *
  */
-if(!class_exists("CSFramework_Option_background")){
-  class CSFramework_Option_background extends CSFramework_Options {
+if(!class_exists("SkeletFramework_Option_background")){
+  class SkeletFramework_Option_background extends SkeletFramework_Options {
 
     public function __construct( $field, $value = '', $unique = '' ) {
       parent::__construct( $field, $value, $unique );
@@ -29,18 +29,18 @@ if(!class_exists("CSFramework_Option_background")){
       $this->value    = wp_parse_args( $this->element_value(), $value_defaults );
 
       $upload_type    = ( isset( $upload_type  ) ) ? $upload_type  : 'image';
-      $button_title   = ( isset( $button_title ) ) ? $button_title : __( 'Upload', CS_TEXTDOMAIN );
-      $frame_title    = ( isset( $frame_title  ) ) ? $frame_title  : __( 'Upload', CS_TEXTDOMAIN );
-      $insert_title   = ( isset( $insert_title ) ) ? $insert_title : __( 'Use Image', CS_TEXTDOMAIN );
+      $button_title   = ( isset( $button_title ) ) ? $button_title : __( 'Upload', SK_TEXTDOMAIN );
+      $frame_title    = ( isset( $frame_title  ) ) ? $frame_title  : __( 'Upload', SK_TEXTDOMAIN );
+      $insert_title   = ( isset( $insert_title ) ) ? $insert_title : __( 'Use Image', SK_TEXTDOMAIN );
 
-      echo '<div class="cs-field-upload">';
+      echo '<div class="sk-field-upload">';
       echo '<input type="text" name="'. $this->element_name( '[image]' ) .'" value="'. $this->value['image'] .'"'. $this->element_class() . $this->element_attributes() .'/>';
-      echo '<a href="#" class="button cs-add" data-frame-title="'. $frame_title .'" data-upload-type="'. $upload_type .'" data-insert-title="'. $insert_title .'">'. $button_title .'</a>';
+      echo '<a href="#" class="button sk-add" data-frame-title="'. $frame_title .'" data-upload-type="'. $upload_type .'" data-insert-title="'. $insert_title .'">'. $button_title .'</a>';
       echo '</div>';
 
       // background attributes
       echo '<fieldset>';
-      echo cs_add_element( array(
+      echo sk_add_element( array(
           'pseudo'          => true,
           'type'            => 'select',
           'name'            => $this->element_name( '[repeat]' ),
@@ -56,7 +56,7 @@ if(!class_exists("CSFramework_Option_background")){
           ),
           'value'           => $this->value['repeat']
       ) );
-      echo cs_add_element( array(
+      echo sk_add_element( array(
           'pseudo'          => true,
           'type'            => 'select',
           'name'            => $this->element_name( '[position]' ),
@@ -76,7 +76,7 @@ if(!class_exists("CSFramework_Option_background")){
           ),
           'value'           => $this->value['position']
       ) );
-      echo cs_add_element( array(
+      echo sk_add_element( array(
           'pseudo'          => true,
           'type'            => 'select',
           'name'            => $this->element_name( '[attachment]' ),
@@ -89,7 +89,7 @@ if(!class_exists("CSFramework_Option_background")){
           ),
           'value'           => $this->value['attachment']
       ) );
-      echo cs_add_element( array(
+      echo sk_add_element( array(
           'pseudo'          => true,
           'id'              => $this->field['id'].'_color',
           'type'            => 'color_picker',

@@ -2,10 +2,10 @@
  *
  * -----------------------------------------------------------
  *
- * Codestar Framework
+ * Skelet Framework by PressApps 
  * A Lightweight and easy-to-use WordPress Options Framework
  *
- * Copyright 2015 Codestar <info@codestarlive.com>
+ * Copyright 2015 PressApps <info@pressapps.co>>
  *
  * -----------------------------------------------------------
  *
@@ -16,10 +16,10 @@
   $.CSFRAMEWORK = $.CSFRAMEWORK || {};
 
   // caching selector
-  var $cs_body = $('body');
+  var $sk_body = $('body');
 
   // caching variables
-  var cs_is_rtl  = $cs_body.hasClass('rtl');
+  var sk_is_rtl  = $sk_body.hasClass('rtl');
 
   // ======================================================
   // CSFRAMEWORK TAB NAVIGATION
@@ -28,9 +28,9 @@
     return this.each(function() {
 
       var $this   = $(this),
-          $nav    = $this.find('.cs-nav'),
-          $reset  = $this.find('.cs-reset'),
-          $expand = $this.find('.cs-expand-all');
+          $nav    = $this.find('.sk-nav'),
+          $reset  = $this.find('.sk-reset'),
+          $expand = $this.find('.sk-expand-all');
 
       $nav.find('ul:first a').on('click', function (e) {
 
@@ -43,13 +43,13 @@
         if( $next.is('ul') ) {
 
           $next.slideToggle( 'fast' );
-          $el.closest('li').toggleClass('cs-tab-active');
+          $el.closest('li').toggleClass('sk-tab-active');
 
         } else {
 
-          $('#cs-tab-'+$target).fadeIn('fast').siblings().hide();
-          $nav.find('a').removeClass('cs-section-active');
-          $el.addClass('cs-section-active');
+          $('#sk-tab-'+$target).fadeIn('fast').siblings().hide();
+          $nav.find('a').removeClass('sk-section-active');
+          $el.addClass('sk-section-active');
           $reset.val($target);
 
         }
@@ -58,7 +58,7 @@
 
       $expand.on('click', function (e) {
         e.preventDefault();
-        $this.find('.cs-body').toggleClass('cs-show-all');
+        $this.find('.sk-body').toggleClass('sk-show-all');
         $(this).find('.fa').toggleClass('fa-eye-slash' ).toggleClass('fa-eye');
       });
 
@@ -200,8 +200,8 @@
     return this.each(function() {
 
       var $this     = $(this),
-          $enabled  = $this.find('.cs-enabled'),
-          $disabled = $this.find('.cs-disabled');
+          $enabled  = $this.find('.sk-enabled'),
+          $disabled = $this.find('.sk-disabled');
 
       $enabled.sortable({
         connectWith: $disabled,
@@ -210,7 +210,7 @@
 
           var $el = ui.item.find('input');
 
-          if( ui.item.parent().hasClass('cs-enabled') ) {
+          if( ui.item.parent().hasClass('sk-enabled') ) {
             $el.attr('name', $el.attr('name').replace('disabled', 'enabled'));
           } else {
             $el.attr('name', $el.attr('name').replace('enabled', 'disabled'));
@@ -236,7 +236,7 @@
     return this.each(function() {
 
       var $this  = $(this),
-          $add   = $this.find('.cs-add'),
+          $add   = $this.find('.sk-add'),
           $input = $this.find('input'),
           wp_media_frame;
 
@@ -300,9 +300,9 @@
     return this.each(function() {
 
       var $this    = $(this),
-          $add     = $this.find('.cs-add'),
-          $preview = $this.find('.cs-image-preview'),
-          $remove  = $this.find('.cs-remove'),
+          $add     = $this.find('.sk-add'),
+          $preview = $this.find('.sk-image-preview'),
+          $remove  = $this.find('.sk-remove'),
           $input   = $this.find('input'),
           $img     = $this.find('img'),
           wp_media_frame;
@@ -365,18 +365,18 @@
     return this.each(function() {
 
       var $this   = $(this),
-          $edit   = $this.find('.cs-edit'),
-          $remove = $this.find('.cs-remove'),
+          $edit   = $this.find('.sk-edit'),
+          $remove = $this.find('.sk-remove'),
           $list   = $this.find('ul'),
           $input  = $this.find('input'),
           $img    = $this.find('img'),
           wp_media_frame,
           wp_media_click;
 
-      $this.on('click', '.cs-add, .cs-edit', function( e ) {
+      $this.on('click', '.sk-add, .sk-edit', function( e ) {
 
         var $el   = $(this),
-            what  = ( $el.hasClass('cs-edit') ) ? 'edit' : 'add',
+            what  = ( $el.hasClass('sk-edit') ) ? 'edit' : 'add',
             state = ( what === 'edit' ) ? 'gallery-edit' : 'gallery-library';
 
         e.preventDefault();
@@ -474,9 +474,9 @@
     return this.each( function() {
 
       var typography      = $(this),
-          family_select   = typography.find('.cs-typo-family'),
-          variants_select = typography.find('.cs-typo-variant'),
-          typography_type = typography.find('.cs-typo-font');
+          family_select   = typography.find('.sk-typo-family'),
+          variants_select = typography.find('.sk-typo-variant'),
+          typography_type = typography.find('.sk-typo-font');
 
       family_select.on('change', function() {
 
@@ -511,13 +511,13 @@
     return this.each(function() {
 
       var _this           = $(this),
-          field_groups    = _this.find('.cs-groups'),
-          accordion_group = _this.find('.cs-accordion'),
-          clone_group     = _this.find('.cs-group:first').clone();
+          field_groups    = _this.find('.sk-groups'),
+          accordion_group = _this.find('.sk-accordion'),
+          clone_group     = _this.find('.sk-group:first').clone();
 
       if ( accordion_group.length ) {
         accordion_group.accordion({
-          header: '.cs-group-title',
+          header: '.sk-group-title',
           collapsible : true,
           active: false,
           animate: 250,
@@ -534,25 +534,25 @@
 
       field_groups.sortable({
         axis: 'y',
-        handle: '.cs-group-title',
+        handle: '.sk-group-title',
         helper: 'original',
         cursor: 'move',
         placeholder: 'widget-placeholder',
         start: function( event, ui ) {
-          var inside = ui.item.children('.cs-group-content');
+          var inside = ui.item.children('.sk-group-content');
           if ( inside.css('display') === 'block' ) {
             inside.hide();
             field_groups.sortable('refreshPositions');
           }
         },
         stop: function( event, ui ) {
-          ui.item.children( '.cs-group-title' ).triggerHandler( 'focusout' );
+          ui.item.children( '.sk-group-title' ).triggerHandler( 'focusout' );
           accordion_group.accordion({ active:false });
         }
       });
 
       var i = 0;
-      $('.cs-add-group', _this).click( function( e ) {
+      $('.sk-add-group', _this).click( function( e ) {
 
         e.preventDefault();
 
@@ -582,9 +582,9 @@
 
       });
 
-      field_groups.on('click', '.cs-remove-group', function(e) {
+      field_groups.on('click', '.sk-remove-group', function(e) {
         e.preventDefault();
-        $(this).closest('.cs-group').remove();
+        $(this).closest('.sk-group').remove();
       });
 
     });
@@ -669,19 +669,19 @@
 
     base.init = function () {
 
-      $cs_body.on('click', '.cs-icon-add', function( e ) {
+      $sk_body.on('click', '.sk-icon-add', function( e ) {
 
         e.preventDefault();
 
         var $this   = $(this),
-            $dialog = $('#cs-icon-dialog'),
-            $load   = $dialog.find('.cs-dialog-load'),
-            $select = $dialog.find('.cs-dialog-select'),
-            $insert = $dialog.find('.cs-dialog-insert'),
-            $search = $dialog.find('.cs-icon-search');
+            $dialog = $('#sk-icon-dialog'),
+            $load   = $dialog.find('.sk-dialog-load'),
+            $select = $dialog.find('.sk-dialog-select'),
+            $insert = $dialog.find('.sk-dialog-insert'),
+            $search = $dialog.find('.sk-icon-search');
 
         // set parent
-        $parent = $this.closest('.cs-icon-select');
+        $parent = $this.closest('.sk-icon-select');
 
         // open dialog
         $dialog.dialog({
@@ -694,7 +694,7 @@
           open: function() {
 
             // fix scrolling
-            $cs_body.addClass('cs-icon-scrolling');
+            $sk_body.addClass('sk-icon-scrolling');
 
             // fix button for VC
             $('.ui-dialog-titlebar-close').addClass('ui-button');
@@ -714,7 +714,7 @@
 
           },
           close: function() {
-            $cs_body.removeClass('cs-icon-scrolling');
+            $sk_body.removeClass('sk-icon-scrolling');
           }
         });
 
@@ -725,7 +725,7 @@
             type: 'POST',
             url: ajaxurl,
             data: {
-              action: 'cs-get-icons'
+              action: 'sk-get-icons'
             },
             success: function( content ) {
 
@@ -740,8 +740,8 @@
 
                 $parent.find('i').removeAttr('class').addClass(icon);
                 $parent.find('input').val(icon).trigger('change');
-                $parent.find('.cs-icon-preview').removeClass('hidden');
-                $parent.find('.cs-icon-remove').removeClass('hidden');
+                $parent.find('.sk-icon-preview').removeClass('hidden');
+                $parent.find('.sk-icon-remove').removeClass('hidden');
                 $dialog.dialog('close');
 
               });
@@ -765,7 +765,7 @@
 
               });
 
-              $load.find('.cs-icon-tooltip').tooltip({html:true, placement:'top', container:'body'});
+              $load.find('.sk-icon-tooltip').tooltip({html:true, placement:'top', container:'body'});
 
             }
           });
@@ -774,14 +774,14 @@
 
       });
 
-      $cs_body.on('click', '.cs-icon-remove', function( e ) {
+      $sk_body.on('click', '.sk-icon-remove', function( e ) {
 
         e.preventDefault();
 
         var $this   = $(this),
-            $parent = $this.closest('.cs-icon-select');
+            $parent = $this.closest('.sk-icon-select');
 
-        $parent.find('.cs-icon-preview').addClass('hidden');
+        $parent.find('.sk-icon-preview').addClass('hidden');
         $parent.find('input').val('').trigger('change');
         $this.addClass('hidden');
 
@@ -803,10 +803,10 @@
 
     base.init = function () {
 
-      var $dialog          = $('#cs-shortcode-dialog'),
-          $insert          = $dialog.find('.cs-dialog-insert'),
-          $shortcodeload   = $dialog.find('.cs-dialog-load'),
-          $selector        = $dialog.find('.cs-dialog-select'),
+      var $dialog          = $('#sk-shortcode-dialog'),
+          $insert          = $dialog.find('.sk-dialog-insert'),
+          $shortcodeload   = $dialog.find('.sk-dialog-load'),
+          $selector        = $dialog.find('.sk-dialog-select'),
           shortcode_target = false,
           shortcode_name,
           shortcode_view,
@@ -814,12 +814,12 @@
           $shortcode_button,
           editor_id;
 
-      $cs_body.on('click', '.cs-shortcode', function( e ) {
+      $sk_body.on('click', '.sk-shortcode', function( e ) {
 
         e.preventDefault();
 
         $shortcode_button = $(this);
-        shortcode_target  = $shortcode_button.hasClass('cs-shortcode-textarea');
+        shortcode_target  = $shortcode_button.hasClass('sk-shortcode-textarea');
         editor_id         = $shortcode_button.data('editor-id');
 
         $dialog.dialog({
@@ -832,7 +832,7 @@
           open: function() {
 
             // fix scrolling
-            $cs_body.addClass('cs-shortcode-scrolling');
+            $sk_body.addClass('sk-shortcode-scrolling');
 
             // fix button for VC
             $('.ui-dialog-titlebar-close').addClass('ui-button');
@@ -853,7 +853,7 @@
           },
           close: function() {
             shortcode_target = false;
-            $cs_body.removeClass('cs-shortcode-scrolling');
+            $sk_body.removeClass('sk-shortcode-scrolling');
           }
         });
 
@@ -872,7 +872,7 @@
             type: 'POST',
             url: ajaxurl,
             data: {
-              action: 'cs-get-shortcode',
+              action: 'sk-get-shortcode',
               shortcode: shortcode_name
             },
             success: function( content ) {
@@ -880,7 +880,7 @@
               $shortcodeload.html( content );
               $insert.parent().removeClass('hidden');
 
-              shortcode_clone = $('.cs-shortcode-clone', $dialog).clone();
+              shortcode_clone = $('.sk-shortcode-clone', $dialog).clone();
 
               $shortcodeload.CSFRAMEWORK_DEPENDENCY();
               $shortcodeload.CSFRAMEWORK_DEPENDENCY('sub');
@@ -911,7 +911,7 @@
 
           case 'contents':
 
-            $('[' + ruleAttr + ']', '.cs-dialog-load').each( function() {
+            $('[' + ruleAttr + ']', '.sk-dialog-load').each( function() {
               var _this = $(this), _atts = _this.data('atts');
               send_to_shortcode += '['+_atts+']';
               send_to_shortcode += _this.val();
@@ -925,7 +925,7 @@
             send_to_shortcode += '[' + shortcode_name; // begin: main-shortcode
 
             // main-shortcode attributes
-            $('[' + ruleAttr + ']', '.cs-dialog-load .cs-element:not(.hidden)').each( function() {
+            $('[' + ruleAttr + ']', '.sk-dialog-load .sk-element:not(.hidden)').each( function() {
               var _this_main = $(this), _this_main_atts = _this_main.data('atts');
 
               console.log(_this_main_atts);
@@ -935,7 +935,7 @@
             send_to_shortcode += ']'; // end: main-shortcode attributes
 
             // multiple-shortcode each
-            $('[' + cloneID + ']', '.cs-dialog-load').each( function() {
+            $('[' + cloneID + ']', '.sk-dialog-load').each( function() {
 
                 var _this_clone = $(this),
                     _clone_id   = _this_clone.data('clone-id');
@@ -943,7 +943,7 @@
                 send_to_shortcode += '[' + _clone_id; // begin: multiple-shortcode
 
                 // multiple-shortcode attributes
-                $('[' + cloneAttr + ']', _this_clone.find('.cs-element').not('.hidden') ).each( function() {
+                $('[' + cloneAttr + ']', _this_clone.find('.sk-element').not('.hidden') ).each( function() {
 
                   var _this_multiple = $(this), _atts_multiple = _this_multiple.data('clone-atts');
 
@@ -968,7 +968,7 @@
           case 'clone_duplicate':
 
             // multiple-shortcode each
-            $('[' + cloneID + ']', '.cs-dialog-load').each( function() {
+            $('[' + cloneID + ']', '.sk-dialog-load').each( function() {
 
               var _this_clone = $(this),
                   _clone_id   = _this_clone.data('clone-id');
@@ -976,7 +976,7 @@
               send_to_shortcode += '[' + _clone_id; // begin: multiple-shortcode
 
               // multiple-shortcode attributes
-              $('[' + cloneAttr + ']', _this_clone.find('.cs-element').not('.hidden') ).each( function() {
+              $('[' + cloneAttr + ']', _this_clone.find('.sk-element').not('.hidden') ).each( function() {
 
                 var _this_multiple = $(this),
                     _atts_multiple = _this_multiple.data('clone-atts');
@@ -1002,7 +1002,7 @@
 
             send_to_shortcode += '[' + shortcode_name;
 
-            $('[' + ruleAttr + ']', '.cs-dialog-load .cs-element:not(.hidden)').each( function() {
+            $('[' + ruleAttr + ']', '.sk-dialog-load .sk-element:not(.hidden)').each( function() {
 
               var _this = $(this), _atts = _this.data('atts');
 
@@ -1047,12 +1047,12 @@
 
         cloned_el.find('input:radio').attr('name', '_nonce_' + cloned);
 
-        $('.cs-shortcode-clone:last').after( cloned_el );
+        $('.sk-shortcode-clone:last').after( cloned_el );
 
         // add - remove effects
         cloned_el.slideDown(100);
 
-        cloned_el.find('.cs-remove-clone').show().click( function( e ) {
+        cloned_el.find('.sk-remove-clone').show().click( function( e ) {
 
           cloned_el.slideUp(100, function(){ cloned_el.remove(); });
           e.preventDefault();
@@ -1086,7 +1086,7 @@
       }
 
       if( _this.data('check') !== undefined ) {
-        el_value = _this.closest('.cs-element').find('input:checked').map( function() {
+        el_value = _this.closest('.sk-element').find('input:checked').map( function() {
          return $(this).val();
         }).get();
       }
@@ -1201,7 +1201,7 @@
             var ui_color_value = ui.color.toString();
 
             // update checkerboard background color
-            $this.closest('.wp-picker-container').find('.cs-alpha-slider-offset').css('background-color', ui_color_value);
+            $this.closest('.wp-picker-container').find('.sk-alpha-slider-offset').css('background-color', ui_color_value);
             $this.val(ui_color_value).trigger('change');
 
           },
@@ -1214,15 +1214,15 @@
                 $container    = $this.closest('.wp-picker-container'),
 
                 // appending alpha wrapper
-                $alpha_wrap   = $('<div class="cs-alpha-wrap">' +
-                                  '<div class="cs-alpha-slider"></div>' +
-                                  '<div class="cs-alpha-slider-offset"></div>' +
-                                  '<div class="cs-alpha-text"></div>' +
+                $alpha_wrap   = $('<div class="sk-alpha-wrap">' +
+                                  '<div class="sk-alpha-slider"></div>' +
+                                  '<div class="sk-alpha-slider-offset"></div>' +
+                                  '<div class="sk-alpha-text"></div>' +
                                   '</div>').appendTo( $container.find('.wp-picker-holder') ),
 
-                $alpha_slider = $alpha_wrap.find('.cs-alpha-slider'),
-                $alpha_text   = $alpha_wrap.find('.cs-alpha-text'),
-                $alpha_offset = $alpha_wrap.find('.cs-alpha-slider-offset');
+                $alpha_slider = $alpha_wrap.find('.sk-alpha-slider'),
+                $alpha_text   = $alpha_wrap.find('.sk-alpha-text'),
+                $alpha_offset = $alpha_wrap.find('.sk-alpha-slider-offset');
 
             // alpha slider
             $alpha_slider.slider({
@@ -1277,7 +1277,7 @@
                 });
 
                 // hide alpha wrapper on click body
-                $cs_body.on( 'click.wpcolorpicker', function() {
+                $sk_body.on( 'click.wpcolorpicker', function() {
                   $alpha_wrap.hide();
                 });
 
@@ -1328,7 +1328,7 @@
   // ------------------------------------------------------
   $.fn.CSFRAMEWORK_TOOLTIP = function() {
     return this.each(function() {
-      var placement = ( cs_is_rtl ) ? 'right' : 'left';
+      var placement = ( sk_is_rtl ) ? 'right' : 'left';
       $(this).tooltip({html:true, placement:placement, container:'body'});
     });
   };
@@ -1339,14 +1339,14 @@
   $.fn.CSFRAMEWORK_RELOAD_PLUGINS = function() {
     return this.each(function() {
       $('.chosen', this).CSFRAMEWORK_CHOSEN();
-      $('.cs-field-image-select', this).CSFRAMEWORK_IMAGE_SELECTOR();
-      $('.cs-field-image', this).CSFRAMEWORK_IMAGE_UPLOADER();
-      $('.cs-field-gallery', this).CSFRAMEWORK_IMAGE_GALLERY();
-      $('.cs-field-sorter', this).CSFRAMEWORK_SORTER();
-      $('.cs-field-upload', this).CSFRAMEWORK_UPLOADER();
-      $('.cs-field-typography', this).CSFRAMEWORK_TYPOGRAPHY();
-      $('.cs-field-color-picker', this).CSFRAMEWORK_COLORPICKER();
-      $('.cs-help', this).CSFRAMEWORK_TOOLTIP();
+      $('.sk-field-image-select', this).CSFRAMEWORK_IMAGE_SELECTOR();
+      $('.sk-field-image', this).CSFRAMEWORK_IMAGE_UPLOADER();
+      $('.sk-field-gallery', this).CSFRAMEWORK_IMAGE_GALLERY();
+      $('.sk-field-sorter', this).CSFRAMEWORK_SORTER();
+      $('.sk-field-upload', this).CSFRAMEWORK_UPLOADER();
+      $('.sk-field-typography', this).CSFRAMEWORK_TYPOGRAPHY();
+      $('.sk-field-color-picker', this).CSFRAMEWORK_COLORPICKER();
+      $('.sk-help', this).CSFRAMEWORK_TOOLTIP();
     });
   };
 
@@ -1354,12 +1354,12 @@
   // JQUERY DOCUMENT READY
   // ------------------------------------------------------
   $(document).ready( function() {
-    $('.cs-framework').CSFRAMEWORK_TAB_NAVIGATION();
-    $('.cs-reset-confirm, .cs-import-backup').CSFRAMEWORK_CONFIRM();
-    $('.cs-content, .wp-customizer, .widget-content').CSFRAMEWORK_DEPENDENCY();
-    $('.cs-field-group').CSFRAMEWORK_GROUP();
-    $('#cs-save-ajax').CSFRAMEWORK_SAVE_AJAX();
-    $cs_body.CSFRAMEWORK_RELOAD_PLUGINS();
+    $('.sk-framework').CSFRAMEWORK_TAB_NAVIGATION();
+    $('.sk-reset-confirm, .sk-import-backup').CSFRAMEWORK_CONFIRM();
+    $('.sk-content, .wp-customizer, .widget-content').CSFRAMEWORK_DEPENDENCY();
+    $('.sk-field-group').CSFRAMEWORK_GROUP();
+    $('#sk-save-ajax').CSFRAMEWORK_SAVE_AJAX();
+    $sk_body.CSFRAMEWORK_RELOAD_PLUGINS();
     $.CSFRAMEWORK.ICONS_MANAGER();
     $.CSFRAMEWORK.SHORTCODE_MANAGER();
     $.CSFRAMEWORK.WIDGET_RELOAD_PLUGINS();

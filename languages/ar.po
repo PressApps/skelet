@@ -1,9 +1,9 @@
-# Copyright (C) 2015 Codestar
+# Copyright (C) 2015 PressApps
 # This file is distributed under the GPLv2 or later.
 msgid ""
 msgstr ""
-"Project-Id-Version: Codestar Framework 1.0.0\n"
-"Report-Msgid-Bugs-To: http://wordpress.org/support/plugin/cs-framework\n"
+"Project-Id-Version: Skelet Framework by PressApps  1.0.0\n"
+"Report-Msgid-Bugs-To: http://wordpress.org/support/plugin/sk-framework\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"

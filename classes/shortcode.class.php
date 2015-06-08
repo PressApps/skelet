@@ -7,8 +7,8 @@
  * @version 1.0.0
  *
  */
-if(!class_exists("CSFramework_Shortcode_Manager")){
-  class CSFramework_Shortcode_Manager extends CSFramework_Abstract{
+if(!class_exists("SkeletFramework_Shortcode_Manager")){
+  class SkeletFramework_Shortcode_Manager extends SkeletFramework_Abstract{
 
     /**
      *
@@ -49,8 +49,8 @@ if(!class_exists("CSFramework_Shortcode_Manager")){
     // run shortcode construct
     public function __construct( $options ) {
 
-      $this->options = apply_filters( 'cs_shortcode_options', $options );
-      $this->exclude_post_types = apply_filters( 'cs_shortcode_exclude', $this->exclude_post_types );
+      $this->options = apply_filters( 'sk_shortcode_options', $options );
+      $this->exclude_post_types = apply_filters( 'sk_shortcode_exclude', $this->exclude_post_types );
 
       if( ! empty( $this->options ) ) {
 
@@ -58,7 +58,7 @@ if(!class_exists("CSFramework_Shortcode_Manager")){
         $this->addAction( 'media_buttons', 'media_shortcode_button', 99 );
         $this->addAction( 'admin_footer', 'shortcode_dialog', 99 );
         $this->addAction( 'customize_controls_print_footer_scripts', 'shortcode_dialog', 99 );
-        $this->addAction( 'wp_ajax_cs-get-shortcode', 'shortcode_generator', 99 );
+        $this->addAction( 'wp_ajax_sk-get-shortcode', 'shortcode_generator', 99 );
 
       }
 
@@ -66,7 +66,7 @@ if(!class_exists("CSFramework_Shortcode_Manager")){
 
     // instance
     public static function instance( $options = array() ){
-      if ( is_null( self::$instance ) && CS_ACTIVE_SHORTCODE ) {
+      if ( is_null( self::$instance ) && SK_ACTIVE_SHORTCODE ) {
         self::$instance = new self( $options );
       }
       return self::$instance;
@@ -80,7 +80,7 @@ if(!class_exists("CSFramework_Shortcode_Manager")){
       $post_type = ( isset( $post ) ) ? $post->post_type : '';
 
       if( ! in_array( $post_type, $this->exclude_post_types ) ) {
-        echo '<a href="#" class="button button-primary cs-shortcode" data-editor-id="'. $editor_id .'">'. __( 'Add Shortcode', CS_TEXTDOMAIN ) .'</a>';
+        echo '<a href="#" class="button button-primary sk-shortcode" data-editor-id="'. $editor_id .'">'. __( 'Add Shortcode', SK_TEXTDOMAIN ) .'</a>';
       }
 
     }
@@ -88,9 +88,9 @@ if(!class_exists("CSFramework_Shortcode_Manager")){
     // shortcode dialog
     public function shortcode_dialog() {
     ?>
-      <div id="cs-shortcode-dialog" class="cs-dialog" title="<?php _e( 'Add Shortcode', CS_TEXTDOMAIN ); ?>">
-        <div class="cs-dialog-header">
-          <select class="chosen <?php echo ( is_rtl() ) ? 'chosen-rtl' : ''; ?> cs-dialog-select" data-placeholder="<?php _e( 'Select a shortcode', CS_TEXTDOMAIN ); ?>">
+      <div id="sk-shortcode-dialog" class="sk-dialog" title="<?php _e( 'Add Shortcode', SK_TEXTDOMAIN ); ?>">
+        <div class="sk-dialog-header">
+          <select class="chosen <?php echo ( is_rtl() ) ? 'chosen-rtl' : ''; ?> sk-dialog-select" data-placeholder="<?php _e( 'Select a shortcode', SK_TEXTDOMAIN ); ?>">
             <option value=""></option>
             <?php
               foreach ( $this->options as $group ) {
@@ -104,9 +104,9 @@ if(!class_exists("CSFramework_Shortcode_Manager")){
             ?>
           </select>
         </div>
-        <div class="cs-dialog-load"></div>
-        <div class="cs-insert-button hidden">
-          <a href="#" class="button button-primary cs-dialog-insert"><?php _e( 'Insert Shortcode', CS_TEXTDOMAIN ); ?></a>
+        <div class="sk-dialog-load"></div>
+        <div class="sk-insert-button hidden">
+          <a href="#" class="button button-primary sk-dialog-insert"><?php _e( 'Insert Shortcode', SK_TEXTDOMAIN ); ?></a>
         </div>
       </div>
     <?php
@@ -133,7 +133,7 @@ if(!class_exists("CSFramework_Shortcode_Manager")){
             $field['attributes']['data-check'] = true;
           }
 
-          echo cs_add_element( $field, $field_default, 'shortcode' );
+          echo sk_add_element( $field, $field_default, 'shortcode' );
 
         }
 
@@ -143,8 +143,8 @@ if(!class_exists("CSFramework_Shortcode_Manager")){
 
         $clone_id = isset( $shortcode['clone_id'] ) ? $shortcode['clone_id'] : $shortcode['name'];
 
-        echo '<div class="cs-shortcode-clone" data-clone-id="'. $clone_id .'">';
-        echo '<a href="#" class="cs-remove-clone"><i class="fa fa-trash"></i></a>';
+        echo '<div class="sk-shortcode-clone" data-clone-id="'. $clone_id .'">';
+        echo '<a href="#" class="sk-remove-clone"><i class="fa fa-trash"></i></a>';
 
         foreach ( $shortcode['clone_fields'] as $key => $field ) {
 
@@ -156,13 +156,13 @@ if(!class_exists("CSFramework_Shortcode_Manager")){
             $field['attributes']['data-check'] = true;
           }
 
-          echo cs_add_element( $field, $field_default, 'shortcode' );
+          echo sk_add_element( $field, $field_default, 'shortcode' );
 
         }
 
         echo '</div>';
 
-        echo '<div class="cs-clone-button"><a id="shortcode-clone-button" class="button" href="#"><i class="fa fa-plus-circle"></i> '. $shortcode['clone_title'] .'</a></div>';
+        echo '<div class="sk-clone-button"><a id="shortcode-clone-button" class="button" href="#"><i class="fa fa-plus-circle"></i> '. $shortcode['clone_title'] .'</a></div>';
 
       }
 
