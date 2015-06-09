@@ -23,7 +23,7 @@ if(! class_exists( 'Skelet_LoadConfig' ) ){
                     defined( 'SK_ACTIVE_SHORTCODE' )  or  define( 'SK_ACTIVE_SHORTCODE',  true );
                     defined( 'SK_ACTIVE_CUSTOMIZE' )  or  define( 'SK_ACTIVE_CUSTOMIZE',  true );
                     defined( 'SK_ACTIVE_WIDGET'    )  or  define( 'SK_ACTIVE_WIDGET',     true );
-                    defined( 'SK_ACTIVE_TAXONOMY'    )  or  define( 'SK_ACTIVE_TAXONOMY', true );
+                    defined( 'SK_ACTIVE_TAXONOMY'  )  or  define( 'SK_ACTIVE_TAXONOMY',   true );
                    
                    foreach ($skelet_paths as $path) {
 
