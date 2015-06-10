@@ -365,9 +365,15 @@ if(!class_exists("SkeletFramework")){
         }
 
         settings_fields( $this->unique. '_group' );
-
+        global $skelet_path;
         echo '<header class="sk-header">';
-        echo '<h1>Skelet Framework <small>by PressApps</small></h1>';
+        echo '<h1>';
+        echo sprintf('%s',
+            isset($skelet_path["plugin_data"]["Name"])?
+            $skelet_path["plugin_data"]["Name"]." v".
+            $skelet_path["plugin_data"]["Version"]." <small>by ".
+            $skelet_path["plugin_data"]["Author"]."</small>":"Skelet Framework <small>by PressApps</small>");
+        echo '</h1>';
         echo '<fieldset>';
         echo ( $this->settings['ajax_save'] === true ) ? '<span id="sk-save-ajax">'. __( 'Settings saved.', SK_TEXTDOMAIN ) .'</span>' : '';
         submit_button( __( 'Save', SK_TEXTDOMAIN ), 'primary', 'save', false, array( 'data-ajax' => $this->settings['ajax_save'], 'data-save' => __( 'Saving...', SK_TEXTDOMAIN ) ) );
@@ -459,7 +465,11 @@ if(!class_exists("SkeletFramework")){
         echo '</div>'; // end .sk-body
 
         echo '<footer class="sk-footer">';
-        echo 'Skelet Framework <strong>v'. SK_VERSION .' by PressApps</strong>';
+        echo sprintf('%s',
+            isset($skelet_path["plugin_data"]["Name"])?
+            $skelet_path["plugin_data"]["Name"]." v".
+            $skelet_path["plugin_data"]["Version"]." <small>by ".
+            $skelet_path["plugin_data"]["Author"]."</small>":"Skelet Framework <small>by PressApps</small>");
         echo '</footer>'; // end .sk-footer
 
         echo '</form>'; // end form
