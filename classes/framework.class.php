@@ -321,6 +321,7 @@ if(!class_exists("SkeletFramework")){
         'menu_icon'       => '',
         'menu_capability' => 'manage_options',
         'menu_position'   => null,
+        'menu_parent_page'=> false
       );
 
       $args = wp_parse_args( $this->settings, $defaults_menu_args );
@@ -328,7 +329,16 @@ if(!class_exists("SkeletFramework")){
       if( $args['menu_type'] == 'add_submenu_page' ) {
         call_user_func( $args['menu_type'], $args['menu_parent'], $args['menu_title'], $args['menu_title'], $args['menu_capability'], $args['menu_slug'], array( &$this, 'admin_page' ) );
       } else {
-        call_user_func( $args['menu_type'], $args['menu_title'], $args['menu_title'], $args['menu_capability'], $args['menu_slug'], array( &$this, 'admin_page' ), $args['menu_icon'], $args['menu_position'] );
+
+        if($args['menu_parent_page'] == true){
+          call_user_func( $args['menu_type'], $args['menu_title'], $args['menu_title'], $args['menu_capability'], $args['menu_slug'], array( &$this, 'admin_page' ), $args['menu_icon'], $args['menu_position'] );
+          
+        }else{
+          call_user_func( $args['menu_type'], $args['menu_title'], $args['menu_title'], $args['menu_capability'], $args['menu_slug'], array( &$this, 'admin_page' ), $args['menu_icon'], $args['menu_position'] );
+          
+        }
+
+        
       }
 
     }
@@ -496,4 +506,25 @@ if(!class_exists("SkeletFramework")){
     }
 
   }
+}
+
+if(!function_exists("pa_main_menu")){
+
+  function pa_main_menu(){
+      $settings      = array(
+        'menu_title' => 'PressApps',
+        'menu_type'  => 'add_menu_page',
+        'menu_slug'  => 'pa-main-menu',
+        'ajax_save'  => false,
+      );
+
+      $main_options[]      = array(
+      
+      );
+
+     
+      SkeletFramework::instance( $settings, $main_options );
+
+  }
+  pa_main_menu();
 }
