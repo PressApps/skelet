@@ -24,6 +24,7 @@ if(! class_exists( 'Skelet_LoadConfig' ) ){
                     defined( 'SK_ACTIVE_CUSTOMIZE' )  or  define( 'SK_ACTIVE_CUSTOMIZE',  true );
                     defined( 'SK_ACTIVE_WIDGET'    )  or  define( 'SK_ACTIVE_WIDGET',     true );
                     defined( 'SK_ACTIVE_TAXONOMY'  )  or  define( 'SK_ACTIVE_TAXONOMY',   true );
+                    
                    
                    foreach ($skelet_paths as $path) {
 
@@ -56,6 +57,9 @@ if(! class_exists( 'Skelet_LoadConfig' ) ){
                         sk_locate_template ( '../../includes/admin/options/shortcode.config.php'  ,$skelet_path);
                         sk_locate_template ( '../../includes/admin/options/customize.config.php'  ,$skelet_path);
                         sk_locate_template ( '../../includes/admin/options/taxonomy.config.php'  ,$skelet_path);
+
+
+                       
                    
                     }
 
@@ -66,3 +70,43 @@ if(! class_exists( 'Skelet_LoadConfig' ) ){
      add_action("init",array('Skelet_LoadConfig','instance'),10);
 
 }
+
+if(!class_exists("Skelet_PressApps_Menu")){
+
+  class Skelet_PressApps_Menu{
+
+    public static function pa_main_menu(){
+        global $skelet_paths, $submenu;
+      
+
+        call_user_func("add_submenu_page", SK_PARENT_MENU, "Support", "Support", "manage_options", "pa-menu-support", array("Skelet_PressApps_Menu","get_pa_support_page"));
+        call_user_func("add_submenu_page", SK_PARENT_MENU, "Products", "Products", "manage_options", "pa-menu-product", array("Skelet_PressApps_Menu","get_pa_products_page"));
+        call_user_func("add_submenu_page", SK_PARENT_MENU, "Services", "Services", "manage_options", "pa-menu-services", array("Skelet_PressApps_Menu","get_pa_services_page"));
+                          
+   }
+    public static function get_pa_support_page(){
+        
+      include_once wp_normalize_path(dirname( __DIR__ ) .'/pressapps/support.php');
+ 
+        
+    }
+
+    public static function get_pa_products_page(){
+        
+      include_once wp_normalize_path(dirname( __DIR__ ) .'/pressapps/products.php');
+ 
+        
+    }
+
+    public static function get_pa_services_page(){
+        
+      include_once wp_normalize_path(dirname( __DIR__ ) .'/pressapps/services.php');
+ 
+        
+    }
+  }
+     add_action("admin_menu",array("Skelet_PressApps_Menu","pa_main_menu"),999999);
+
+
+}
+

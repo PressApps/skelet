@@ -29,6 +29,16 @@ if(!class_exists("SkeletFramework")){
      */
     public $settings = array();
 
+
+    /**
+     *
+     * first_settings
+     * @access public
+     * @var array
+     *
+     */
+    public $first_settings = array();
+
     /**
      *
      * options tab
@@ -95,6 +105,7 @@ if(!class_exists("SkeletFramework")){
       //if ( is_null( self::$instance ) && SK_ACTIVE_FRAMEWORK ) {
         self::$instance = new self( $settings, $options, $skelet_path );
       //}
+                 
       return self::$instance;
     }
 
@@ -324,22 +335,21 @@ if(!class_exists("SkeletFramework")){
         'menu_parent_page'=> false
       );
 
+
       $args = wp_parse_args( $this->settings, $defaults_menu_args );
 
-      if( $args['menu_type'] == 'add_submenu_page' ) {
-        call_user_func( $args['menu_type'], $args['menu_parent'], $args['menu_title'], $args['menu_title'], $args['menu_capability'], $args['menu_slug'], array( &$this, 'admin_page' ) );
-      } else {
+      if(!defined( 'SK_PARENT_MENU' )){
+        $set_parent_slug = isset($args["menu_slug"])?$args["menu_slug"]:"pa-main-menu";
+        define( 'SK_PARENT_MENU',$set_parent_slug."_");
+        call_user_func("add_menu_page", "PressApps", "PressApps", "pa-nonexistent-capability", SK_PARENT_MENU, null, $args['menu_icon'], $args['menu_position'] );
+       
 
-        if($args['menu_parent_page'] == true){
-          call_user_func( $args['menu_type'], $args['menu_title'], $args['menu_title'], $args['menu_capability'], $args['menu_slug'], array( &$this, 'admin_page' ), $args['menu_icon'], $args['menu_position'] );
-          
-        }else{
-          call_user_func( $args['menu_type'], $args['menu_title'], $args['menu_title'], $args['menu_capability'], $args['menu_slug'], array( &$this, 'admin_page' ), $args['menu_icon'], $args['menu_position'] );
-          
-        }
-
-        
       }
+       
+        
+      if( $args['menu_type'] == 'add_submenu_page' ) {
+        call_user_func( $args['menu_type'], SK_PARENT_MENU, $args['menu_title'], $args['menu_title'], $args['menu_capability'], $args['menu_slug'], array( &$this, 'admin_page' ) );
+      } 
 
     }
 
@@ -508,23 +518,4 @@ if(!class_exists("SkeletFramework")){
   }
 }
 
-if(!function_exists("pa_main_menu")){
 
-  function pa_main_menu(){
-      $settings      = array(
-        'menu_title' => 'PressApps',
-        'menu_type'  => 'add_menu_page',
-        'menu_slug'  => 'pa-main-menu',
-        'ajax_save'  => false,
-      );
-
-      $main_options[]      = array(
-      
-      );
-
-     
-      SkeletFramework::instance( $settings, $main_options );
-
-  }
-  pa_main_menu();
-}
