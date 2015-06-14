@@ -86,21 +86,21 @@ if(!class_exists("Skelet_PressApps_Menu")){
    }
     public static function get_pa_support_page(){
         
-      include_once wp_normalize_path(dirname( __DIR__ ) .'/pressapps/support.php');
+      include_once wp_normalize_path(plugin_dir_path(__FILE__ ) .'/pressapps/support.php');
  
         
     }
 
     public static function get_pa_products_page(){
         
-      include_once wp_normalize_path(dirname( __DIR__ ) .'/pressapps/products.php');
+      include_once wp_normalize_path(plugin_dir_path(__FILE__ ) .'/pressapps/products.php');
  
         
     }
 
     public static function get_pa_services_page(){
         
-      include_once wp_normalize_path(dirname( __DIR__ ) .'/pressapps/services.php');
+      include_once wp_normalize_path(plugin_dir_path(__FILE__ ) .'/pressapps/services.php');
  
         
     }
