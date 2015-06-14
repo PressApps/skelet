@@ -79,31 +79,21 @@ if(!class_exists("Skelet_PressApps_Menu")){
         global $skelet_paths, $submenu;
       
 
-        call_user_func("add_submenu_page", SK_PARENT_MENU, "Support", "Support", "manage_options", "pa-menu-support", array("Skelet_PressApps_Menu","get_pa_support_page"));
-        call_user_func("add_submenu_page", SK_PARENT_MENU, "Products", "Products", "manage_options", "pa-menu-product", array("Skelet_PressApps_Menu","get_pa_products_page"));
-        call_user_func("add_submenu_page", SK_PARENT_MENU, "Services", "Services", "manage_options", "pa-menu-services", array("Skelet_PressApps_Menu","get_pa_services_page"));
+        call_user_func("add_submenu_page", SK_PARENT_MENU, "Support", "Support", "manage_options", "pa-menu-support", array("Skelet_PressApps_Menu","get_pa_general_pages"));
+        call_user_func("add_submenu_page", SK_PARENT_MENU, "Products", "Products", "manage_options", "pa-menu-product", array("Skelet_PressApps_Menu","get_pa_general_pages"));
+        call_user_func("add_submenu_page", SK_PARENT_MENU, "Services", "Services", "manage_options", "pa-menu-services", array("Skelet_PressApps_Menu","get_pa_general_pages"));
                           
    }
-    public static function get_pa_support_page(){
-        
-      include_once wp_normalize_path(plugin_dir_path(__FILE__ ) .'/pressapps/support.php');
- 
-        
+    public static function get_pa_general_pages(){
+      if(!class_exists("PressApps"))
+      {
+            include_once wp_normalize_path(plugin_dir_path(__FILE__ ) .'/pressapps/pressapps.class.php');
+            $pa = new PressApps;
+            $pa::route(isset($_GET["page"])?$_GET["page"]:"");
+      }
     }
 
-    public static function get_pa_products_page(){
-        
-      include_once wp_normalize_path(plugin_dir_path(__FILE__ ) .'/pressapps/products.php');
- 
-        
-    }
-
-    public static function get_pa_services_page(){
-        
-      include_once wp_normalize_path(plugin_dir_path(__FILE__ ) .'/pressapps/services.php');
- 
-        
-    }
+  
   }
      add_action("admin_menu",array("Skelet_PressApps_Menu","pa_main_menu"),999999);
 

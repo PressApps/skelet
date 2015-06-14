@@ -1,0 +1,8 @@
+#pa-products .pa-item{
+	float:left;
+	padding:4px;
+}
+#pa-products .pa-item img{
+	width:500px;
+	height: 254px;
+}
