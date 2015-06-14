@@ -58,9 +58,48 @@ jQuery(document).ready(function($) {
 	  		];
 	  		products.push(item_large.join(""));
 	  	})
-	    jQuery("#pa-products").html(products.join(""));
+
+
+	    jQuery("#pa-products").append(products.join(""));
+	     
+	   
+	});
+
+	// Show products from themeforest
+	$.ajax({
+	  url: pressapps_ajax_url,
+	  data:{
+		action: 'pressapps_api',
+		type: 'themeforest' // change this category to retrieve other products
+	  }, 
+	  method: "post",
+	  dataType: 'jsonp',
+
+	})
+	.done(function( d ) {
+		console.log(d);
+		var products = [];
+	
+	  	jQuery.each(d['new-files-from-user'],function(i,dd){
+	  		var item_large = [
+	  			'<div class="pa-item">',
+	  			'<h3>'+dd.item+'</h3>',
+	  			'<a href="javascript:;">',
+	  			'<img src="'+dd.live_preview_url+'" width="500" heigh="254"/>',
+	  			'</a><br/>',
+		  			'<div style="float:right;">',
+		  			'<a href="'+dd.url+'" target="_blank" class="button pullright">Live Demo</a> ',
+		  			'<a href="'+dd.url+'" target="_blank" class="button-primary pullright">Buy $'+dd.cost+'</a>',
+		  			'</div>',
+	  			'</div>'
+
+	  		];
+	  		products.push(item_large.join(""));
+	  	})
+
+	  	
+	    jQuery("#pa-products").append(products.join(""));
 	     
 	   
 	})
-	  
 });
