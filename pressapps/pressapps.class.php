@@ -18,12 +18,12 @@
 			}
 		}
 
-		public function load_header(){
+		public static function load_header(){
 				wp_enqueue_style( 'pressapps', plugin_dir_url(__FILE__ )."assets/css/pressapps.css" );
 				wp_enqueue_script( 'pressapps', plugin_dir_url(__FILE__ )."assets/js/pressapps.js"  , array(), '1.0.0', true );
 		} 
 
-		public function load_footer(){
+		public static function load_footer(){
 				wp_enqueue_style( 'pressapps', plugin_dir_url(__FILE__ )."assets/css/pressapps.css" );
 				wp_enqueue_script( 'pressapps', plugin_dir_url(__FILE__ )."assets/js/pressapps.js"  , array(), '1.0.0', true );
 		} 		
