@@ -32,31 +32,27 @@ jQuery(document).ready(function($) {
 	.done(function( d ) {
 		
 		var products = [];
-	  	jQuery.each(d['new-files-from-user'],function(i,dd){
-	  		var item_thumbnail = [
-	  			'<div style="float:left;padding:10px;">',
-	  			'<img src="'+dd.thumbnail+'"/>',
-	  			'</div>'
 
-	  		];
-	  		products.push(item_thumbnail.join(""));
-	  	});
+	  	jQuery.each(d['pressapps_products'],function(i,dd){
+	  		
+		  		var item_large = [
+		  			'<div class="pa-item">',
+		  			'<h3>',
+		  			dd.item,
+		  			'<span class="marked-purchased">Purchased</span>',
+		  			'</h3>',
+		  			'<a href="'+dd.url+'" target="_blank">',
+		  			'<img src="'+dd.live_preview_url+'" width="500" heigh="254"/>',
+		  			'</a><br/>',
+			  			'<div style="float:right;">',
+			  			'<a href="'+dd.url+'" target="_blank" class="button pullright">Live Demo</a> ',
+			  			'<a href="'+dd.url+'" target="_blank" class="button-primary pullright">Buy $'+dd.cost+'</a>',
+			  			'</div>',
+		  			'</div>'
 
-	  	jQuery.each(d['new-files-from-user'],function(i,dd){
-	  		var item_large = [
-	  			'<div class="pa-item">',
-	  			'<h3>'+dd.item+'</h3>',
-	  			'<a href="javascript:;">',
-	  			'<img src="'+dd.live_preview_url+'" width="500" heigh="254"/>',
-	  			'</a><br/>',
-		  			'<div style="float:right;">',
-		  			'<a href="'+dd.url+'" target="_blank" class="button pullright">Live Demo</a> ',
-		  			'<a href="'+dd.url+'" target="_blank" class="button-primary pullright">Buy $'+dd.cost+'</a>',
-		  			'</div>',
-	  			'</div>'
-
-	  		];
-	  		products.push(item_large.join(""));
+		  		];
+		  		products.push(item_large.join(""));
+		  
 	  	})
 
 
@@ -80,21 +76,26 @@ jQuery(document).ready(function($) {
 		console.log(d);
 		var products = [];
 	
-	  	jQuery.each(d['new-files-from-user'],function(i,dd){
-	  		var item_large = [
-	  			'<div class="pa-item">',
-	  			'<h3>'+dd.item+'</h3>',
-	  			'<a href="javascript:;">',
-	  			'<img src="'+dd.live_preview_url+'" width="500" heigh="254"/>',
-	  			'</a><br/>',
-		  			'<div style="float:right;">',
-		  			'<a href="'+dd.url+'" target="_blank" class="button pullright">Live Demo</a> ',
-		  			'<a href="'+dd.url+'" target="_blank" class="button-primary pullright">Buy $'+dd.cost+'</a>',
-		  			'</div>',
-	  			'</div>'
+	  	jQuery.each(d['pressapps_products'],function(i,dd){
+	  		
+		  		var item_large = [
+		  			'<div class="pa-item">',
+		  			'<h3>',
+		  			dd.item,
+		  			'<span class="marked-purchased">Purchased</span>',
+		  			'</h3>',
+		  			'<a  href="'+dd.url+'" target="_blank">',
+		  			'<img src="'+dd.live_preview_url+'" width="500" heigh="254"/>',
+		  			'</a><br/>',
+			  			'<div style="float:right;">',
+			  			'<a href="'+dd.url+'" target="_blank" class="button pullright">Live Demo</a> ',
+			  			'<a href="'+dd.url+'" target="_blank" class="button-primary pullright">Buy $'+dd.cost+'</a>',
+			  			'</div>',
+		  			'</div>'
 
-	  		];
-	  		products.push(item_large.join(""));
+		  		];
+		  		products.push(item_large.join(""));
+		  
 	  	})
 
 	  	
