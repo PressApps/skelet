@@ -11,6 +11,10 @@
 include_once wp_normalize_path(plugin_dir_path(__FILE__ ).'/classes/widget.class.php');
 include_once wp_normalize_path(dirname( __DIR__ ) .'/admin/options/widget.config.php');
  
+// Custom Post/Taxonomy/Tags Type should be included on widgets init action.
+include_once wp_normalize_path(plugin_dir_path(__FILE__ ).'/classes/cpt.class.php');
+include_once wp_normalize_path(dirname( __DIR__ ) .'/admin/options/cpt.config.php');
+ 
 
 if(! class_exists( 'Skelet_LoadConfig' ) ){
     class Skelet_LoadConfig{
@@ -24,6 +28,7 @@ if(! class_exists( 'Skelet_LoadConfig' ) ){
                     defined( 'SK_ACTIVE_CUSTOMIZE' )  or  define( 'SK_ACTIVE_CUSTOMIZE',  true );
                     defined( 'SK_ACTIVE_WIDGET'    )  or  define( 'SK_ACTIVE_WIDGET',     true );
                     defined( 'SK_ACTIVE_TAXONOMY'  )  or  define( 'SK_ACTIVE_TAXONOMY',   true );
+                    defined( 'SK_ACTIVE_CPT'       )  or  define( 'SK_ACTIVE_CPT',        true );
                     
                    
                    foreach ($skelet_paths as $path) {
