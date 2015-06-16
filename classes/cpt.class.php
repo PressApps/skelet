@@ -30,25 +30,22 @@ if(!class_exists("SkeletFramework_CPT")){
 
 						$this->post_type($cpt);
 
-						if(isset($cpt["cpt_parent_slug"]) && !empty($cpt["cpt_parent_slug"]) &&
-							isset($cpt["cpt_taxonomy"]) && !empty($cpt["cpt_taxonomy"])){
-							$cpt["cpt_slug"] = $cpt["cpt_parent_slug"];
+						if(isset($cpt["cpt_taxonomy"]) && !empty($cpt["cpt_taxonomy"])){
+							$cpt["cpt_parent_slug"] = $cpt["cpt_slug"];
 							$this->taxonomy($cpt);
 						}
 
-						if(isset($cpt["cpt_parent_slug"]) && !empty($cpt["cpt_parent_slug"]) &&
-							isset($cpt["cpt_tags"]) && !empty($cpt["cpt_tags"])){
-							$cpt["cpt_slug"] = $cpt["cpt_parent_slug"];
+						if(isset($cpt["cpt_tags"]) && !empty($cpt["cpt_tags"])){
+							$cpt["cpt_parent_slug"] = $cpt["cpt_slug"];
 							$this->tags($cpt);
 						}
+
 					}else if(isset($cpt["cpt_parent_slug"]) && !empty($cpt["cpt_parent_slug"]) &&
 							isset($cpt["cpt_taxonomy"]) && !empty($cpt["cpt_taxonomy"])){
-							$cpt["cpt_slug"] = $cpt["cpt_parent_slug"];
 							$this->taxonomy($cpt);
 
 					}else if(isset($cpt["cpt_parent_slug"]) && !empty($cpt["cpt_parent_slug"]) &&
 							isset($cpt["cpt_tags"]) && !empty($cpt["cpt_tags"])){
-							$cpt["cpt_slug"] = $cpt["cpt_parent_slug"];
 							$this->tags($cpt);
 					}
 					
