@@ -48,8 +48,14 @@ if(!class_exists("SkeletFramework_CPT")){
 							isset($cpt["cpt_tags"]) && !empty($cpt["cpt_tags"])){
 							$this->tags($cpt);
 					}
+
+					if(isset($cpt["cpt_slug"]) && !get_option(strtoupper($cpt["cpt_slug"]).'_FLUSH_REWRITE_RULE')){
+			            flush_rewrite_rules ();
+			            update_option(strtoupper($cpt["cpt_slug"]).'_FLUSH_REWRITE_RULE', FALSE);
+			        }
 					
 				}
+
 
 
 		}

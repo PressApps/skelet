@@ -29,6 +29,7 @@ if(! class_exists( 'Skelet_LoadConfig' ) ){
                     defined( 'SK_ACTIVE_WIDGET'    )  or  define( 'SK_ACTIVE_WIDGET',     true );
                     defined( 'SK_ACTIVE_TAXONOMY'  )  or  define( 'SK_ACTIVE_TAXONOMY',   true );
                     defined( 'SK_ACTIVE_CPT'       )  or  define( 'SK_ACTIVE_CPT',        true );
+                    defined( 'SK_ACTIVE_TEMPLATE'  )  or  define( 'SK_ACTIVE_TEMPLATE',   true );
                     
                    
                    foreach ($skelet_paths as $path) {
@@ -55,6 +56,7 @@ if(! class_exists( 'Skelet_LoadConfig' ) ){
                         sk_locate_template ( 'classes/shortcode.class.php'  ,$skelet_path);
                         sk_locate_template ( 'classes/customize.class.php'  ,$skelet_path);
                         sk_locate_template ( 'classes/taxonomy.class.php'   ,$skelet_path);
+                        sk_locate_template ( 'classes/template.class.php'   ,$skelet_path);
                       
                         // configs
                         sk_locate_template ( '../../includes/admin/options/framework.config.php'  ,$skelet_path);
@@ -62,6 +64,7 @@ if(! class_exists( 'Skelet_LoadConfig' ) ){
                         sk_locate_template ( '../../includes/admin/options/shortcode.config.php'  ,$skelet_path);
                         sk_locate_template ( '../../includes/admin/options/customize.config.php'  ,$skelet_path);
                         sk_locate_template ( '../../includes/admin/options/taxonomy.config.php'  ,$skelet_path);
+                        sk_locate_template ( '../../includes/admin/options/template.config.php'  ,$skelet_path);
 
 
                        
