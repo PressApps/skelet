@@ -32,23 +32,23 @@ if(!class_exists("SkeletFramework_CPT")){
 
 						if(isset($cpt["cpt_parent_slug"]) && !empty($cpt["cpt_parent_slug"]) &&
 							isset($cpt["cpt_taxonomy"]) && !empty($cpt["cpt_taxonomy"])){
-
+							$cpt["cpt_slug"] = $cpt["cpt_parent_slug"];
 							$this->taxonomy($cpt);
 						}
 
 						if(isset($cpt["cpt_parent_slug"]) && !empty($cpt["cpt_parent_slug"]) &&
 							isset($cpt["cpt_tags"]) && !empty($cpt["cpt_tags"])){
-
+							$cpt["cpt_slug"] = $cpt["cpt_parent_slug"];
 							$this->tags($cpt);
 						}
 					}else if(isset($cpt["cpt_parent_slug"]) && !empty($cpt["cpt_parent_slug"]) &&
 							isset($cpt["cpt_taxonomy"]) && !empty($cpt["cpt_taxonomy"])){
-
+							$cpt["cpt_slug"] = $cpt["cpt_parent_slug"];
 							$this->taxonomy($cpt);
 
 					}else if(isset($cpt["cpt_parent_slug"]) && !empty($cpt["cpt_parent_slug"]) &&
 							isset($cpt["cpt_tags"]) && !empty($cpt["cpt_tags"])){
-
+							$cpt["cpt_slug"] = $cpt["cpt_parent_slug"];
 							$this->tags($cpt);
 					}
 					
@@ -71,7 +71,7 @@ if(!class_exists("SkeletFramework_CPT")){
 
 		public function tags($cpt = array()){
 			global $wp_rewrite;
-			register_taxonomy( $cpt["cpt_parent_slug"].'_category', $cpt["cpt_parent_slug"], $cpt["cpt_tags"]);
+			register_taxonomy( $cpt["cpt_parent_slug"].'_tags', $cpt["cpt_parent_slug"], $cpt["cpt_tags"]);
 	
 		}
 

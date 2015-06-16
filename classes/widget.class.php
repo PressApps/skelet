@@ -161,11 +161,13 @@ class SkeletFramework_Widget{
 
 
           foreach($options as $option){
-              $widget_name = $option["title"];
-              $widget_id = str_replace(" ","",str_replace("-","",ucfirst($option["name"])));
+              $widget_name = isset($option["title"])?$option["title"]:"";
+              $widget_id = isset($option["name"])?str_replace(" ","",str_replace("-","",ucfirst($option["name"]))):"";
               $widget_description = !empty($option["description"])?$option["description"]:"";
               $arr_default_settings = array();
-             
+              if(!isset($option["settings"]))
+                 $option["settings"] = array();
+               
               foreach ($option["settings"] as $key) {
                
                 if(isset($key["default"])){
