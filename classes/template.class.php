@@ -8,19 +8,35 @@
  *
  */
 if(!class_exists("SkeletFramework_Template")){
-  class SkeletFramework_Template {
-  		function __construct(){
-  			add_filter("template_include",array($this,"template_include"));
+  class SkeletFramework_Template extends SkeletFramework_Abstract{
+
+      private $options = array();
+
+  		function __construct($options = array()){
+        
+        $this->options = $options;
+  			
+        add_filter("template_include",array($this,"template_include"));
   			add_filter('pre_get_posts',	  array($this,'pre_get_posts'   ));
   		}
   		public static function instance($options = array()){
-  				new self();
-  				//var_dump($options);
+  				
+          if(!empty($options)){
+           
+            new self($options);
+    			}
   		}
 
   		public function template_include($template){
-  			global $wp_query, $post;
+  			global $wp_query;
 
+        foreach ($this->post_types() as $type) {
+         if(isset($wp_query->{$type}) && $wp_query->{$type}){
+            //  var_dump($type);
+          }
+        }
+      
+          //var_dump( $this->options);
   				
   				return $template;
   		}
