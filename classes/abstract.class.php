@@ -54,5 +54,41 @@ if(!class_exists("SkeletFramework_Abstract")){
 	  	return $arr_post_types;
 	  }
 
+	  public function get_dummy_post_data($args){
+		    
+		    return array_merge(array(
+		        'ID'                    => 0,
+		        'post_status'           => 'publish',
+		        'post_author'           => 0,
+		        'post_parent'           => 0,
+		        'post_type'             => 'page',
+		        'post_date'             => 0,
+		        'post_date_gmt'         => 0,
+		        'post_modified'         => 0,
+		        'post_modified_gmt'     => 0,
+		        'post_content'          => '',
+		        'post_title'            => '',
+		        'post_excerpt'          => '',
+		        'post_content_filtered' => '',
+		        'post_mime_type'        => '',
+		        'post_password'         => '',
+		        'post_name'             => '',
+		        'guid'                  => '',
+		        'menu_order'            => 0,
+		        'pinged'                => '',
+		        'to_ping'               => '',
+		        'ping_status'           => '',
+		        'comment_status'        => 'closed',
+		        'comment_count'         => 0,
+		        'filter'                => 'raw',
+
+		        
+
+		    ),$args);
+		}
+
+
+
+
 	}
 }
