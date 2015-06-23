@@ -1,0 +1,18 @@
+#pa-products .pa-item{
+	float:left;
+	padding:4px;
+}
+#pa-products .pa-item img{
+	width:500px;
+	height: 254px;
+}
+
+#pa-products .pa-item .marked-purchased{
+  font-size: 12px;
+  float: right;
+  padding: 2px 5px 2px 5px;
+  background: #5CCF49;
+  color: #fff;
+  border-radius: 3px;
+  margin-left: 3px;
+}
