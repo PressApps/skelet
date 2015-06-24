@@ -14,7 +14,7 @@ if(!class_exists("SkeletFramework_Template")){
 
       private $config_post_types = array();
 
-      function __construct($options = array()){
+  		function __construct($options = array()){
         
         $this->options = $options;
 
@@ -25,18 +25,18 @@ if(!class_exists("SkeletFramework_Template")){
         }
 
         add_filter("template_include",array($this,"template_include"));
-        add_filter('pre_get_posts',   array($this,'pre_get_posts'   ));
-      }
-      public static function instance($options = array()){
-          
+  			add_filter('pre_get_posts',	  array($this,'pre_get_posts'   ));
+  		}
+  		public static function instance($options = array()){
+  				
           if(!empty($options)){
            
             new self($options);
-          }
-      }
+    			}
+  		}
 
-      public function template_include($template){
-        global $wp_query, $post;
+  		public function template_include($template){
+  			global $wp_query, $post;
 
         foreach ($this->post_types() as $type) {
          if(isset($wp_query->{$type}) && $wp_query->{$type}){
@@ -45,43 +45,41 @@ if(!class_exists("SkeletFramework_Template")){
         }
 
         $current_post_type = get_post_type($post);
+
          if(in_array($current_post_type,$this->config_post_types)){
-           $template =  $this->get_template($current_post_type) ?: $template ;
-
+              return $this->get_template($current_post_type) ?: $template;
          }
-         
-         return $template;
+         // var_dump( $this->options );
+         // var_dump( $wp_query );
+  				
+  				return $template;
+  		}
 
-      }
+  		public function pre_get_posts($query){
 
-      public function pre_get_posts($query){
+  			 //var_dump($query);
 
-         //var_dump($query);
-
-          return $query;
-      }
+  				return $query;
+  		}
 
       public function get_template($post_type){
-          $plugin_tpl_dir = wp_normalize_path(PAKB_PLUGIN_DIR."/template/");
-          $plugin_tpl_ctr = wp_normalize_path(PAKB_PLUGIN_DIR."/includes/controllers/");
+          $plugin_tpl_dir = wp_normalize_path(PABP_PLUGIN_DIR."/template/");
+          $plugin_tpl_ctr = wp_normalize_path(PABP_PLUGIN_DIR."/includes/controllers/");
 
            foreach ($this->options as $tpl) {
                
                 foreach ($tpl as $key => $value) {
                     if($key == $post_type){
                        if(isset($value["template"]) && file_exists($plugin_tpl_dir.$value["template"].".php")){
-                          global $skelet_template;
-                          $skelet_template = $plugin_tpl_dir.$value["template"].".php";
-                                
                           // include template controller/filter
-                          if(isset($value["controller"]) &&  file_exists($plugin_tpl_ctr.$value["controller"].".php")){
-                               
-                                include_once($plugin_tpl_ctr.$value["controller"].".php");
+                          if(isset($value["controller"]) &&
+                                file_exists($plugin_tpl_ctr.$value["controller"].".php")){
+                              include_once($plugin_tpl_ctr.$value["controller"].".php");
                           }
-                          return $skelet_template;
+                          // return template
+                          return $plugin_tpl_dir.$value["template"].".php";
                        }
                     }
-
                 }
 
             }

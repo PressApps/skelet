@@ -9,15 +9,14 @@
  */
 if( ! function_exists( 'sk_get_icons' ) ) {
   function sk_get_icons() {
-     global $skelet_path;
-    
-    $jsons = glob( $skelet_path["dir"]. '/fields/icon/*.json' );
+    global $skelet_path;
+    $jsons = glob( $skelet_path["dir"]. 'skelet/fields/icon/*.json' );
 
     if( ! empty( $jsons ) ) {
 
       foreach ( $jsons as $path ) {
 
-        $object = sk_get_icon_fonts( 'fields/icon/'. basename( $path ) );
+        $object = sk_get_icon_fonts( $skelet_path["dir"]. 'skelet/fields/icon/'. basename( $path ) );
 
         if( is_object( $object ) ) {
 
