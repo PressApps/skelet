@@ -14,7 +14,7 @@ if(!class_exists("SkeletFramework_Template")){
 
       private $config_post_types = array();
 
-  		function __construct($options = array()){
+      function __construct($options = array()){
         
         $this->options = $options;
 
@@ -25,18 +25,18 @@ if(!class_exists("SkeletFramework_Template")){
         }
 
         add_filter("template_include",array($this,"template_include"));
-  			add_filter('pre_get_posts',	  array($this,'pre_get_posts'   ));
-  		}
-  		public static function instance($options = array()){
-  				
+        add_filter('pre_get_posts',   array($this,'pre_get_posts'   ));
+      }
+      public static function instance($options = array()){
+          
           if(!empty($options)){
            
             new self($options);
-    			}
-  		}
+          }
+      }
 
-  		public function template_include($template){
-  			global $wp_query, $post;
+      public function template_include($template){
+        global $wp_query, $post;
 
         foreach ($this->post_types() as $type) {
          if(isset($wp_query->{$type}) && $wp_query->{$type}){
@@ -52,14 +52,14 @@ if(!class_exists("SkeletFramework_Template")){
          
          return $template;
 
-  		}
+      }
 
-  		public function pre_get_posts($query){
+      public function pre_get_posts($query){
 
-  			 //var_dump($query);
+         //var_dump($query);
 
-  				return $query;
-  		}
+          return $query;
+      }
 
       public function get_template($post_type){
           $plugin_tpl_dir = wp_normalize_path(PAKB_PLUGIN_DIR."/template/");
