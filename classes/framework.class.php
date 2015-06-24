@@ -390,16 +390,16 @@ if(!class_exists("SkeletFramework")){
         echo '<h1>';
         echo sprintf('%s',
             isset($skelet_path["plugin_data"]["Name"])?
-            $skelet_path["plugin_data"]["Name"]." v".
-            $skelet_path["plugin_data"]["Version"]." <small>by ".
-            $skelet_path["plugin_data"]["Author"]."</small>":"Skelet Framework <small>by PressApps</small>");
+            $skelet_path["plugin_data"]["Name"]." <small>".
+            $skelet_path["plugin_data"]["Version"]."</small>":"Skelet Framework <small>by PressApps</small>"); // ." <small>by ".
+            //$skelet_path["plugin_data"]["Author"]."</small>":"Skelet Framework <small>by PressApps</small>");
         echo '</h1>';
         echo '<fieldset>';
         echo ( $this->settings['ajax_save'] === true ) ? '<span id="sk-save-ajax">'. __( 'Settings saved.', SK_TEXTDOMAIN ) .'</span>' : '';
         submit_button( __( 'Save', SK_TEXTDOMAIN ), 'primary', 'save', false, array( 'data-ajax' => $this->settings['ajax_save'], 'data-save' => __( 'Saving...', SK_TEXTDOMAIN ) ) );
         submit_button( __( 'Restore', SK_TEXTDOMAIN ), 'secondary sk-restore sk-reset-confirm', $this->unique .'[reset]', false );
         echo '</fieldset>';
-        echo ( empty( $has_nav ) ) ? '<a href="#" class="sk-expand-all"><i class="fa fa-eye-slash"></i> '. __( 'show all options', SK_TEXTDOMAIN ) .'</a>' : '';
+        //echo ( empty( $has_nav ) ) ? '<a href="#" class="sk-expand-all"><i class="fa fa-eye-slash"></i> '. __( 'show all options', SK_TEXTDOMAIN ) .'</a>' : '';
         echo '<div class="clear"></div>';
         echo '</header>'; // end .sk-header
 
