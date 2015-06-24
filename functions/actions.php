@@ -9,8 +9,9 @@
  */
 if( ! function_exists( 'sk_get_icons' ) ) {
   function sk_get_icons() {
-
-    $jsons = glob( SK_DIR . '/fields/icon/*.json' );
+     global $skelet_path;
+    
+    $jsons = glob( $skelet_path["dir"]. '/fields/icon/*.json' );
 
     if( ! empty( $jsons ) ) {
 
