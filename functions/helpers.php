@@ -1118,3 +1118,11 @@ function k_scripts() {
   <?php
 }
 }
+
+if(!function_exists("pakb_load_file")){
+function pakb_load_file($filename){
+    ob_start();
+    include $filename;
+    return ob_get_clean();
+}
+}
