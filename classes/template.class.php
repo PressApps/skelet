@@ -45,14 +45,13 @@ if(!class_exists("SkeletFramework_Template")){
         }
 
         $current_post_type = get_post_type($post);
-
          if(in_array($current_post_type,$this->config_post_types)){
-              return $this->get_template($current_post_type) ?: $template;
+           $template =  $this->get_template($current_post_type) ?: $template ;
+
          }
-         // var_dump( $this->options );
-         // var_dump( $wp_query );
-  				
-  				return $template;
+         
+         return $template;
+
   		}
 
   		public function pre_get_posts($query){
@@ -63,23 +62,26 @@ if(!class_exists("SkeletFramework_Template")){
   		}
 
       public function get_template($post_type){
-          $plugin_tpl_dir = wp_normalize_path(PABP_PLUGIN_DIR."/template/");
-          $plugin_tpl_ctr = wp_normalize_path(PABP_PLUGIN_DIR."/includes/controllers/");
+          $plugin_tpl_dir = wp_normalize_path(PAKB_PLUGIN_DIR."/template/");
+          $plugin_tpl_ctr = wp_normalize_path(PAKB_PLUGIN_DIR."/includes/controllers/");
 
            foreach ($this->options as $tpl) {
                
                 foreach ($tpl as $key => $value) {
                     if($key == $post_type){
                        if(isset($value["template"]) && file_exists($plugin_tpl_dir.$value["template"].".php")){
+                          global $skelet_template;
+                          $skelet_template = $plugin_tpl_dir.$value["template"].".php";
+                                
                           // include template controller/filter
-                          if(isset($value["controller"]) &&
-                                file_exists($plugin_tpl_ctr.$value["controller"].".php")){
-                              include_once($plugin_tpl_ctr.$value["controller"].".php");
+                          if(isset($value["controller"]) &&  file_exists($plugin_tpl_ctr.$value["controller"].".php")){
+                               
+                                include_once($plugin_tpl_ctr.$value["controller"].".php");
                           }
-                          // return template
-                          return $plugin_tpl_dir.$value["template"].".php";
+                          return $skelet_template;
                        }
                     }
+
                 }
 
             }

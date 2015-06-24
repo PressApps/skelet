@@ -219,8 +219,9 @@ if ( ! function_exists( 'sk_load_option_fields' ) ) {
    */
 if(!function_exists("paf")){  
   function paf( $option_id  = '' ) {
-
-    $paf = get_option( 'paf', array() );
+    global $skelet_path;
+   
+    $paf = get_option( $skelet_path["option"], array() );
 
     if( strlen( $option_id ) ) {
       if( isset( $paf[ $option_id ] ) ) {
@@ -1095,4 +1096,12 @@ function k_scripts() {
   </script>
   <?php
 }
-}// if class exists
+}
+
+if(!function_exists("pakb_load_file")){
+  function pakb_load_file($filename){
+      ob_start();
+      include $filename;
+      return ob_get_clean();
+  }
+}
