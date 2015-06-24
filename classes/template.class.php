@@ -14,7 +14,7 @@ if(!class_exists("SkeletFramework_Template")){
 
       private $config_post_types = array();
 
-  		function __construct($options = array()){
+      function __construct($options = array()){
         
         $this->options = $options;
 
@@ -25,18 +25,18 @@ if(!class_exists("SkeletFramework_Template")){
         }
 
         add_filter("template_include",array($this,"template_include"));
-  			add_filter('pre_get_posts',	  array($this,'pre_get_posts'   ));
-  		}
-  		public static function instance($options = array()){
-  				
+        add_filter('pre_get_posts',   array($this,'pre_get_posts'   ));
+      }
+      public static function instance($options = array()){
+          
           if(!empty($options)){
            
             new self($options);
-    			}
-  		}
+          }
+      }
 
-  		public function template_include($template){
-  			global $wp_query, $post;
+      public function template_include($template){
+        global $wp_query, $post;
 
         foreach ($this->post_types() as $type) {
          if(isset($wp_query->{$type}) && $wp_query->{$type}){
@@ -51,20 +51,21 @@ if(!class_exists("SkeletFramework_Template")){
          }
          // var_dump( $this->options );
          // var_dump( $wp_query );
-  				
-  				return $template;
-  		}
+          
+          return $template;
+      }
 
-  		public function pre_get_posts($query){
+      public function pre_get_posts($query){
 
-  			 //var_dump($query);
+         //var_dump($query);
 
-  				return $query;
-  		}
+          return $query;
+      }
 
       public function get_template($post_type){
-          $plugin_tpl_dir = wp_normalize_path(PABP_PLUGIN_DIR."/template/");
-          $plugin_tpl_ctr = wp_normalize_path(PABP_PLUGIN_DIR."/includes/controllers/");
+          $path = str_replace("includes\skelet\classes/","",plugin_dir_path( __FILE__ ));
+          $plugin_tpl_dir = wp_normalize_path($path."/template/");
+          $plugin_tpl_ctr = wp_normalize_path($path."/includes/controllers/");
 
            foreach ($this->options as $tpl) {
                
