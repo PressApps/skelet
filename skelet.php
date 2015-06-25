@@ -87,9 +87,9 @@ if(!class_exists("Skelet_PressApps_Menu")){
         global $skelet_paths, $submenu;
       
 
-        call_user_func("add_submenu_page", SK_PARENT_MENU, "Support", "Support", "manage_options", "pa-menu-support", array("Skelet_PressApps_Menu","get_pa_general_pages"));
-        call_user_func("add_submenu_page", SK_PARENT_MENU, "Products", "Products", "manage_options", "pa-menu-product", array("Skelet_PressApps_Menu","get_pa_general_pages"));
-        call_user_func("add_submenu_page", SK_PARENT_MENU, "Services", "Services", "manage_options", "pa-menu-services", array("Skelet_PressApps_Menu","get_pa_general_pages"));
+        call_user_func("add_submenu_page", SK_PARENT_MENU, "Support", "Support", "manage_options", "pressapps-support", array("Skelet_PressApps_Menu","get_pa_general_pages"));
+        call_user_func("add_submenu_page", SK_PARENT_MENU, "Products", "Products", "manage_options", "pressapps-product", array("Skelet_PressApps_Menu","get_pa_general_pages"));
+        call_user_func("add_submenu_page", SK_PARENT_MENU, "Services", "Services", "manage_options", "pressapps-services", array("Skelet_PressApps_Menu","get_pa_general_pages"));
                           
    }
     public static function get_pa_general_pages(){

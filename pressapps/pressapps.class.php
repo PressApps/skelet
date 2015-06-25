@@ -29,11 +29,11 @@
 		} 		
 
  		public static function route($page = ''){
- 			   if($page == "pa-menu-support"){
+ 			   if($page == "pressapps-support"){
  			   		 include_once wp_normalize_path(plugin_dir_path(__FILE__ ) .'/template/support.php');
- 			   }else if($page == "pa-menu-product"){
+ 			   }else if($page == "pressapps-product"){
  			   		 include_once wp_normalize_path(plugin_dir_path(__FILE__ ) .'/template/products.php');
- 			   }else if($page == "pa-menu-services"){
+ 			   }else if($page == "pressapps-services"){
  			   		 include_once wp_normalize_path(plugin_dir_path(__FILE__ ) .'/template/services.php');
  			   }
  		}
