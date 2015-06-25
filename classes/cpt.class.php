@@ -16,6 +16,9 @@ if(!class_exists("SkeletFramework_CPT")){
 		function __construct($options = array()){
 			$this->options = $options;
 			add_action("init", array($this,"register"));
+			add_filter( 'preview_post_link', array($this,'post_format_parameter') );
+                            
+ 
 		}
 		public static function instance($options = array()){
 					new self($options);
@@ -88,6 +91,12 @@ if(!class_exists("SkeletFramework_CPT")){
 			    }
 			     
 		}
+		public function post_format_parameter( $url ) {
+                    $url = remove_query_arg( 'post_format', $url );
+                    return $url;
+    	}
+
+   
 
 
 	}
