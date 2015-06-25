@@ -65,7 +65,6 @@ if(!class_exists("SkeletFramework_Template")){
              array_push( $arr_current_type, $wp_query->{$type});
           }
         }
-
         
 
          foreach ($this->templates as $tpl => $page) {
@@ -108,6 +107,7 @@ if(!class_exists("SkeletFramework_Template")){
             }
               return false;
       }
+      
   }
 }
 ?>
