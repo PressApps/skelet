@@ -49,10 +49,7 @@ if(!class_exists("SkeletFramework_CPT")){
 							$this->tags($cpt);
 					}
 
-					if(isset($cpt["cpt_slug"]) && !get_option(strtoupper($cpt["cpt_slug"]).'_FLUSH_REWRITE_RULE')){
-			            flush_rewrite_rules ();
-			            update_option(strtoupper($cpt["cpt_slug"]).'_FLUSH_REWRITE_RULE', FALSE);
-			        }
+
 					
 				}
 
@@ -63,19 +60,31 @@ if(!class_exists("SkeletFramework_CPT")){
 		public function post_type($cpt = array()){
 			global $wp_rewrite;
 			register_post_type( $cpt["cpt_slug"] , $cpt["cpt"] );
-
+			$this->flush_rules($cpt);
 		}
 
 		public function taxonomy($cpt = array()){
 			global $wp_rewrite;
 			register_taxonomy( $cpt["cpt_parent_slug"].'_category', $cpt["cpt_parent_slug"], $cpt["cpt_taxonomy"]);
-	
+			$cpt["cpt_slug"] = $cpt["cpt_parent_slug"].'_category';
+			$this->flush_rules($cpt);
 		}
 
 		public function tags($cpt = array()){
 			global $wp_rewrite;
 			register_taxonomy( $cpt["cpt_parent_slug"].'_tags', $cpt["cpt_parent_slug"], $cpt["cpt_tags"]);
-	
+			$cpt["cpt_slug"] = $cpt["cpt_parent_slug"].'_tags';
+			$this->flush_rules($cpt);
+		}
+
+		public function flush_rules($cpt = array()){
+			global $wp_rewrite;
+			$cpt_slug = str_replace("-","_",strtoupper($cpt["cpt_slug"]));
+			if(isset($cpt["cpt_slug"]) && !get_option($cpt_slug.'_FLUSH_REWRITE_RULE') && !empty($cpt_slug)){
+			            flush_rewrite_rules (true);
+			            update_option($cpt_slug.'_FLUSH_REWRITE_RULE', FALSE);
+			}
+
 		}
 
 
