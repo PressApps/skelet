@@ -394,6 +394,7 @@ if(!class_exists("SkeletFramework")){
             $skelet_path["plugin_data"]["Version"]."</small>":"Skelet Framework <small>by PressApps</small>"); // ." <small>by ".
             //$skelet_path["plugin_data"]["Author"]."</small>":"Skelet Framework <small>by PressApps</small>");
         echo '</h1>';
+        echo '<p class="feedback"><a target="_blank" href="http://pressapps.co/feedback/">Feedback</a></p>';
         echo '<fieldset>';
         echo ( $this->settings['ajax_save'] === true ) ? '<span id="sk-save-ajax">'. __( 'Settings saved.', SK_TEXTDOMAIN ) .'</span>' : '';
         submit_button( __( 'Save Changes', SK_TEXTDOMAIN ), 'sk-save', 'save', false, array( 'data-ajax' => $this->settings['ajax_save'], 'data-save' => __( 'Saving...', SK_TEXTDOMAIN ) ) );
@@ -485,11 +486,13 @@ if(!class_exists("SkeletFramework")){
         echo '</div>'; // end .sk-body
 
         echo '<footer class="sk-footer">';
-        echo sprintf('%s',
-            isset($skelet_path["plugin_data"]["Name"])?
-            $skelet_path["plugin_data"]["Name"]." v".
-            $skelet_path["plugin_data"]["Version"]." <small>by ".
-            $skelet_path["plugin_data"]["Author"]."</small>":"Skelet Framework <small>by PressApps</small>");
+          echo '<img src="' . $skelet_path["uri"] . '/assets/images/madeby.png">';
+          echo '<a target="_blank" href="http://pressapps.co/"><img src="' . $skelet_path["uri"] . '/assets/images/pressapps.png"></a>';
+          //echo sprintf('%s',
+            //isset($skelet_path["plugin_data"]["Name"])?
+            //$skelet_path["plugin_data"]["Name"]." v".
+            //$skelet_path["plugin_data"]["Version"]." <small>by ".
+            //$skelet_path["plugin_data"]["Author"]."</small>":"Skelet Framework <small>by PressApps</small>");
         echo '</footer>'; // end .sk-footer
 
         echo '</form>'; // end form
