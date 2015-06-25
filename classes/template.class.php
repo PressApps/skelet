@@ -14,15 +14,35 @@ if(!class_exists("SkeletFramework_Template")){
 
       private $config_post_types = array();
 
+      private $templates = array();
+
       function __construct($options = array()){
         
         $this->options = $options;
 
-        foreach ($options as $tpl) {
-          foreach ($tpl as $key => $value) {
-             array_push($this->config_post_types, $key);
+         foreach ($options as $tpl) {
+              foreach ($tpl as $key => $value) {
+                  foreach($value as $is => $cpt){
+                      if($is == "if"){
+                            $this->templates[$key] = array();
+                            foreach(array_keys($cpt) as $c){
+                               // array_push(  $this->templates[$key], call_user_func($c));
+                                $this->templates[$key][$c] = $c;
+                            }
+
+                            foreach ($cpt as $k => $v ) {
+                              $this->templates[$key][$k] = $v;
+                                  foreach($v as $vv){
+                                  //  array_push( $this->templates[$key], call_user_func_array($k,array($vv)));
+                                    array_push($this->templates[$key][$k],$vv);
+                                  }
+                                  $this->templates[$key][$k] = array_unique($this->templates[$key][$k]);
+                            }
+                       }
+                  }
+              }
           }
-        }
+
 
         add_filter("template_include",array($this,"template_include"));
         add_filter('pre_get_posts',   array($this,'pre_get_posts'   ));
@@ -38,20 +58,22 @@ if(!class_exists("SkeletFramework_Template")){
       public function template_include($template){
         global $wp_query, $post;
 
+        $arr_current_type = array();
+        
         foreach ($this->post_types() as $type) {
          if(isset($wp_query->{$type}) && $wp_query->{$type}){
-            // var_dump($type);
+             array_push( $arr_current_type, $wp_query->{$type});
           }
         }
 
-        $current_post_type = get_post_type($post);
+        
 
-         if(in_array($current_post_type,$this->config_post_types)){
-              return $this->get_template($current_post_type) ?: $template;
+         foreach ($this->templates as $tpl => $page) {
+            if(in_array(array_keys($page), $arr_current_type)){
+                   return $this->get_template($tpl) ?: $template;
+            }
          }
-         // var_dump( $this->options );
-         // var_dump( $wp_query );
-          
+
           return $template;
       }
 
