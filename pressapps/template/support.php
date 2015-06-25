@@ -4,4 +4,13 @@
  * @since 1.0.0
  */
 ?>
-<h2>PressApps Support</h2>
+
+<header class="pa-header">
+	<h2>Support</h2>
+</header>
+
+<div class="pa-support">
+	<div class="box">
+		<i class="sk-icon fa fa-file"></i>
+	</div>
+</div>

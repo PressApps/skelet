@@ -1,12 +1,33 @@
-#pa-products .pa-item{
+
+body[class^="pressapps_page_"] #wpcontent, body[class*="pressapps_page_"] #wpcontent {
+  padding-left: 0;
+}
+
+#pa-products {
+  margin-bottom: 25px;
+  overflow: hidden;
+}
+
+#pa-products .pa-item {
 	float:left;
-	padding:4px;
+	margin-left: 25px;
+  margin-top: 25px;
+  padding: 40px;
+  background-color: rgba(0, 0, 0, 0.06);
+}
+#pa-products .pa-item h3 {
+  text-align: center;
+  margin: 0 0 30px;
+  text-transform: uppercase;
 }
 #pa-products .pa-item img{
 	width:500px;
 	height: 254px;
 }
-
+#pa-products .pa-item p {
+  text-align: center;
+  margin: 25px 0 0;
+}
 #pa-products .pa-item .marked-purchased{
   font-size: 12px;
   float: right;
@@ -15,4 +36,34 @@
   color: #fff;
   border-radius: 3px;
   margin-left: 3px;
+}
+
+
+
+.pa-header {
+  padding: 35px 25px;
+  background-image: url("../../../assets/images/bg.jpg");
+  background-color: #15ADF4;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: scroll;
+  background-position: center top;
+}
+.pa-header h2 {
+  color: #fff;
+  margin: 0;
+  text-transform: uppercase;
+  font-size: 2em;
+  line-height: 2em;
+  font-weight: 700;
+}
+
+
+/* Support page */
+.pa-support {
+
+}
+.pa-support .box {
+  width: 33.333%;
+  background-color: #fff;
 }

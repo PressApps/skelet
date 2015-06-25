@@ -4,4 +4,7 @@
  * @since 1.0.0
  */
 ?>
-<h2>PressApps Services</h2>
+
+<header class="pa-header">
+	<h2><?php _e( 'Services', SK_TEXTDOMAIN ); ?></h2>
+</header>
