@@ -6,5 +6,5 @@
 ?>
 
 <header class="pa-header">
-	<h2><?php _e( 'Services', SK_TEXTDOMAIN ); ?></h2>
+	<h1><?php _e( 'Services', SK_TEXTDOMAIN ); ?></h1>
 </header>
