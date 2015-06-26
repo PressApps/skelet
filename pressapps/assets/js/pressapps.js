@@ -104,3 +104,16 @@ jQuery(document).ready(function($) {
 	   
 	})
 });
+
+// Faqs
+jQuery(document).ready(function($) {
+	$('.pa-question').each(function() {
+		var tis = $(this), state = false, answer = tis.next('.pa-answer').slideUp();
+		tis.click(function() {
+			state = !state;
+			answer.slideToggle(state);
+			tis.toggleClass('active',state);
+		});
+	});
+});
+

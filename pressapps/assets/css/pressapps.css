@@ -1,8 +1,33 @@
-
+/**
+ * Global
+ */
 body[class^="pressapps_page_"] #wpcontent, body[class*="pressapps_page_"] #wpcontent {
   padding-left: 0;
 }
 
+
+/**
+ * Header
+ */
+.pa-header h1, .pa-header h3, .pa-cta h2 {
+  font-weight: 400;
+}
+.pa-header {
+  padding: 35px 25px;
+  text-align: center;
+}
+.pa-header h1 {
+  margin: 0;
+  font-size: 4em;
+  line-height: 1.4em;
+}
+.pa-header h3 {
+  margin: 20px 0 0;
+}
+
+/**
+ * Products page
+ */
 #pa-products {
   margin-bottom: 25px;
   overflow: hidden;
@@ -38,61 +63,9 @@ body[class^="pressapps_page_"] #wpcontent, body[class*="pressapps_page_"] #wpcon
   margin-left: 3px;
 }
 
-
-/*
-header {
-  padding: 35px 25px;
-  background-image: url("../../../assets/images/bg.jpg");
-  background-color: #15ADF4;
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-attachment: scroll;
-  background-position: center top;
-}
-header h1 {
-  color: #fff;
-  margin: 0;
-  text-transform: uppercase;
-  font-size: 2em;
-  line-height: 2em;
-  font-weight: 700;
-}
-*/
-
-/* Support page */
-/*
-.pa-support {
-  margin: 0 15px;
-}
-.pa-support .box-wrapper {
-  float: left;
-  width: 33.3333%;
-}
-.pa-support .box {
-  margin: 30px 15px;
-  background-color: #fff;
-  text-align: center;
-  padding: 25px 15px;
-}
-*/
-
-.pa-header h1, .pa-header h3, .pa-cta h2 {
-  font-weight: 400;
-}
-.pa-header {
-  padding: 35px 25px;
-  text-align: center;
-}
-.pa-header h1 {
-  margin: 0;
-  font-size: 4em;
-  line-height: 1.4em;
-}
-.pa-header h3 {
-  margin: 20px 0 0;
-}
-
-
+/**
+ * Support page
+ */
 .pa-boxes {
   margin: 40px 0 0;
   padding: 0;
@@ -140,11 +113,87 @@ header h1 {
   font-size: 42px;
 }
 .pa-boxes h3 {
-  font-size: 20px;
+  font-size: 22px;
+  font-weight: 400;
 }
 .pa-boxes p {
   margin: 15px 0 0;
 }
+
+.pa-faq {
+  overflow: hidden;
+  text-align: center;
+  width: 94%;
+  margin: 80px auto 0;
+}
+.pa-faq h2 {
+  margin: 0 0 .75em;
+  font-size: 2.4em;
+  line-height: 1.4em;
+}
+.pa-faq ul {
+  width: 30%;
+  margin: 0 2%;
+  float: left;
+  text-align: left;
+}
+.pa-faq .last {
+  margin-right: 0;
+}
+.pa-faq li a {
+  text-decoration: underline;
+}
+.pa-question {
+  cursor: pointer;
+  text-decoration: underline;
+  margin: 12px 0 0;
+}
+
+.pa-cta, .pa-feedback {
+  margin-top: 80px;
+  text-align: center;
+  padding: 0 40px;
+}
+.pa-cta h2, .pa-feedback h2 {
+  margin: 0 0 .75em;
+  font-size: 2.4em;
+  line-height: 1.4em;
+}
+.pa-cta p, .pa-feedback p {
+  font-size: 15px;
+}
+.btn-cta {
+  display: inline-block;
+  margin-top: 20px;
+  text-align: center;
+  text-transform: uppercase;
+  text-decoration: none;
+  letter-spacing: 1px;
+  font-weight: 500;
+  font-size: 1.2em;
+  line-height: 1em;
+  padding: 1.5em 2.5em;
+  color: #e0e0e0;
+  color: #181818;
+  background-color: transparent;
+  border: solid 1px #121212;
+  -webkit-transition: background-color .14s ease-out,color .14s ease-out;
+  -moz-transition: background-color .14s ease-out,color .14s ease-out;
+  -ms-transition: background-color .14s ease-out,color .14s ease-out;
+  -o-transition: background-color .14s ease-out,color .14s ease-out;
+  transition: background-color .14s ease-out,color .14s ease-out;
+}
+.btn-cta:hover {
+  background-color: #222;
+  color: #fff;
+}
+.pa-feedback {
+  margin-bottom: 80px;
+}
+.pa-feedback .btn-cta {
+  padding: 0.8em 1.5em;
+}
+
 
 @media screen and (max-width: 678px) {
   .pa-boxes {
@@ -154,51 +203,8 @@ header h1 {
     width: 100%;
     margin: 0 0 3% 0;
   }
-}
-
-
-
-
-
-.pa-cta {
-  text-align: center;
-  margin-top: 80px;
-  padding: 70px 0;
-  background-color: #fff;
-}
-
-
-.pa-cta h2 {
-  margin: 0 0 .75em;
-  font-size: 2.4em;
-  line-height: 1.4em;
-}
-.pa-cta p {
-  font-size: 15px;
-  text-align: center;
-}
-.btn-cta {
-  display: inline-block;
-  margin: 20px 20px 0;
-  max-width: 200px;
-  text-align: center;
-  font: inherit;
-  text-transform: uppercase;
-  text-decoration: none;
-  letter-spacing: 1px;
-  font-weight: 500;
-  font-size: 1.2em;
-  line-height: 1em;
-  padding: 1.5em 2.5em;
-  border: none;
-  color: #e0e0e0;
-  background: #181818;
-  color: #181818;
-  background-color: transparent;
-  border: solid 1px #121212;
-  -webkit-transition: background-color .14s ease-out,color .14s ease-out;
-  -moz-transition: background-color .14s ease-out,color .14s ease-out;
-  -ms-transition: background-color .14s ease-out,color .14s ease-out;
-  -o-transition: background-color .14s ease-out,color .14s ease-out;
-  transition: background-color .14s ease-out,color .14s ease-out;
+  .pa-faq ul {
+    width: 100%;
+    margin-bottom: 15px;
+  }
 }
