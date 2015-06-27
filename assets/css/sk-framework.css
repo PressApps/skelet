@@ -1742,12 +1742,6 @@ Light theme
   background-size: cover;
   background-attachment: scroll;
   background-position: center top;  
-  /*
-  background: #15ADF4;
-  */
-}
-.sk-framework.sk-option-framework .sk-header h1 {
-  color: #fff;
 }
 .sk-framework.sk-option-framework .sk-header .feedback {
   margin: 20px 45px 0 45px;
