@@ -7,12 +7,12 @@
  */
  global $skelet_paths,$skelet_path;
 
-// Widget should be included on widgets init action.
-include_once wp_normalize_path(plugin_dir_path(__FILE__ ).'/classes/widget.class.php');
-include_once wp_normalize_path(dirname( __DIR__ ) .'/options/widget.config.php');
- 
-
+    // Widget should be included on widgets init action.
+    include_once wp_normalize_path(dirname( __FILE__ ) .'/classes/widget.class.php');
+  
 if(! class_exists( 'Skelet_LoadConfig' ) ){
+    
+
     class Skelet_LoadConfig{
             public static function instance(){
                     global $skelet_paths,$skelet_path;
@@ -34,6 +34,7 @@ if(! class_exists( 'Skelet_LoadConfig' ) ){
                          // ------------------------------------------------------------------------------------------------
                         
                          $skelet_path = $path;
+                       
                         // helpers
                         sk_locate_template ( 'functions/deprecated.php'     ,$skelet_path);
                         sk_locate_template ( 'functions/helpers.php'        ,$skelet_path);

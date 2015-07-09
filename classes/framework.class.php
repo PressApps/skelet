@@ -337,7 +337,8 @@ if(!class_exists("SkeletFramework")){
 
 
       $args = wp_parse_args( $this->settings, $defaults_menu_args );
-
+     
+     
       if(!defined( 'SK_PARENT_MENU' )){
         $set_parent_slug = isset($args["menu_slug"])?$args["menu_slug"]:"pa-main-menu";
         define( 'SK_PARENT_MENU',$set_parent_slug."_");
