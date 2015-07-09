@@ -75,6 +75,35 @@ if(! class_exists( 'Skelet_LoadConfig' ) ){
 
 }
 
+if(!class_exists("Skelet_PA_Widget")){
+    class Skelet_PA_Widget{
+      
+        function __construct(){
+            add_action( 'widgets_init', array($this,"widgetize"),2);
+        }
+
+        /**
+         * Register the widget for the admin area.
+         *
+         * @since    1.0.0
+         */
+        public function widgetize(){
+             global $skelet_paths,$skelet_path;
+            
+             foreach ($skelet_paths as $path) {
+
+                $skelet_path = $path;
+                 if(file_exists( wp_normalize_path($skelet_path["dir"].'/options/widget.config.php'))){
+                        include_once  wp_normalize_path($skelet_path["dir"].'/options/widget.config.php');
+                }
+            }
+               
+        }
+ 
+    }
+    new Skelet_PA_Widget;
+}
+
 if(!class_exists("Skelet_PressApps_Menu")){
 
   class Skelet_PressApps_Menu{
