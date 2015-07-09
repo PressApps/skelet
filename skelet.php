@@ -9,11 +9,11 @@
 
 // Widget should be included on widgets init action.
 include_once wp_normalize_path(plugin_dir_path(__FILE__ ).'/classes/widget.class.php');
-include_once wp_normalize_path(dirname( __DIR__ ) .'/admin/options/widget.config.php');
+include_once wp_normalize_path(dirname( __DIR__ ) .'/options/widget.config.php');
  
 // Custom Post/Taxonomy/Tags Type should be included on widgets init action.
 include_once wp_normalize_path(plugin_dir_path(__FILE__ ).'/classes/cpt.class.php');
-include_once wp_normalize_path(dirname( __DIR__ ) .'/admin/options/cpt.config.php');
+include_once wp_normalize_path(dirname( __DIR__ ) .'/options/cpt.config.php');
  
 
 if(! class_exists( 'Skelet_LoadConfig' ) ){
@@ -59,12 +59,12 @@ if(! class_exists( 'Skelet_LoadConfig' ) ){
                         sk_locate_template ( 'classes/template.class.php'   ,$skelet_path);
                       
                         // configs
-                        sk_locate_template ( '../../includes/admin/options/framework.config.php'  ,$skelet_path);
-                        sk_locate_template ( '../../includes/admin/options/metabox.config.php'    ,$skelet_path);
-                        sk_locate_template ( '../../includes/admin/options/shortcode.config.php'  ,$skelet_path);
-                        sk_locate_template ( '../../includes/admin/options/customize.config.php'  ,$skelet_path);
-                        sk_locate_template ( '../../includes/admin/options/taxonomy.config.php'  ,$skelet_path);
-                        sk_locate_template ( '../../includes/admin/options/template.config.php'  ,$skelet_path);
+                        sk_locate_template ( '../../admin/options/framework.config.php'  ,$skelet_path);
+                        sk_locate_template ( '../../admin/options/metabox.config.php'    ,$skelet_path);
+                        sk_locate_template ( '../../admin/options/shortcode.config.php'  ,$skelet_path);
+                        sk_locate_template ( '../../admin/options/customize.config.php'  ,$skelet_path);
+                        sk_locate_template ( '../../admin/options/taxonomy.config.php'  ,$skelet_path);
+                        sk_locate_template ( '../../admin/options/template.config.php'  ,$skelet_path);
 
 
                        
