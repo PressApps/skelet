@@ -83,14 +83,12 @@ if(!class_exists("SkeletFramework")){
 
       $this->settings = apply_filters( 'sk_framework_settings', $settings );
       $this->options  = apply_filters( 'sk_framework_options', $options );
-     
       if( ! empty( $this->options ) ) {
         $this->sections   = $this->get_sections();
         $this->get_option = get_option( self::$skelet_unique );
         $this->addAction( 'admin_init', 'settings_api' );
         $this->addAction( 'admin_menu', 'admin_menu' );
         $this->addAction( 'wp_ajax_sk-export-options', 'export' );
-
       }
 
     }
@@ -338,13 +336,10 @@ if(!class_exists("SkeletFramework")){
 
       $args = wp_parse_args( $this->settings, $defaults_menu_args );
      
-     
       if(!defined( 'SK_PARENT_MENU' )){
         $set_parent_slug = isset($args["menu_slug"])?$args["menu_slug"]:"pa-main-menu";
         define( 'SK_PARENT_MENU',$set_parent_slug."_");
         call_user_func("add_menu_page", "PressApps", "PressApps", "pa-nonexistent-capability", SK_PARENT_MENU, null, $args['menu_icon'], $args['menu_position'] );
-       
-
       }
        
         
@@ -386,13 +381,14 @@ if(!class_exists("SkeletFramework")){
         }
 
         settings_fields( $this->unique. '_group' );
-        global $skelet_path;
+        
         echo '<header class="sk-header">';
         echo '<h1>';
+
         echo sprintf('%s',
-            isset($skelet_path["plugin_data"]["Name"])?
-            $skelet_path["plugin_data"]["Name"]." <small>".
-            $skelet_path["plugin_data"]["Version"]."</small>":"Skelet Framework <small>by PressApps</small>"); // ." <small>by ".
+            isset( $this->settings['header_title'])?
+            $this->settings['header_title']." <small>".
+            $this->settings['current_version']."</small>":"Skelet Framework <small>by PressApps</small>"); // ." <small>by ".
             //$skelet_path["plugin_data"]["Author"]."</small>":"Skelet Framework <small>by PressApps</small>");
         echo '</h1>';
         echo '<p class="feedback"><a target="_blank" href="http://pressapps.co/feedback/">Feedback</a></p>';
