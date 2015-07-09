@@ -195,11 +195,12 @@ class SkeletFramework_Widget{
                                   foreach(\$fields as &\$field ){
                                       if(!empty(\$field)){
                                        
-                                                \$value = isset(\$instance[\$field['name']])?esc_attr( \$instance[\$field['name']] ):\"\";
-                                              
+                                                \$value = isset(\$field['name']) && isset(\$instance[\$field['name']])?esc_attr( \$instance[\$field['name']] ):'';
+                                                 \$name = isset(\$field['name'])?\$this->get_field_name(\$field['name']):'';
+
                                                 \$field = array_filter(array(
-                                                  'id'    => \$this->get_field_name(\$field['name']),
-                                                  'name'  => \$this->get_field_name(\$field['name']),
+                                                  'id'    => \$name,
+                                                  'name'  => \$name,
                                                   'title' => isset(\$field['control']['label'])?\$field['control']['label']:null,
                                                   'info'  => isset(\$field['info'])?\$field['info']:null,
                                                   'default' => isset(\$field['default'])?\$field['default']:null,
