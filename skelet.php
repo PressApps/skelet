@@ -55,12 +55,29 @@ if(! class_exists( 'Skelet_LoadConfig' ) ){
                         sk_locate_template ( 'classes/template.class.php'   ,$skelet_path);
                       
                         // configs
-                        sk_locate_template ( '../../admin/options/framework.config.php'  ,$skelet_path);
-                        sk_locate_template ( '../../admin/options/metabox.config.php'    ,$skelet_path);
-                        sk_locate_template ( '../../admin/options/shortcode.config.php'  ,$skelet_path);
-                        sk_locate_template ( '../../admin/options/customize.config.php'  ,$skelet_path);
-                        sk_locate_template ( '../../admin/options/taxonomy.config.php'  ,$skelet_path);
-                        sk_locate_template ( '../../admin/options/template.config.php'  ,$skelet_path);
+                        if(file_exists( wp_normalize_path($skelet_path["dir"].'/options/framework.config.php'))){
+                            sk_locate_template ( '../../admin/options/framework.config.php'  ,$skelet_path);
+                        }
+
+                        if(file_exists( wp_normalize_path($skelet_path["dir"].'/options/metabox.config.php'))){
+                            sk_locate_template ( '../../admin/options/metabox.config.php'    ,$skelet_path);
+                        }
+
+                        if(file_exists( wp_normalize_path($skelet_path["dir"].'/options/shortcode.config.php'))){
+                            sk_locate_template ( '../../admin/options/shortcode.config.php'  ,$skelet_path);
+                        }
+
+                        if(file_exists( wp_normalize_path($skelet_path["dir"].'/options/customize.config.php'))){
+                            sk_locate_template ( '../../admin/options/customize.config.php'  ,$skelet_path);
+                        }
+                        
+                        if(file_exists( wp_normalize_path($skelet_path["dir"].'/options/taxonomy.config.php'))){
+                            sk_locate_template ( '../../admin/options/taxonomy.config.php'  ,$skelet_path);
+                        }
+                        
+                        if(file_exists( wp_normalize_path($skelet_path["dir"].'/options/template.config.php'))){
+                            sk_locate_template ( '../../admin/options/template.config.php'  ,$skelet_path);
+                        }
 
 
                        
@@ -97,7 +114,7 @@ if(!class_exists("Skelet_PA_Widget")){
                         include_once  wp_normalize_path($skelet_path["dir"].'/options/widget.config.php');
                 }
             }
-               
+
         }
  
     }
