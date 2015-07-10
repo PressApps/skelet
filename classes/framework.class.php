@@ -387,9 +387,8 @@ if(!class_exists("SkeletFramework")){
 
         echo sprintf('%s',
             isset( $this->settings['header_title'])?
-            $this->settings['header_title']." <small>".
-            $this->settings['current_version']."</small>":"Skelet Framework <small>by PressApps</small>"); // ." <small>by ".
-            //$skelet_path["plugin_data"]["Author"]."</small>":"Skelet Framework <small>by PressApps</small>");
+            //$this->settings['header_title']." <small>".$this->settings['current_version']."</small>":"Skelet Framework <small>by PressApps</small>"); 
+            $this->settings['header_title']:"Skelet Framework"); 
         echo '</h1>';
         echo '<p class="feedback"><a target="_blank" href="http://pressapps.co/feedback/">Feedback</a></p>';
         echo '<fieldset>';
@@ -485,11 +484,6 @@ if(!class_exists("SkeletFramework")){
         echo '<footer class="sk-footer">';
           echo '<img src="' . $skelet_path["uri"] . '/assets/images/madeby.png">';
           echo '<a target="_blank" href="http://pressapps.co/"><img src="' . $skelet_path["uri"] . '/assets/images/pressapps.png"></a>';
-          //echo sprintf('%s',
-            //isset($skelet_path["plugin_data"]["Name"])?
-            //$skelet_path["plugin_data"]["Name"]." v".
-            //$skelet_path["plugin_data"]["Version"]." <small>by ".
-            //$skelet_path["plugin_data"]["Author"]."</small>":"Skelet Framework <small>by PressApps</small>");
         echo '</footer>'; // end .sk-footer
 
         echo '</form>'; // end form
