@@ -32,7 +32,11 @@ if(! class_exists( 'Skelet_LoadConfig' ) ){
                          // ------------------------------------------------------------------------------------------------
                             include_once wp_normalize_path(dirname( __FILE__ ) .'/path.php');
                          // ------------------------------------------------------------------------------------------------
-                        
+                         
+                         $path["basename"] = "skelet";
+                         $path["option"]   = $path["prefix"]."_options";
+                         $path["customize"]= $path["prefix"]."_customize";
+                         
                          $skelet_path = $path;
                        
                         // helpers
