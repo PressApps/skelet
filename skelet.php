@@ -145,7 +145,7 @@ if(!class_exists("Skelet_PressApps_Menu")){
 
   
   }
-     add_action("admin_menu",array("Skelet_PressApps_Menu","pa_main_menu"),999999);
+     add_action("admin_menu",array("Skelet_PressApps_Menu","pa_main_menu"),999);
 
 
 }
