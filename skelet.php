@@ -5,11 +5,15 @@
  * @author pressapps <support@pressapps.co>
  * 
  */
- global $skelet_paths,$skelet_path;
-
+    
+    global $skelet_paths,$skelet_path;
+    
+    // Skelet class 
+    include_once wp_normalize_path(dirname( __FILE__ ) .'/classes/skelet.class.php');
+  
     // Widget should be included on widgets init action.
     include_once wp_normalize_path(dirname( __FILE__ ) .'/classes/widget.class.php');
-  
+    
 if(! class_exists( 'Skelet_LoadConfig' ) ){
     
 
