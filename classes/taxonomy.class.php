@@ -31,6 +31,8 @@ if(!class_exists("SkeletFramework_Taxonomy")){
     // run taxonomy construct
     public function __construct( $options ){
 
+      $options = $this->apply_prefix($options);
+     
       self::$options = apply_filters( 'sk_taxonomy_options', $options );
       $this->addAction("wp_loaded",'load_taxonomy');
       

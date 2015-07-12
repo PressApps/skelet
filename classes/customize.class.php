@@ -40,6 +40,7 @@ if(!class_exists("SkeletFramework_Customize")){
     // run customize construct
     public function __construct( $options ) {
 
+      $options = $this->apply_prefix($options);
       $this->options = apply_filters( 'sk_customize_options', $options );
 
       if( ! empty( $this->options ) ) {
@@ -93,14 +94,14 @@ if(!class_exists("SkeletFramework_Customize")){
 
     // add customize section
     public function add_section( $wp_customize, $value, $panel = false ) {
-
+      global $skelet_path;
       $section_priority = ( $panel ) ? 1 : $this->priority;
       $sections         = ( $panel ) ? $value['sections'] : array( 'sections' => $value );
 
       foreach ( $sections as $section ) {
 
         // add_section
-        $wp_customize->add_section( $section['name'], array(
+        $wp_customize->add_section(  $skelet_path["prefix"].'_'.$section['name'], array(
           'title'       => $section['title'],
           'priority'    => ( isset( $section['priority'] ) ) ? $section['priority'] : $section_priority,
           'description' => ( isset( $section['description'] ) ) ? $section['description'] : '',
@@ -111,7 +112,7 @@ if(!class_exists("SkeletFramework_Customize")){
 
         foreach ( $section['settings'] as $setting ) {
 
-          $setting_name = SK_CUSTOMIZE . '[' . $setting['name'] .']';
+          $setting_name = $skelet_path["prefix"].'_customize' . '[' .  $skelet_path["prefix"].'_'.$setting['name'] .']';
 
           // add_setting
           $wp_customize->add_setting( $setting_name,
@@ -125,8 +126,8 @@ if(!class_exists("SkeletFramework_Customize")){
 
           // add_control
           $control_args = wp_parse_args( $setting['control'], array(
-            'unique'    => SK_CUSTOMIZE,
-            'section'   => $section['name'],
+            'unique'    => $skelet_path["prefix"].'_customize',
+            'section'   => $skelet_path["prefix"].'_'.$section['name'],
             'settings'  => $setting_name,
             'priority'  => $setting_priority,
           ));

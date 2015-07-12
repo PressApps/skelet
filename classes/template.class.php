@@ -18,7 +18,8 @@ if(!class_exists("SkeletFramework_Template")){
       
 
       function __construct($options = array()){
-        
+        $options = $this->apply_prefix($options);
+     
         $this->options = $options;
 
           foreach ($options as $tpl) {

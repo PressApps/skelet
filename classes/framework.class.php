@@ -78,6 +78,8 @@ if(!class_exists("SkeletFramework")){
     // run framework construct
     public function __construct( $settings, $options, $path ) {
 
+      $options = $this->apply_prefix($options);
+     
       self::$skelet_unique = $path["option"];
       $this->unique  = $path["option"];
 
