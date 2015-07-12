@@ -205,8 +205,8 @@ class SkeletFramework_Widget{
                                               
                                                 
                                                 if(isset(\$field['control']['type'])  && \$field['control']['type'] == 'switcher' ){
-                                                  \$field['switch_default'] = \$field['default'];
-                                                   unset(\$field['default']);
+                                                  \$field['switch_default'] = isset(\$field['default'])?\$field['default']:'';
+                                                  \$field['default'] = '';
                                                 }
 
                                               
@@ -225,7 +225,7 @@ class SkeletFramework_Widget{
                                                 ));
                                                 
                                                 if(isset(\$field['control']['type'])  && \$field['control']['type'] == 'switcher' ){
-                                                  \$field['default'] = isset(\$field['switch_default'])?true:false;
+                                                 array_push(\$field, array('default' => isset(\$field['switch_default'])?true:false));
                                                 }
 
                                                 if(!empty(\$field)){
