@@ -1,12 +1,60 @@
-#pa-products .pa-item{
+/**
+ * Global
+ */
+body[class^="pressapps_page_"] #wpcontent, body[class*="pressapps_page_"] #wpcontent {
+  padding-left: 0;
+}
+html {
+  background-color: #f9f9f9;
+}
+
+/**
+ * Header
+ */
+.pa-header h1, .pa-header h3, .pa-cta h2 {
+  font-weight: 400;
+}
+.pa-header {
+  padding: 35px 25px;
+  text-align: center;
+}
+.pa-header h1 {
+  margin: 0;
+  font-size: 4em;
+  line-height: 1.4em;
+}
+.pa-header h3 {
+  margin: 20px 0 0;
+}
+
+/**
+ * Products page
+ */
+#pa-products {
+  margin-bottom: 25px;
+  overflow: hidden;
+}
+
+#pa-products .pa-item {
 	float:left;
-	padding:4px;
+	margin-left: 25px;
+  margin-top: 25px;
+  padding: 40px;
+  background-color: rgba(0, 0, 0, 0.06);
+}
+#pa-products .pa-item h3 {
+  text-align: center;
+  margin: 0 0 30px;
+  text-transform: uppercase;
 }
 #pa-products .pa-item img{
 	width:500px;
 	height: 254px;
 }
-
+#pa-products .pa-item p {
+  text-align: center;
+  margin: 25px 0 0;
+}
 #pa-products .pa-item .marked-purchased{
   font-size: 12px;
   float: right;
@@ -15,4 +63,154 @@
   color: #fff;
   border-radius: 3px;
   margin-left: 3px;
+}
+
+/**
+ * Support page
+ */
+.pa-boxes {
+  margin: 40px 0 0;
+  padding: 0;
+  text-align: center;
+}
+.pa-boxes li {
+  display: inline-block;
+  width: 30%;
+  margin: 0 2% 0 0;
+  padding-bottom: .5em;
+  vertical-align: top;
+  line-height: 1.5;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  padding: 0;
+  text-align: center;
+  background: #fff;
+  border: solid 1px #e6e6e6;
+  box-shadow: 0 0 30px #f1f1f1;
+  -webkit-transition: background-color .14s ease-out;
+  -moz-transition: background-color .14s ease-out;
+  -ms-transition: background-color .14s ease-out;
+  -o-transition: background-color .14s ease-out;
+  transition: background-color .14s ease-out;
+}
+.pa-boxes li:hover {
+  border-color: #d6d6d6;
+  box-shadow:0 0 15px #e4e4e4;
+}
+.pa-boxes li:last-child {
+  padding-bottom: 0;
+  margin-right: 0;
+}
+.pa-boxes li a {
+  padding: 30px 25px;
+  text-decoration: none;
+  display: block;
+  color: #242424;
+}
+.pa-boxes li a:hover {
+}
+.pa-boxes i {
+  font-size: 42px;
+  color: #0C9DE2;
+}
+.pa-boxes h3 {
+  font-size: 22px;
+  font-weight: 400;
+  color: #0C9DE2;
+}
+.pa-boxes p {
+  margin: 15px 0 0;
+}
+
+.pa-faq {
+  overflow: hidden;
+  text-align: center;
+  width: 94%;
+  margin: 80px auto 0;
+}
+.pa-faq h2 {
+  margin: 0 0 .75em;
+  font-size: 2.4em;
+  line-height: 1.4em;
+}
+.pa-faq ul {
+  width: 30%;
+  margin: 0 2%;
+  float: left;
+  text-align: left;
+}
+.pa-faq .last {
+  margin-right: 0;
+}
+.pa-faq li a {
+  text-decoration: underline;
+}
+.pa-question {
+  color: #0C9DE2;
+  font-size: 1.1em;
+  cursor: pointer;
+  margin: 12px 0 0;
+}
+.pa-question:hover {
+  color: #222;
+}
+.pa-cta, .pa-feedback {
+  margin-top: 80px;
+  text-align: center;
+  padding: 0 40px;
+}
+.pa-cta h2, .pa-feedback h2 {
+  margin: 0 0 .75em;
+  font-size: 2.4em;
+  line-height: 1.4em;
+}
+.pa-cta p, .pa-feedback p {
+  font-size: 15px;
+}
+.btn-cta {
+  display: inline-block;
+  margin-top: 20px;
+  text-align: center;
+  text-transform: uppercase;
+  text-decoration: none;
+  letter-spacing: 1px;
+  font-weight: 500;
+  font-size: 1.2em;
+  line-height: 1em;
+  padding: 1.5em 2.5em;
+  color: #0C9DE2;
+  background-color: transparent;
+  border: solid 1px #0C9DE2;
+  -webkit-transition: background-color .14s ease-out,color .14s ease-out;
+  -moz-transition: background-color .14s ease-out,color .14s ease-out;
+  -ms-transition: background-color .14s ease-out,color .14s ease-out;
+  -o-transition: background-color .14s ease-out,color .14s ease-out;
+  transition: background-color .14s ease-out,color .14s ease-out;
+}
+.btn-cta:hover {
+  background-color: #222;
+  border: solid 1px #222;
+  color: #fff;
+}
+.pa-feedback {
+  margin-bottom: 80px;
+}
+.pa-feedback .btn-cta {
+  padding: 0.8em 1.5em;
+}
+
+
+@media screen and (max-width: 678px) {
+  .pa-boxes {
+    padding: 15px;
+  }
+  .pa-boxes li {
+    width: 100%;
+    margin: 0 0 3% 0;
+  }
+  .pa-faq ul {
+    width: 100%;
+    margin-bottom: 15px;
+  }
 }

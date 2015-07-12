@@ -112,22 +112,39 @@ abstract class SkeletWidget_Factory extends WP_Widget {
                   $title = apply_filters('widget_title', empty($instance['title']) ? '&nbsp;' : $instance['title'], $instance, $this->id_base);
                   if ( $title ){ echo $before_title . $title . $after_title; }
               }
-            print_r( $instance);
+          //  print_r( $instance);
         }
        echo $after_widget; 
     }
     /** Called By Wordpress when saving settings */
   function update($new_instance, $old_instance) {
         $instance = $old_instance;
+        
+        
         $new_instance = $this->parse_args( $new_instance );
-        $def=$this->getDefaults();
+        $def = $this->getDefaults();
         foreach($new_instance as $k=>$v){
-            $instance[$k] = strip_tags($v);
+            if(!is_array($v)){
+              $instance[$k] = strip_tags($v);
+            }else{
+              $instance[$k] = $v;
+            }
+           
             if (empty($instance[$k]) && !empty($def[$k])){
-                $instance[$k]=$def[$k];
+                $instance[$k] = $def[$k];
             }
         }
-        return $instance;
+        
+        foreach($instance as $k => $v){
+
+            
+          $instance[$k] = $new_instance[$k];
+             
+          if (empty($new_instance[$k]) && !empty($def[$k])){
+                $instance[$k] = $def[$k];
+          }
+        }
+         return $instance;
   }
 
 
@@ -195,11 +212,12 @@ class SkeletFramework_Widget{
                                   foreach(\$fields as &\$field ){
                                       if(!empty(\$field)){
                                        
-                                                \$value = isset(\$instance[\$field['name']])?esc_attr( \$instance[\$field['name']] ):\"\";
-                                              
+                                                \$value = isset(\$instance[\$field['name']])? \$instance[\$field['name']] :null;
+                                                 \$name = isset(\$field['name'])?\$this->get_field_name(\$field['name']):'';
+
                                                 \$field = array_filter(array(
-                                                  'id'    => \$this->get_field_name(\$field['name']),
-                                                  'name'  => \$this->get_field_name(\$field['name']),
+                                                  'id'    => \$name,
+                                                  'name'  => \$name,
                                                   'title' => isset(\$field['control']['label'])?\$field['control']['label']:null,
                                                   'info'  => isset(\$field['info'])?\$field['info']:null,
                                                   'default' => isset(\$field['default'])?\$field['default']:null,
@@ -207,8 +225,11 @@ class SkeletFramework_Widget{
                                                   'desc' => isset(\$field['control']['info'])?\$field['control']['info']:null,
                                                   'options' => isset(\$field['control']['options'])?\$field['control']['options']:null
                                                 ));
-                                                
-                                                echo   sk_add_element( \$field, \$value );
+                                                if(!empty(\$field)){
+                                                  echo   sk_add_element( \$field, \$value );
+                                                }
+                                               
+
                                       }
                                   }
                             }

@@ -44,10 +44,10 @@ jQuery(document).ready(function($) {
 		  			'<a href="'+dd.url+'" target="_blank">',
 		  			'<img src="'+dd.live_preview_url+'" width="500" heigh="254"/>',
 		  			'</a><br/>',
-			  			'<div style="float:right;">',
+			  			'<p>',
 			  			'<a href="'+dd.url+'" target="_blank" class="button pullright">Live Demo</a> ',
 			  			'<a href="'+dd.url+'" target="_blank" class="button-primary pullright">Buy $'+dd.cost+'</a>',
-			  			'</div>',
+			  			'</p>',
 		  			'</div>'
 
 		  		];
@@ -87,10 +87,10 @@ jQuery(document).ready(function($) {
 		  			'<a  href="'+dd.url+'" target="_blank">',
 		  			'<img src="'+dd.live_preview_url+'" width="500" heigh="254"/>',
 		  			'</a><br/>',
-			  			'<div style="float:right;">',
+			  			'<p>',
 			  			'<a href="'+dd.url+'" target="_blank" class="button pullright">Live Demo</a> ',
 			  			'<a href="'+dd.url+'" target="_blank" class="button-primary pullright">Buy $'+dd.cost+'</a>',
-			  			'</div>',
+			  			'</p>',
 		  			'</div>'
 
 		  		];
@@ -104,3 +104,16 @@ jQuery(document).ready(function($) {
 	   
 	})
 });
+
+// Faqs
+jQuery(document).ready(function($) {
+	$('.pa-question').each(function() {
+		var tis = $(this), state = false, answer = tis.next('.pa-answer').slideUp();
+		tis.click(function() {
+			state = !state;
+			answer.slideToggle(state);
+			tis.toggleClass('active',state);
+		});
+	});
+});
+

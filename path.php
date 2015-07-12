@@ -47,14 +47,15 @@ if( ! function_exists( 'sk_locate_template' ) ) {
     $plugin_normal_override = $dir_plugin . $dir_template;
     $is_located = false;
 
-   /*  var_dump(array( 
+/*     var_dump(array( 
         $child_force_overide."=".(file_exists($child_force_overide)?true:false),
         $child_normal_override."=".(file_exists($child_normal_override)?true:false),
         $theme_force_override."=".(file_exists($theme_force_override)?true:false),
         $theme_normal_override."=".(file_exists($theme_normal_override)?true:false),
         $plugin_force_override."=".(file_exists($plugin_force_override)?true:false),
         $plugin_normal_override."=".(file_exists($plugin_normal_override)?true:false)
-      ));*/
+      ));
+     die(1);*/
 
     if ( file_exists( $child_force_overide ) ) {
 

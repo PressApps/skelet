@@ -5,18 +5,18 @@
  * @author pressapps <support@pressapps.co>
  * 
  */
- global $skelet_paths,$skelet_path;
-
-// Widget should be included on widgets init action.
-include_once wp_normalize_path(plugin_dir_path(__FILE__ ).'/classes/widget.class.php');
-include_once wp_normalize_path(dirname( __DIR__ ) .'/admin/options/widget.config.php');
- 
-// Custom Post/Taxonomy/Tags Type should be included on widgets init action.
-include_once wp_normalize_path(plugin_dir_path(__FILE__ ).'/classes/cpt.class.php');
-include_once wp_normalize_path(dirname( __DIR__ ) .'/admin/options/cpt.config.php');
- 
-
+    
+    global $skelet_paths,$skelet_path;
+    
+    // Skelet class 
+    include_once wp_normalize_path(dirname( __FILE__ ) .'/classes/skelet.class.php');
+  
+    // Widget should be included on widgets init action.
+    include_once wp_normalize_path(dirname( __FILE__ ) .'/classes/widget.class.php');
+    
 if(! class_exists( 'Skelet_LoadConfig' ) ){
+    
+
     class Skelet_LoadConfig{
             public static function instance(){
                     global $skelet_paths,$skelet_path;
@@ -28,7 +28,6 @@ if(! class_exists( 'Skelet_LoadConfig' ) ){
                     defined( 'SK_ACTIVE_CUSTOMIZE' )  or  define( 'SK_ACTIVE_CUSTOMIZE',  true );
                     defined( 'SK_ACTIVE_WIDGET'    )  or  define( 'SK_ACTIVE_WIDGET',     true );
                     defined( 'SK_ACTIVE_TAXONOMY'  )  or  define( 'SK_ACTIVE_TAXONOMY',   true );
-                    defined( 'SK_ACTIVE_CPT'       )  or  define( 'SK_ACTIVE_CPT',        true );
                     defined( 'SK_ACTIVE_TEMPLATE'  )  or  define( 'SK_ACTIVE_TEMPLATE',   true );
                     
                    
@@ -37,8 +36,13 @@ if(! class_exists( 'Skelet_LoadConfig' ) ){
                          // ------------------------------------------------------------------------------------------------
                             include_once wp_normalize_path(dirname( __FILE__ ) .'/path.php');
                          // ------------------------------------------------------------------------------------------------
-                        
+                         
+                         $path["basename"] = "skelet";
+                         $path["option"]   = $path["prefix"]."_options";
+                         $path["customize"]= $path["prefix"]."_customize";
+                         
                          $skelet_path = $path;
+                       
                         // helpers
                         sk_locate_template ( 'functions/deprecated.php'     ,$skelet_path);
                         sk_locate_template ( 'functions/helpers.php'        ,$skelet_path);
@@ -59,12 +63,29 @@ if(! class_exists( 'Skelet_LoadConfig' ) ){
                         sk_locate_template ( 'classes/template.class.php'   ,$skelet_path);
                       
                         // configs
-                        sk_locate_template ( '../../includes/admin/options/framework.config.php'  ,$skelet_path);
-                        sk_locate_template ( '../../includes/admin/options/metabox.config.php'    ,$skelet_path);
-                        sk_locate_template ( '../../includes/admin/options/shortcode.config.php'  ,$skelet_path);
-                        sk_locate_template ( '../../includes/admin/options/customize.config.php'  ,$skelet_path);
-                        sk_locate_template ( '../../includes/admin/options/taxonomy.config.php'  ,$skelet_path);
-                        sk_locate_template ( '../../includes/admin/options/template.config.php'  ,$skelet_path);
+                        if(file_exists( wp_normalize_path($skelet_path["dir"].'/options/framework.config.php'))){
+                            sk_locate_template ( '../../admin/options/framework.config.php'  ,$skelet_path);
+                        }
+
+                        if(file_exists( wp_normalize_path($skelet_path["dir"].'/options/metabox.config.php'))){
+                            sk_locate_template ( '../../admin/options/metabox.config.php'    ,$skelet_path);
+                        }
+
+                        if(file_exists( wp_normalize_path($skelet_path["dir"].'/options/shortcode.config.php'))){
+                            sk_locate_template ( '../../admin/options/shortcode.config.php'  ,$skelet_path);
+                        }
+
+                        if(file_exists( wp_normalize_path($skelet_path["dir"].'/options/customize.config.php'))){
+                            sk_locate_template ( '../../admin/options/customize.config.php'  ,$skelet_path);
+                        }
+                        
+                        if(file_exists( wp_normalize_path($skelet_path["dir"].'/options/taxonomy.config.php'))){
+                            sk_locate_template ( '../../admin/options/taxonomy.config.php'  ,$skelet_path);
+                        }
+                        
+                        if(file_exists( wp_normalize_path($skelet_path["dir"].'/options/template.config.php'))){
+                            sk_locate_template ( '../../admin/options/template.config.php'  ,$skelet_path);
+                        }
 
 
                        
@@ -77,6 +98,35 @@ if(! class_exists( 'Skelet_LoadConfig' ) ){
 
      add_action("init",array('Skelet_LoadConfig','instance'),10);
 
+}
+
+if(!class_exists("Skelet_PA_Widget")){
+    class Skelet_PA_Widget{
+      
+        function __construct(){
+            add_action( 'widgets_init', array($this,"widgetize"),2);
+        }
+
+        /**
+         * Register the widget for the admin area.
+         *
+         * @since    1.0.0
+         */
+        public function widgetize(){
+             global $skelet_paths,$skelet_path;
+            
+             foreach ($skelet_paths as $path) {
+
+                $skelet_path = $path;
+                 if(file_exists( wp_normalize_path($skelet_path["dir"].'/options/widget.config.php'))){
+                        include_once  wp_normalize_path($skelet_path["dir"].'/options/widget.config.php');
+                }
+            }
+
+        }
+ 
+    }
+    new Skelet_PA_Widget;
 }
 
 if(!class_exists("Skelet_PressApps_Menu")){
@@ -103,7 +153,7 @@ if(!class_exists("Skelet_PressApps_Menu")){
 
   
   }
-     add_action("admin_menu",array("Skelet_PressApps_Menu","pa_main_menu"),999999);
+     add_action("admin_menu",array("Skelet_PressApps_Menu","pa_main_menu"),999);
 
 
 }

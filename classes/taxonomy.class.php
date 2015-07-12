@@ -17,7 +17,7 @@ if(!class_exists("SkeletFramework_Taxonomy")){
      * @var array
      *
      */
-    public $options = array();
+    public static $options = array();
 
     /**
      *
@@ -31,23 +31,35 @@ if(!class_exists("SkeletFramework_Taxonomy")){
     // run taxonomy construct
     public function __construct( $options ){
 
-      $this->options = apply_filters( 'sk_taxonomy_options', $options );
+      $options = $this->apply_prefix($options);
      
-     if( ! empty( $this->options ) ) {
-        $taxonomy_options = $this->options;
+      self::$options = apply_filters( 'sk_taxonomy_options', $options );
+      $this->addAction("wp_loaded",'load_taxonomy');
+      
+
+    }
+
+    public function load_taxonomy(){
+
+        if( ! empty( self::$options ) ) {
+        $taxonomy_options = self::$options;
         foreach($taxonomy_options as $key => $val){
           $taxonomy = $val["taxonomy"]; 
+
+         
+          add_action( 'edited_'.$taxonomy, array('SkeletFramework_Taxonomy','edited_taxonomy_box') ,10, 2);
+          add_action( $taxonomy.'_add_form_fields', array('SkeletFramework_Taxonomy','add_taxonomy_box'),10,2);
+          add_action( 'created_'.$taxonomy, array('SkeletFramework_Taxonomy','save_extra_fields') , 10, 2);
           
+          if( $taxonomy == "category" || $taxonomy == "post_tag"){
+          add_action( $taxonomy.'_edit_form_fields', array('SkeletFramework_Taxonomy','edit_taxonomy_box'),10,2 );
+          }else{
+          add_action( 'edit_'.$taxonomy.'_form ', array('SkeletFramework_Taxonomy','edit_taxonomy_box'),10,2 );
+          } 
 
-          //$this->addAction( $taxonomy.'_edit_form_fields', 'edit_taxonomy_box',90,2 );
-          $this->addAction( 'edit_'.$taxonomy.'_form ', 'edit_taxonomy_box',90,2 );
-          $this->addAction( 'edited_'.$taxonomy, 'edited_taxonomy_box' , 10, 2);
 
-          $this->addAction( $taxonomy.'_add_form_fields', 'add_taxonomy_box',10,2);
-          $this->addAction( 'created_'.$taxonomy, 'save_extra_fields' , 10, 2);
         }
       }
-
     }
 
     // instance
@@ -58,12 +70,13 @@ if(!class_exists("SkeletFramework_Taxonomy")){
       return self::$instance;
     }
 
-    public function edit_taxonomy_box($post, $aa){
+    public static function edit_taxonomy_box($post, $aa){
 
-      if(empty($this->options)) 
+      if(empty(self::$options)) 
           return false;
+      $display_elem = "";
 
-      foreach($this->options as $key => $val){
+      foreach(self::$options as $key => $val){
         if($val["taxonomy"] == $post->taxonomy){
           $term_id = $post->term_id;
           $unique = "_skelet_".$val["taxonomy"]."_".$term_id;
@@ -73,15 +86,16 @@ if(!class_exists("SkeletFramework_Taxonomy")){
                     $default    = ( isset( $field['default'] ) ) ? $field['default'] : '';
                     $elem_id    = ( isset( $field['id'] ) ) ? $field['id'] : '';
                     $elem_value = ( is_array( $meta_value ) && isset( $meta_value[$elem_id] ) ) ? $meta_value[$elem_id] : $default;
-                    echo sk_add_element( $field, $elem_value, $unique );
+                    $display_elem .= sk_add_element( $field, $elem_value, $unique );
 
           }
         }
       }
-        
+     echo $display_elem;
+
     }
 
-    public function edited_taxonomy_box($post, $taxonomy){
+    public static function edited_taxonomy_box($post, $taxonomy){
         
        
                 $taxonomy = $_POST['taxonomy'];
@@ -91,13 +105,13 @@ if(!class_exists("SkeletFramework_Taxonomy")){
             update_option($skelet_fields,$_POST[$skelet_fields]); 
     }
 
-    public function add_taxonomy_box($taxonomy){
+    public static function add_taxonomy_box($taxonomy){
         
 
-         if(empty($this->options)) 
+         if(empty(self::$options)) 
           return false;
 
-          foreach($this->options as $key => $val){
+          foreach(self::$options as $key => $val){
             if($val["taxonomy"] == $taxonomy){
               foreach ( $val['fields'] as $field_key => $field ) {
                         $unique = "_skelet_".$val["taxonomy"];
@@ -112,7 +126,7 @@ if(!class_exists("SkeletFramework_Taxonomy")){
       
     }
 
-    public function save_extra_fields($tag_ID){
+    public static function save_extra_fields($tag_ID){
       
 
             $taxonomy = $_POST['taxonomy'];

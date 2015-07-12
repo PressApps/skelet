@@ -17,7 +17,7 @@ if ( ! function_exists( 'sk_add_element' ) ) {
     $sub        = ( isset( $field['sub'] ) ) ? 'sub-': '';
     $unique     = ( isset( $unique ) ) ? $unique : '';
     $languages  = sk_language_defaults();
-    $class      = 'SkeletFramework_Option_' . $field['type'];
+    $class      = isset( $field['type']) ?'SkeletFramework_Option_' . $field['type']:'';
     $wrap_class = ( isset( $field['wrap_class'] ) ) ? ' ' . $field['wrap_class'] : '';
     $hidden     = ( isset( $field['show_only_language'] ) && ( $field['show_only_language'] != $languages['current'] ) ) ? ' hidden' : '';
     $is_pseudo  = ( isset( $field['pseudo'] ) ) ? ' sk-pseudo-field' : '';
@@ -29,7 +29,7 @@ if ( ! function_exists( 'sk_add_element' ) ) {
       $depend .= " data-". $sub ."value='". $field['dependency'][2] ."'";
     }
 
-    $output .= '<div class="sk-element sk-field-'. $field['type'] . $is_pseudo . $wrap_class . $hidden .'"'. $depend .'>';
+    $output .= '<div class="sk-element sk-field-'. (isset($field['type'])?$field['type']:'') . $is_pseudo . $wrap_class . $hidden .'"'. $depend .'>';
 
     if( isset( $field['title'] ) ) {
       $field_desc = ( isset( $field['desc'] ) ) ? '<p class="sk-text-desc">'. $field['desc'] .'</p>' : '';

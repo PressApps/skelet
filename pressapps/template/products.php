@@ -5,5 +5,8 @@
  */
 ?>
 
-<h2>PressApps Products</h2>
+<header class="pa-header">
+	<h1><?php _e( 'Other Products By PressApps', SK_TEXTDOMAIN ); ?></h1>
+</header>
+
 <div id="pa-products"></div>
