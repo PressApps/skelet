@@ -31,7 +31,6 @@ if(!class_exists("SkeletFramework_Metabox")){
     // run metabox construct
     public function __construct( $options ){
 
-      $options = $this->apply_prefix($options);
      
       $this->options = apply_filters( 'sk_metabox_options', $options );
 

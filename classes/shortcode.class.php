@@ -49,8 +49,6 @@ if(!class_exists("SkeletFramework_Shortcode_Manager")){
     // run shortcode construct
     public function __construct( $options ) {
 
-      $options = $this->apply_prefix($options);
-     
       $this->options = apply_filters( 'sk_shortcode_options', $options );
       $this->exclude_post_types = apply_filters( 'sk_shortcode_exclude', $this->exclude_post_types );
 

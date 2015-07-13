@@ -119,30 +119,22 @@ abstract class SkeletWidget_Factory extends WP_Widget {
     /** Called By Wordpress when saving settings */
   function update($new_instance, $old_instance) {
         $instance = $old_instance;
-        
-        
         $new_instance = $this->parse_args( $new_instance );
-        $def = $this->getDefaults();
+       
         foreach($new_instance as $k=>$v){
             if(!is_array($v)){
               $instance[$k] = strip_tags($v);
             }else{
               $instance[$k] = $v;
             }
-           
+         /*  
             if (empty($instance[$k]) && !empty($def[$k])){
                 $instance[$k] = $def[$k];
-            }
+            }*/
         }
         
         foreach($instance as $k => $v){
-
-            
           $instance[$k] = $new_instance[$k];
-             
-          if (empty($new_instance[$k]) && !empty($def[$k])){
-                $instance[$k] = $def[$k];
-          }
         }
          return $instance;
   }
@@ -199,9 +191,7 @@ class SkeletFramework_Widget{
                 eval("
                   if(!class_exists('SkeletFramework_$widget_id')){
                       class SkeletFramework_$widget_id extends SkeletWidget_Factory {
-                            function getTemplate(){ 
-                                return unserialize('$serialize_template');
-                            }
+                            function getTemplate(){  return unserialize('$serialize_template');}
                             function getID(){ return '$widget_id'; }
                             function getName(){ return '$widget_name';}
                             function getForm(\$instance){
@@ -209,22 +199,35 @@ class SkeletFramework_Widget{
                                  \$instance = wp_parse_args( \$instance, unserialize('$serialize'));
 
                                  \$fields = unserialize('$serialize_settings');
-                                  foreach(\$fields as &\$field ){
+                               
+                                 foreach(\$fields as &\$field ){
                                       if(!empty(\$field)){
-                                       
+                                              
+                                                
+                                                if(isset(\$field['control']['type'])  && \$field['control']['type'] == 'switcher' ){
+                                                  \$field['switch_default'] = isset(\$field['default'])?\$field['default']:'';
+                                                  \$field['default'] = '';
+                                                }
+
+                                              
                                                 \$value = isset(\$instance[\$field['name']])? \$instance[\$field['name']] :null;
-                                                 \$name = isset(\$field['name'])?\$this->get_field_name(\$field['name']):'';
+                                                \$name = isset(\$field['name'])?\$this->get_field_name(\$field['name']):'';
 
                                                 \$field = array_filter(array(
                                                   'id'    => \$name,
                                                   'name'  => \$name,
                                                   'title' => isset(\$field['control']['label'])?\$field['control']['label']:null,
                                                   'info'  => isset(\$field['info'])?\$field['info']:null,
-                                                  'default' => isset(\$field['default'])?\$field['default']:null,
+                                                  'default' => !empty(\$field['default'])?\$field['default']:null,
                                                   'type' => isset(\$field['control']['type'])?\$field['control']['type']:null,
                                                   'desc' => isset(\$field['control']['info'])?\$field['control']['info']:null,
                                                   'options' => isset(\$field['control']['options'])?\$field['control']['options']:null
                                                 ));
+                                                
+                                                if(isset(\$field['control']['type'])  && \$field['control']['type'] == 'switcher' ){
+                                                 array_push(\$field, array('default' => isset(\$field['switch_default'])?true:false));
+                                                }
+
                                                 if(!empty(\$field)){
                                                   echo   sk_add_element( \$field, \$value );
                                                 }
