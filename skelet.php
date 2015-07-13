@@ -154,6 +154,10 @@ if(!class_exists("Skelet_PA_Widget")){
     new Skelet_PA_Widget;
 }
 
+
+/**
+ * Add PressApps Menu
+ */
 if(!class_exists("Skelet_PressApps_Menu")){
 
   class Skelet_PressApps_Menu{
