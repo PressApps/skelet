@@ -40,7 +40,7 @@ if(!class_exists("SkeletFramework_Customize")){
     // run customize construct
     public function __construct( $options ) {
 
-      $options = $this->apply_prefix($options);
+     
       $this->options = apply_filters( 'sk_customize_options', $options );
 
       if( ! empty( $this->options ) ) {
