@@ -6,7 +6,7 @@
  * 
  */
     
-    global $skelet_paths,$skelet_path;
+    global $skelet_paths,$skelet_path,$skelet_shortcodes;
     
     // Skelet class 
     include_once wp_normalize_path(dirname( __FILE__ ) .'/classes/skelet.class.php');
@@ -31,12 +31,14 @@ if(! class_exists( 'Skelet_LoadConfig' ) ){
                     defined( 'SK_ACTIVE_TEMPLATE'  )  or  define( 'SK_ACTIVE_TEMPLATE',   true );
                     
                    
-                   foreach ($skelet_paths as $path) {
+                   foreach ($skelet_paths as $path) { 
+
+
 
                          // ------------------------------------------------------------------------------------------------
                             include_once wp_normalize_path(dirname( __FILE__ ) .'/path.php');
                          // ------------------------------------------------------------------------------------------------
-                         
+                         $arr_last = $path; 
                          $path["basename"] = "skelet";
                          $path["option"]   = $path["prefix"]."_options";
                          $path["customize"]= $path["prefix"]."_customize";
@@ -87,18 +89,41 @@ if(! class_exists( 'Skelet_LoadConfig' ) ){
                             sk_locate_template ( '../../admin/options/template.config.php'  ,$skelet_path);
                         }
 
+                        if ($arr_last === end($skelet_paths)){
+                             do_action("skelet_loaded");
+                        }
 
-                       
+
                    
                     }
 
             }
+
+
+
+
     }
 
 
      add_action("init",array('Skelet_LoadConfig','instance'),10);
 
 }
+
+/**
+ * Load shortcodes after skelet loaded
+ */
+if (!function_exists("skelet_load_shortcodes")) {
+  function skelet_load_shortcodes(){
+      global $skelet_shortcodes;
+     SkeletFramework_Shortcode_Manager::instance( $skelet_shortcodes );
+
+  }
+  add_action( 'skelet_loaded', 'skelet_load_shortcodes', 10 );
+        
+}
+/**
+ * Skelet Widget Init
+ */
 
 if(!class_exists("Skelet_PA_Widget")){
     class Skelet_PA_Widget{
