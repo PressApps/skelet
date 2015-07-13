@@ -42,10 +42,27 @@ if ( ! defined( 'WPINC' ) ) {
 }
 ```
 
-###Take Note that the prefix name should be unique per plugin
+####Take Note that the prefix name should be unique per plugin
 ```PHP
 $skelet_paths[] = array(
 	'prefix'	  => 'your_unique_prefix_name',
 	....
 );
 ```
+
+* Create a new folder `options` in the `plugin-boilerplate/admin` directory.
+* In `plugin-boilerplate/admin/options`, create a new file `framework.config.php` and add the following codes:
+```PHP
+$settings      = array(
+  'header_title' => 'Plugin BoilerPlate',
+  'current_version' => '1.0.0',
+  'menu_title' => 'BoilerPlate',
+  'menu_type'  => 'add_submenu_page',
+  'menu_slug'  => 'pa-boilerplate',
+  'ajax_save'  => false,
+);
+
+SkeletFramework::instance( $settings, $options );
+
+```
+* Now, let's activate the `plugin-boilerplate` and it should show the `PressApps` in the admin side-menu.
