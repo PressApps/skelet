@@ -100,26 +100,37 @@ if(!class_exists("SkeletFramework_Abstract")){
 						$new_prefix = "";
 						
 						if($key == "name" || $key == "id"){
+						
 							$new_prefix = $skelet_path["prefix"].'_'.$value;
-						}elseif($key == "settings" || $key == "fields" || $key == "sections"){
+						
+						}elseif($key == "settings" || $key == "fields" || $key == "sections" ||  $key == "shortcodes"){
+						
 							$arr_settings = array();
 							foreach ($value as $key_settings => $val_settings) {
-								$arr_sets = array();
+						
+									$arr_sets = array();
 								    foreach($val_settings as $vkey => $vval){
+								    	
 								    	if($vkey == "fields"){
+								    	
 								    		 $arr_vvfields = array();
 								    		 foreach ($vval as $vvkey => $vvval) {
+								    		   
 								    		     if(isset($vvval["id"])){
+								    		     	
 								    		     	$vvval["id"] = $skelet_path["prefix"].'_'.$vvval["id"];
 								    		     }
+								    		   
 								    		      array_push($arr_vvfields,$vvval);
 								    		 }
 								    		 $arr_sets[$vkey] = $arr_vvfields;
+								    	
 								    	}else if($vkey == "name" || $vkey == "id"){
 											$arr_sets[$vkey] = $skelet_path["prefix"].'_'.$vval;
 										}else{
 											$arr_sets[$vkey] = $vval;
 										}
+									
 									}
 
 								array_push($arr_settings,$arr_sets);
