@@ -6,8 +6,8 @@
  * 
  */
     
-    global $skelet_paths,$skelet_path,$skelet_shortcodes;
-    
+    global $skelet_paths,$skelet_path,$skelet_shortcodes,$skelet_metaboxes;
+    $skelet_metaboxes = array();
     // Skelet class 
     include_once wp_normalize_path(dirname( __FILE__ ) .'/classes/skelet.class.php');
   
@@ -119,6 +119,19 @@ if (!function_exists("skelet_load_shortcodes")) {
 
   }
   add_action( 'skelet_loaded', 'skelet_load_shortcodes', 10 );
+        
+}
+
+/**
+ * Load metaboxes after skelet loaded
+ */
+if (!function_exists("skelet_load_metaboxes")) {
+  function skelet_load_metaboxes(){
+      global $skelet_metaboxes;
+     SkeletFramework_Metabox::instance( $skelet_metaboxes );
+
+  }
+  add_action( 'skelet_loaded', 'skelet_load_metaboxes', 10 );
         
 }
 /**
