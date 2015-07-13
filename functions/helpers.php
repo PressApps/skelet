@@ -1149,7 +1149,7 @@ if(!function_exists("sk_apply_prefix")){
                   $arr_sets = array();
                     foreach($val_settings as $vkey => $vval){
                       
-                      if($vkey == "fields"){
+                      if($vkey == "settings" || $vkey == "fields" || $vkey == "sections" ||  $vkey == "shortcodes"){
                       
                          $arr_vvfields = array();
                          foreach ($vval as $vvkey => $vvval) {

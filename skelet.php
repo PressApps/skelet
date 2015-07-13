@@ -6,8 +6,9 @@
  * 
  */
     
-    global $skelet_paths,$skelet_path,$skelet_shortcodes,$skelet_metaboxes;
+    global $skelet_paths,$skelet_path,$skelet_shortcodes,$skelet_metaboxes,$skelet_customize;
     $skelet_metaboxes = array();
+    $skelet_customize = array();
     // Skelet class 
     include_once wp_normalize_path(dirname( __FILE__ ) .'/classes/skelet.class.php');
   
@@ -134,6 +135,20 @@ if (!function_exists("skelet_load_metaboxes")) {
   add_action( 'skelet_loaded', 'skelet_load_metaboxes', 10 );
         
 }
+
+/**
+ * Load customize after skelet loaded
+ */
+if (!function_exists("skelet_load_customize")) {
+  function skelet_load_customize(){
+      global $skelet_customize;
+     SkeletFramework_Customize::instance( $skelet_customize );
+
+  }
+  add_action( 'skelet_loaded', 'skelet_load_customize', 10 );
+        
+}
+
 /**
  * Skelet Widget Init
  */
