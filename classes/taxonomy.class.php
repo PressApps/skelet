@@ -34,9 +34,8 @@ if(!class_exists("SkeletFramework_Taxonomy")){
       $options = $this->apply_prefix($options);
      
       self::$options = apply_filters( 'sk_taxonomy_options', $options );
-      $this->addAction("wp_loaded",'load_taxonomy');
-      
-
+      $this->addAction("admin_init",'load_taxonomy');
+    
     }
 
     public function load_taxonomy(){
@@ -45,21 +44,23 @@ if(!class_exists("SkeletFramework_Taxonomy")){
         $taxonomy_options = self::$options;
         foreach($taxonomy_options as $key => $val){
           $taxonomy = $val["taxonomy"]; 
+           
+          if(isset($_REQUEST["taxonomy"]) && $taxonomy == $_REQUEST["taxonomy"]){
 
+              add_action( 'edited_'.$taxonomy, array('SkeletFramework_Taxonomy','edited_taxonomy_box') );
+              add_action( $taxonomy.'_add_form_fields', array('SkeletFramework_Taxonomy','add_taxonomy_box'));
+              add_action( 'created_'.$taxonomy, array('SkeletFramework_Taxonomy','save_extra_fields'));
+              
+              if( $taxonomy == "category" || $taxonomy == "post_tag"){
+              add_action( $taxonomy.'_edit_form_fields', array('SkeletFramework_Taxonomy','edit_taxonomy_box') , 10, 2 );
+              }else{
+              add_action( 'edit_'.$taxonomy.'_form ', array('SkeletFramework_Taxonomy','edit_taxonomy_box') , 10 , 2 );
+              } 
+          }
          
-          add_action( 'edited_'.$taxonomy, array('SkeletFramework_Taxonomy','edited_taxonomy_box') ,10, 2);
-          add_action( $taxonomy.'_add_form_fields', array('SkeletFramework_Taxonomy','add_taxonomy_box'),10,2);
-          add_action( 'created_'.$taxonomy, array('SkeletFramework_Taxonomy','save_extra_fields') , 10, 2);
-          
-          if( $taxonomy == "category" || $taxonomy == "post_tag"){
-          add_action( $taxonomy.'_edit_form_fields', array('SkeletFramework_Taxonomy','edit_taxonomy_box'),10,2 );
-          }else{
-          add_action( 'edit_'.$taxonomy.'_form ', array('SkeletFramework_Taxonomy','edit_taxonomy_box'),10,2 );
-          } 
-
-
         }
       }
+      
     }
 
     // instance
@@ -74,6 +75,8 @@ if(!class_exists("SkeletFramework_Taxonomy")){
 
       if(empty(self::$options)) 
           return false;
+
+    
       $display_elem = "";
 
       foreach(self::$options as $key => $val){
@@ -91,6 +94,7 @@ if(!class_exists("SkeletFramework_Taxonomy")){
           }
         }
       }
+
      echo $display_elem;
 
     }
