@@ -1157,6 +1157,9 @@ if(!function_exists("sk_apply_prefix")){
                              if(isset($vvval["id"])){
                               
                               $vvval["id"] = $skelet_path["prefix"].'_'.$vvval["id"];
+                             }else if(isset($vvval["name"])){
+                              
+                              $vvval["name"] = $skelet_path["prefix"].'_'.$vvval["name"];
                              }
                            
                               array_push($arr_vvfields,$vvval);
