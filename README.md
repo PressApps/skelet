@@ -41,3 +41,11 @@ if ( ! defined( 'WPINC' ) ) {
 	die;
 }
 ```
+
+###Take Note that the prefix name should be unique per plugin
+```PHP
+$skelet_paths[] = array(
+	'prefix'	  => 'your_unique_prefix_name',
+	....
+);
+```
