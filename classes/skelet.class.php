@@ -130,9 +130,3 @@ if(!class_exists("Skelet")){
 
 	}
 }
-
-add_action("after_setup_theme",function(){
-	$skelet = new Skelet("pabp");
-	print_r(array($skelet->get_customize_option('color_option_with_default')));
-	die(1);
-});
