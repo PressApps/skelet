@@ -117,6 +117,17 @@ SkeletFramework::instance( $settings, $options );
 
 ### Pulling Values
 ------------
+Here's how to pull options values with a plugin prefix name `pabp`:
+```PHP
+$skelet = new Skelet('pabp');
+var_dump($skelet->get());
+```
+You can also get a specific option value by adding the name/id of the option field:
+```PHP
+$skelet = new Skelet('pabp');
+var_dump($skelet->get('text_1'));
+```
+
 
 ### Supported Options fields
 ------------
