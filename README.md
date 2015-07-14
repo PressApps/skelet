@@ -187,7 +187,7 @@ To retrieve all meta fields values, you can try the following:
 ------------
 
 ### Changelog
-v 1.0.0
-* Initial Release
 -----------
+*v 1.0.0 - Initial Release
+
 
