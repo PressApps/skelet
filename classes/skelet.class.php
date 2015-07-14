@@ -30,23 +30,23 @@ if(!class_exists("Skelet")){
 		}
 
 		public function get($option_id = ''){
+				
 				if(empty($this->prefix)){
 						return 'Prefix not set. <em>new Skelet("your_prefix");</em>'; 
 				}
+				
 				$pao = get_option($this->prefix.'_options', array() );
 				$option_id = $this->prefix.'_'.$option_id;
+				
 				if( strlen( $option_id ) ) {
 				    if( isset( $pao[ $option_id ] ) ) {
 				      return $pao[ $option_id ];
-				    } 
-				} else {
-				    return $pao;
+					}
 				}
+				
+				return $pao;
 		}
 
 	}
 }
 
-/*$p = new Skelet('pabp');
-echo $p->get("background_1");
-die(1);*/
