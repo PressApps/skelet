@@ -6,7 +6,7 @@ Skelet is a framework for creating WordPress plugins, it eases the creation of a
 
 ######Contents
 
-* [Installation](https://bitbucket.org/guerillaio/plugin-boilerplate/overview#installation)
+* [Installation](#installation)
 
 ### Installation
 ------------
