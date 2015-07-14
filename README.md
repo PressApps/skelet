@@ -7,6 +7,7 @@ Skelet is a framework for creating WordPress plugins, it eases the creation of:
 * Advanced option pages
 * Widgets
 * Shortcodes
+* Taxonomies
 * Metaboxes
 * WP Customize
 * Templating
@@ -61,7 +62,7 @@ $skelet_paths[] = array(
 	....
 );
 ```
-
+##### Now, let's test the `Skelet` with the plugin boilerplate...
 * Create a new folder `options` in the `plugin-boilerplate/admin` directory.
 * In `plugin-boilerplate/admin/options`, create a new file `framework.config.php` and add the following codes:
 ```PHP
