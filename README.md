@@ -128,13 +128,13 @@ There are 7 configuration files that you can add in skelet `plugin-boilerplate/a
 ------------
 Here's how to pull options values with a plugin prefix name `pabp`:
 ```PHP
-$skelet = new Skelet('pabp');
-var_dump($skelet->get());
+	$skelet = new Skelet('pabp');
+	var_dump($skelet->get());
 ```
 You can also get a specific option value by adding the name/id of the option field:
 ```PHP
-$skelet = new Skelet('pabp');
-var_dump($skelet->get('text_1'));
+	$skelet = new Skelet('pabp');
+	var_dump($skelet->get('text_1'));
 ```
 ##### Get post/page meta values
 Below example, we specify the meta id `_custom_page_options` and get the `section_1_text` field value.
@@ -148,6 +148,11 @@ To retrieve all meta fields values, you can try the following:
 	$skelet = new Skelet('pabp');
 	var_dump($skelet->get_meta(get_the_ID(),'_custom_page_options'));
 	
+```
+### Get customize options values
+````PHP 
+	$skelet = new Skelet("pabp");
+	var_dump(array($skelet->get_customize_option('color_option_with_default')));
 ```
 
 

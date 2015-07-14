@@ -91,6 +91,48 @@ if(!class_exists("Skelet")){
 
 		}
 
+		/**
+		 * Retrieve skelet meta values
+		 * @param  int $post_id   the current page/post id
+		 * @param  string $meta_id 
+		 * @param  string $option_id metabox field id/name
+		 * @return boolean/array     returns meta data array or boolean false if no data found.
+		 */
+		public function get_customize_option( $option_id = ''){
+			
+
+			if(empty($this->prefix)){
+				return 'Prefix not set. <em>new Skelet("your_prefix_name");</em>'; 
+			}
+
+			
+				if( empty( $option_id )){
+					
+					$meta_data = get_option( $this->prefix.'_customize' );
+
+					return $meta_data;
+				}
+
+				if(!empty( $option_id )){
+					$meta_data = get_option( $this->prefix.'_customize' );
+					
+					if( isset($meta_data[$this->prefix.'_'.$this->prefix.'_'.$option_id]) ){
+						return $meta_data[$this->prefix.'_'.$this->prefix.'_'.$option_id];
+					}
+				}
+
+			
+			return false;
+
+		}
+
+
+
 	}
 }
 
+add_action("after_setup_theme",function(){
+	$skelet = new Skelet("pabp");
+	print_r(array($skelet->get_customize_option('color_option_with_default')));
+	die(1);
+});
