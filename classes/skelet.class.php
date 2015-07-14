@@ -92,10 +92,8 @@ if(!class_exists("Skelet")){
 		}
 
 		/**
-		 * Retrieve skelet meta values
-		 * @param  int $post_id   the current page/post id
-		 * @param  string $meta_id 
-		 * @param  string $option_id metabox field id/name
+		 * Retrieve skelet customize option
+		 * @param  string $option_id 
 		 * @return boolean/array     returns meta data array or boolean false if no data found.
 		 */
 		public function get_customize_option( $option_id = ''){
