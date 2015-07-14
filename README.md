@@ -114,6 +114,14 @@ SkeletFramework::instance( $settings, $options );
 
 ### Configuration Files
 ------------
+There are 7 configuration files that you can add in skelet `plugin-boilerplate/admin/options` directory.
+* `customize.config.php` - Configure custom fields, sections and panels in customizer
+* `framework.config.php` - Configure the option page, sections and fields.
+* `metabox.config.php` -  Configure custom fields, sections and panels in post/page.
+* `shortcode.config.php` -  Configure shortcodes and fields.
+* `taxonomy.config.php` - Configure taxonomy & tags extra fields.
+* `template.config.php` - Override template and queries.
+* `widget.config.php` - Configure widgets custom fields, sections and display controller.
 
 ### Pulling Values
 ------------
