@@ -12,34 +12,6 @@ Skelet is a framework for creating WordPress plugins, it eases the creation of:
 * Templating
 * Adding custom fields in pages, posts, custom post types, taxonomies, widgets and customizer.
 
-Supported Options fields
-*	Text
-*	Textarea
-*	Checkbox
-*	Radio
-*	Select
-*	Number
-*	Icons
-*	Group
-*	Image
-*	Upload
-*	Gallery
-*	Sorter
-*	Wysiwyg
-*	Switcher
-*	Background
-*	Color Picker
-*	Multi Checkbox
-*	Checkbox Image Select
-*	Radio Image Select
-*	Typography
-*	Backup
-*	Heading
-*	Sub Heading
-*	Fieldset
-*	Notice
-*	and extendable fields
-
 ######Contents
 
 * [Installation](#installation)
@@ -144,3 +116,32 @@ SkeletFramework::instance( $settings, $options );
 
 ### Pulling Values
 ------------
+
+### Supported Options fields
+------------
+*	Text
+*	Textarea
+*	Checkbox
+*	Radio
+*	Select
+*	Number
+*	Icons
+*	Group
+*	Image
+*	Upload
+*	Gallery
+*	Sorter
+*	Wysiwyg
+*	Switcher
+*	Background
+*	Color Picker
+*	Multi Checkbox
+*	Checkbox Image Select
+*	Radio Image Select
+*	Typography
+*	Backup
+*	Heading
+*	Sub Heading
+*	Fieldset
+*	Notice
+*	and extendable fields
