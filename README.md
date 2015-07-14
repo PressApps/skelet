@@ -21,6 +21,7 @@ Skelet is a framework for creating WordPress plugins, it eases the creation of:
 * [Supported Options Fields](#supported-options-fields)
 * [Debugging](#debugging)
 * [Credits & Links](#credits-and-links)
+* [Changelog](#changelog)
 
 ### Installation
 ------------
@@ -184,3 +185,9 @@ To retrieve all meta fields values, you can try the following:
 
 ### Credits and Links
 ------------
+
+### Changelog
+v 1.0.0
+* Initial Release
+-----------
+
