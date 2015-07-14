@@ -149,7 +149,7 @@ To retrieve all meta fields values, you can try the following:
 	var_dump($skelet->get_meta(get_the_ID(),'_custom_page_options'));
 	
 ```
-### Get customize options values
+###@@ Get customize options values
 ````PHP 
 	$skelet = new Skelet("pabp");
 	var_dump(array($skelet->get_customize_option('color_option_with_default')));
