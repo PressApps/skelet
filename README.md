@@ -13,7 +13,7 @@ Skelet is a framework for creating WordPress plugins, it eases the creation of a
 
 Let's assume that you want to use Skelet Framework in the plugin-boilerplate.
 
-* Download & extract a copy of [Plugin Boilerplate](http://wppb.me) in `wp-content/plugins/` & pull a copy of [Skelet Framework](https://bitbucket.org/guerillaio/skelet/src/16c9cabdaef3281adaa33c8440ecb7df206963da/?at=develop) from the repository and drop the folder `/skelet` in `plugin-boilerplate/admin/`
+* Download & extract a copy of [Plugin Boilerplate](http://wppb.me) in `wp-content/plugins/` & pull [Skelet Framework](https://github.com/pressapps/skelet) from the repository and drop the folder `/skelet` in `plugin-boilerplate/admin/`
 * In the `/plugin-boilerplate/` directory, open the plugin main file and add the following codes
 ```PHP
 /*----------------------------------------------------------------- */
