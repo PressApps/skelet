@@ -18,6 +18,7 @@ Skelet is a framework for creating WordPress plugins, it eases the creation of:
 * [Add Skelet to a Project](#add-skelet-to-a-project)
 * [Configuration Files](#config-files)
 * [Pulling Values](#pulling-values)
+* [Supported Options Fields](#supported-options-fields)
 
 ### Installation
 ------------
