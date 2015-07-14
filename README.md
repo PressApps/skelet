@@ -14,8 +14,7 @@ Skelet is a framework for creating WordPress plugins, it eases the creation of:
 
 ######Contents
 
-* [Installation](#installation)
-* [Add Skelet to a Project](#add-skelet-to-a-project)
+* [Installation and Adding Skelet to a Project](#installation)
 * [Configuration Files](#config-files)
 * [Pulling Values](#pulling-values)
 * [Supported Options Fields](#supported-options-fields)
@@ -108,9 +107,6 @@ SkeletFramework::instance( $settings, $options );
 
 ```
 * Now, let's activate the `plugin-boilerplate` and it should show the `PressApps` in the admin side-menu.
-
-### Add Skelet to a Project
-------------
 
 ### Configuration Files
 ------------
