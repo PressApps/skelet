@@ -113,18 +113,19 @@ SkeletFramework::instance( $settings, $options );
 * Now, let's activate the `plugin-boilerplate` and it should show the `PressApps` in the admin side-menu.
 
 ![Alt text](https://raw.githubusercontent.com/pressapps/skelet/doc/doc/pressapps-admin-side-menu.png "PressApps Side Menu")
+
 * Your plugin is ready to use some cool features of Skelet. Read the [Configuration Files](#configuration-files).
 
 ### Configuration Files
 ------------
 There are 7 configuration files of Skelet that you can add in  `plugin-boilerplate/admin/options` directory.
-* `customize.config.php` - Configure custom fields, sections and panels in customizer
-* `framework.config.php` - Configure the option page, sections and fields.
-* `metabox.config.php` -  Configure custom fields, sections and panels in post/page.
-* `shortcode.config.php` -  Configure shortcodes and fields.
-* `taxonomy.config.php` - Configure taxonomy & tags extra fields.
-* `template.config.php` - Override template and queries.
-* `widget.config.php` - Configure widgets custom fields, sections and display controller.
+* `[customize.config.php](https://github.com/pressapps/skelet/blob/doc/doc/options/customize.config.php)` - Configure custom fields, sections and panels in customizer
+* `[framework.config.php](https://github.com/pressapps/skelet/blob/doc/doc/options/framework.config.php)` - Configure the option page, sections and fields.
+* `[metabox.config.php](https://github.com/pressapps/skelet/blob/doc/doc/options/metabox.config.php)` -  Configure custom fields, sections and panels in post/page.
+* `[shortcode.config.php](https://github.com/pressapps/skelet/blob/doc/doc/options/shortcode.config.php)` -  Configure shortcodes and fields.
+* `[taxonomy.config.php](https://github.com/pressapps/skelet/blob/doc/doc/options/taxonomy.config.php)` - Configure taxonomy & tags extra fields.
+* `[template.config.php](https://github.com/pressapps/skelet/blob/doc/doc/options/template.config.php)` - Override template and queries.
+* `[widget.config.php](https://github.com/pressapps/skelet/blob/doc/doc/options/widget.config.php)` - Configure widgets custom fields, sections and display controller.
 
 For supported options, read this [documentation](http://codestarframework.com/documentation/#text).
 
