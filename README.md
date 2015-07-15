@@ -146,19 +146,27 @@ You can also get a specific option value by adding the name/id of the option fie
 Below example, we specify the meta id `_custom_page_options` and get the `section_1_text` field value.
 ```PHP
 	$skelet = new Skelet('pabp');
-	var_dump($skelet->get_meta(get_the_ID(),'_custom_page_options','section_1_text'));
-	
-```
-To retrieve all meta fields values, you can try the following:
-```PHP
-	$skelet = new Skelet('pabp');
+	// get all options values
 	var_dump($skelet->get_meta(get_the_ID(),'_custom_page_options'));
+	// get specific option value
+	var_dump($skelet->get_meta(get_the_ID(),'_custom_page_options','section_1_text'));
 	
 ```
 ##### Get customize options values
 ````PHP 
 	$skelet = new Skelet("pabp");
+	// get all options values
+	var_dump(array($skelet->get_customize_option()));
+	// get specific option value
 	var_dump(array($skelet->get_customize_option('color_option_with_default')));
+```
+##### Get taxonomy options values
+````PHP 
+	$skelet = new Skelet("pabp");
+	// get all options values
+	var_dump($skelet->get_taxonomy('category',50,));
+	// get specific option value
+	var_dump($skelet->get_taxonomy('category',50,'section_4_text'));
 ```
 ##### Get widget fields values
 Skelet widget configuration comes up with controller settings to get fields values.
@@ -247,6 +255,7 @@ if(!class_exists("SkeletWidgetWalker")){
 
 ### Credits and Links
 ------------
+Made with <3 by [PressApps Team](http://pressapps.co)
 
 ### Changelog
 -----------

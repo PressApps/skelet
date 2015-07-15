@@ -124,7 +124,43 @@ if(!class_exists("Skelet")){
 
 		}
 
+		/**
+		 * Get Taxonomy fields values
+		 * @param  string  $taxonomy 
+		 * @param  integer $tag_id   
+		 * @param  string  $field_id 
+		 * @return array|bool            
+		 */
+		public function get_taxonomy($taxonomy = '', $tag_id = 0, $field_id = ''){
+				if(empty($this->prefix)){
+					return 'Prefix not set. <em>new Skelet("your_prefix_name");</em>'; 
+				}
+				if( !empty( $taxonomy ) && $tag_id > 0 && empty($field_id)){
+					
+					$skelet_fields = "_skelet_".$taxonomy.'_'.$tag_id;
+            
+					$meta_data = get_option( $skelet_fields );
+
+					return $meta_data;
+				}
+
+				if( !empty( $taxonomy ) && $tag_id > 0 && !empty($field_id)){
+				
+					$skelet_fields = "_skelet_".$taxonomy.'_'.$tag_id;
+            
+					$meta_data = get_option( $skelet_fields );
+
+					if( isset($meta_data[$this->prefix.'_'.$field_id]) ){
+						return $meta_data[$this->prefix.'_'.$field_id];
+					}
+				}
+
+			
+			return false;
+
+		}
 
 
 	}
 }
+
