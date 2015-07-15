@@ -28,11 +28,18 @@ if(!class_exists("SkeletFramework_Taxonomy")){
      */
     private static $instance = null;
 
+    /**
+     *
+     * plugin prefix
+     * @access private
+     * @var prefix
+     *
+     */
+    private static $prefix = null;
+
     // run taxonomy construct
     public function __construct( $options ){
 
-      $options = $this->apply_prefix($options);
-     
       self::$options = apply_filters( 'sk_taxonomy_options', $options );
       $this->addAction("admin_init",'load_taxonomy');
     
@@ -44,7 +51,7 @@ if(!class_exists("SkeletFramework_Taxonomy")){
         $taxonomy_options = self::$options;
         foreach($taxonomy_options as $key => $val){
           $taxonomy = $val["taxonomy"]; 
-           
+          
           if(isset($_REQUEST["taxonomy"]) && $taxonomy == $_REQUEST["taxonomy"]){
 
               add_action( 'edited_'.$taxonomy, array('SkeletFramework_Taxonomy','edited_taxonomy_box') );
@@ -56,6 +63,7 @@ if(!class_exists("SkeletFramework_Taxonomy")){
               }else{
               add_action( 'edit_'.$taxonomy.'_form ', array('SkeletFramework_Taxonomy','edit_taxonomy_box') , 10 , 2 );
               } 
+             
           }
          
         }
@@ -94,13 +102,11 @@ if(!class_exists("SkeletFramework_Taxonomy")){
           }
         }
       }
-
      echo $display_elem;
 
     }
 
     public static function edited_taxonomy_box($post, $taxonomy){
-        
        
                 $taxonomy = $_POST['taxonomy'];
                   $term_id = $_POST['tag_ID'];
@@ -110,7 +116,8 @@ if(!class_exists("SkeletFramework_Taxonomy")){
     }
 
     public static function add_taxonomy_box($taxonomy){
-        
+        global $skelet_path;
+       
 
          if(empty(self::$options)) 
           return false;
@@ -131,7 +138,7 @@ if(!class_exists("SkeletFramework_Taxonomy")){
     }
 
     public static function save_extra_fields($tag_ID){
-      
+          global $skelet_path;
 
             $taxonomy = $_POST['taxonomy'];
              $term_id = $_POST['term_id'];

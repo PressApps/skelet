@@ -6,9 +6,17 @@
  * 
  */
     
-    global $skelet_paths,$skelet_path,$skelet_shortcodes,$skelet_metaboxes,$skelet_customize;
-    $skelet_metaboxes = array();
-    $skelet_customize = array();
+    global  $skelet_paths, 
+            $skelet_path, 
+            $skelet_shortcodes,
+            $skelet_metaboxes,  
+            $skelet_customize, 
+            $skelet_taxonomy;
+
+            $skelet_metaboxes = array();
+            $skelet_customize = array();
+            $skelet_taxonomy = array();
+
     // Skelet class 
     include_once wp_normalize_path(dirname( __FILE__ ) .'/classes/skelet.class.php');
   
@@ -146,6 +154,20 @@ if (!function_exists("skelet_load_customize")) {
 
   }
   add_action( 'skelet_loaded', 'skelet_load_customize', 10 );
+        
+}
+
+
+/**
+ * Load taxonomy after skelet loaded
+ */
+if (!function_exists("skelet_load_taxonomy")) {
+  function skelet_load_taxonomy(){
+      global $skelet_taxonomy;
+     SkeletFramework_Taxonomy::instance( $skelet_taxonomy );
+
+  }
+  add_action( 'skelet_loaded', 'skelet_load_taxonomy', 10 );
         
 }
 
