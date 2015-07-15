@@ -115,7 +115,7 @@ if(!class_exists("SkeletFramework_Options")){
     }
 
     public function element_debug() {
-
+      global $skelet_path;
       $out = '';
 
       if( ( isset( $this->field['debug'] ) && $this->field['debug'] === true ) || ( defined( 'SK_OPTIONS_DEBUG' ) && SK_OPTIONS_DEBUG ) ) {
@@ -131,7 +131,7 @@ if(!class_exists("SkeletFramework_Options")){
         $out .= "\n\n";
         $out .= "<strong>". __( 'USAGE', SK_TEXTDOMAIN ) .":</strong>";
         $out .= "\n";
-        $out .= ( isset( $this->field['id'] ) ) ? "sk_get_option( '". $this->field['id'] ."' );" : '';
+        $out .= ( isset( $this->field['id'] ) ) ? "\$skelet = new Skelet('your_plugin_prefix_name');\n\$skelet->get( '". $this->field['id'] ."' );" : '';
 
         if( ! empty( $value ) ) {
           $out .= "\n\n";
