@@ -160,8 +160,59 @@ To retrieve all meta fields values, you can try the following:
 	$skelet = new Skelet("pabp");
 	var_dump(array($skelet->get_customize_option('color_option_with_default')));
 ```
+##### Get widget fields values
+Skelet widget configuration comes up with controller settings to get fields values.
+```PHP
+ $options[]            = array(
+  'name'              => 'skelet_widget_fields_1',
+  'title'             => 'Skelet Widget Fields',
+  'description'       => 'This is a description',
+  'settings'          => array(
 
+    // text
+    array(
+      'name'          => 'text_1',
+      'default'       => 'Skelet widget is awesome',
+      'control'       => array(
+        'label'       => 'Sample Text Field',
+        'type'        => 'text',
+      ),
+    ),
+    // setup widget controller
+  "frontend_tpl" => array(
+      "wrapper"      => "<div class=\"item-wrapper\">%s</div>",
+      "before_item"  => "<div>",
+      "after_item"   => "</div>",
+      "show_label"   => array(
+          "wrapper"  => "<div>%s</div>",
+          "before"   => "<label>",
+          "after"    => ":</label>  "
+      ),
+      "walker_class" => array(
+            "name"   => "SkeletWidgetWalker",
+            "path"   => PABP_PLUGIN_DIR."template/widget/walkers/sk-widget-sample-class.php",
+      )
+  )
 
+```
+Get widget fields values
+```PHP
+if(!class_exists("SkeletWidgetWalker")){
+	class SkeletWidgetWalker{
+
+			public $widget_option_settings = array();
+
+			function __construct($args,$instance){
+
+				global $options;
+				
+				var_dump($instance["text_1"]);
+
+				
+			}
+	}
+}
+```
 ### Supported Options fields
 ------------
 *	Text
