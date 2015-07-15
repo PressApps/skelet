@@ -124,6 +124,8 @@ There are 7 configuration files of Skelet that you can add in  `plugin-boilerpla
 * `template.config.php` - Override template and queries.
 * `widget.config.php` - Configure widgets custom fields, sections and display controller.
 
+For supported options, read this [documentation](http://codestarframework.com/documentation/#text).
+
 ### Pulling Values
 ------------
 ##### Get options values
