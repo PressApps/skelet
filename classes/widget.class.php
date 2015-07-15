@@ -69,7 +69,6 @@ abstract class SkeletWidget_Factory extends WP_Widget {
         $tpl = $this->getTemplate();
        
         if(!empty( $tpl )){
-            $tpl["id_base"] = $this->id_base;
             if(isset($tpl["walker_class"])){
                   
                   if(isset($tpl["walker_class"]["path"]) && file_exists($tpl["walker_class"]["path"])){
