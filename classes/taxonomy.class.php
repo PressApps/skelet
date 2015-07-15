@@ -51,18 +51,13 @@ if(!class_exists("SkeletFramework_Taxonomy")){
         $taxonomy_options = self::$options;
         foreach($taxonomy_options as $key => $val){
           $taxonomy = $val["taxonomy"]; 
-          
           if(isset($_REQUEST["taxonomy"]) && $taxonomy == $_REQUEST["taxonomy"]){
 
               add_action( 'edited_'.$taxonomy, array('SkeletFramework_Taxonomy','edited_taxonomy_box') );
               add_action( $taxonomy.'_add_form_fields', array('SkeletFramework_Taxonomy','add_taxonomy_box'));
               add_action( 'created_'.$taxonomy, array('SkeletFramework_Taxonomy','save_extra_fields'));
-              
-              if( $taxonomy == "category" || $taxonomy == "post_tag"){
               add_action( $taxonomy.'_edit_form_fields', array('SkeletFramework_Taxonomy','edit_taxonomy_box') , 10, 2 );
-              }else{
-              add_action( 'edit_'.$taxonomy.'_form ', array('SkeletFramework_Taxonomy','edit_taxonomy_box') , 10 , 2 );
-              } 
+            
              
           }
          
