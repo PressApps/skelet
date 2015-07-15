@@ -111,7 +111,7 @@ SkeletFramework::instance( $settings, $options );
 
 ```
 * Now, let's activate the `plugin-boilerplate` and it should show the `PressApps` in the admin side-menu.
-![Alt text]("https://raw.githubusercontent.com/pressapps/skelet/doc/doc/pressapps-admin-side-menu.png" "PressApps Side Menu")
+![Alt text](https://raw.githubusercontent.com/pressapps/skelet/doc/doc/pressapps-admin-side-menu.png "PressApps Side Menu")
 * Your plugin is ready to use some cool features of Skelet. Read the [Configuration Files](#configuration-files).
 
 ### Configuration Files
