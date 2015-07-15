@@ -13,7 +13,7 @@ Skelet is a framework for creating WordPress plugins, it eases the creation of:
 * Templating
 * Adding custom fields in pages, posts, custom post types, taxonomies, widgets and customizer.
 
-######Contents
+### Contents
 
 * [Installation and Adding Skelet to a Project](#installation)
 * [Configuration Files](#configuration-files)
@@ -127,7 +127,7 @@ There are 7 configuration files of Skelet that you can add in  `plugin-boilerpla
 * [template.config.php](https://github.com/pressapps/skelet/blob/doc/doc/options/template.config.php) - Override template and queries.
 * [widget.config.php](https://github.com/pressapps/skelet/blob/doc/doc/options/widget.config.php) - Configure widgets custom fields, sections and display controller.
 
-For supported options, read this [documentation](http://codestarframework.com/documentation/#text).
+For supported options fields, read this [documentation](http://codestarframework.com/documentation/#text).
 
 ### Pulling Values
 ------------
