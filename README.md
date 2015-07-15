@@ -115,7 +115,7 @@ SkeletFramework::instance( $settings, $options );
 
 ### Configuration Files
 ------------
-There are 7 configuration files that you can add in skelet `plugin-boilerplate/admin/options` directory.
+There are 7 configuration files of Skelet that you can add in  `plugin-boilerplate/admin/options` directory.
 * `customize.config.php` - Configure custom fields, sections and panels in customizer
 * `framework.config.php` - Configure the option page, sections and fields.
 * `metabox.config.php` -  Configure custom fields, sections and panels in post/page.
@@ -126,6 +126,7 @@ There are 7 configuration files that you can add in skelet `plugin-boilerplate/a
 
 ### Pulling Values
 ------------
+##### Get options values
 Here's how to pull options values with a plugin prefix name `pabp`:
 ```PHP
 	$skelet = new Skelet('pabp');
