@@ -65,34 +65,12 @@ abstract class SkeletWidget_Factory extends WP_Widget {
         $tfld = $this->getTitleField();        
         echo $before_widget;
        
-         add_shortcode( str_replace('-','_',$this->id), function( $atts ) use ($instance) {
-                                  $atts = shortcode_atts( array(
-                                    'get' => '',
-                                   
-                                  ), $atts,  str_replace('-','_',$this->id) );
-
-                                    if(isset($instance[$atts['get']])){
-                                      return $instance[$atts['get']];
-                                    }
-        });
 
         $tpl = $this->getTemplate();
        
         if(!empty( $tpl )){
-              if(!isset($tpl["wrapper"])){
-                
-                if (!empty($tfld)){
-                    $title = apply_filters('widget_title', empty($instance['title']) ? '&nbsp;' : $instance['title'], $instance, $this->id_base);
-                    if ( $title ){ echo $before_title . $title . $after_title; }
-                }
-                echo '<div class="'.$this->id_base.'-wrapper">';
-              
-              }elseif(isset($tpl["wrapper"]) && !isset($tpl["walker_class"])){
-              
-                $item = '['.str_replace('-','_',$this->id).' display="color_option_with_default"]';
-                echo do_shortcode(sprintf($tpl["wrapper"], $item));
-              
-              }elseif(isset($tpl["walker_class"])){
+            $tpl["id_base"] = $this->id_base;
+            if(isset($tpl["walker_class"])){
                   
                   if(isset($tpl["walker_class"]["path"]) && file_exists($tpl["walker_class"]["path"])){
                       include_once($tpl["walker_class"]["path"]);
@@ -106,13 +84,7 @@ abstract class SkeletWidget_Factory extends WP_Widget {
                       echo "Invalid class name or Walker class not declared.";
                   }
               
-              }
-        }else{
-             if (!empty($tfld)){
-                  $title = apply_filters('widget_title', empty($instance['title']) ? '&nbsp;' : $instance['title'], $instance, $this->id_base);
-                  if ( $title ){ echo $before_title . $title . $after_title; }
-              }
-          //  print_r( $instance);
+            }
         }
        echo $after_widget; 
     }
