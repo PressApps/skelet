@@ -195,8 +195,7 @@ Skelet widget configuration comes up with controller settings to get fields valu
   )
 
 ```
-Get widget fields values 
-Controller File: `sk-widget-sample-class.php`
+Get widget fields values in controller file `sk-widget-sample-class.php`
 ```PHP
 if(!class_exists("SkeletWidgetWalker")){
 	class SkeletWidgetWalker{
