@@ -260,7 +260,7 @@ if(!class_exists("SkeletWidgetWalker")){
 
 ### Credits and Links
 ------------
-Made with <3 by [PressApps Team](http://pressapps.co)
+Skelet is based on awesome [Codestar Framework](http://codestarframework.com/), thank you for the great work.
 
 ### Changelog
 -----------
