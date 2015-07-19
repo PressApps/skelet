@@ -24,7 +24,6 @@ Skelet is a framework for creating WordPress plugins, it eases the creation of:
   *	[Taxonomy fields](#get-taxonomy-options-values)
   *	[Widget fields](#get-widget-fields-values)
 * [Supported Options Fields](#supported-options-fields)
-* [Debugging](#debugging)
 * [Credits & Links](#credits-and-links)
 * [Changelog](#changelog)
 
@@ -254,9 +253,6 @@ if(!class_exists("SkeletWidgetWalker")){
 *	Fieldset
 *	Notice
 *	and extendable fields
-
-### Debugging
-------------
 
 ### Credits and Links
 ------------
