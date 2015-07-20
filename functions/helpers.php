@@ -98,7 +98,7 @@ if ( ! function_exists( 'sk_decode_string' ) ) {
 if ( ! function_exists( 'sk_get_google_fonts' ) ) {
   function sk_get_google_fonts() {
 
-    global $sk_google_fonts;
+    global $sk_google_fonts, $skelet_path;
 
     if( ! empty( $sk_google_fonts ) ) {
 
@@ -107,7 +107,7 @@ if ( ! function_exists( 'sk_get_google_fonts' ) ) {
     } else {
 
       ob_start();
-      sk_locate_template( 'fields/typography/google-fonts.json' );
+      sk_locate_template( str_replace(  $skelet_path["dir"].'skelet/', '', 'fields/typography/google-fonts.json') ,$skelet_path);
       $json = ob_get_clean();
 
       $sk_google_fonts = json_decode( $json );
