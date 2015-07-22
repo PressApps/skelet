@@ -35,9 +35,9 @@ Let's assume that you want to use Skelet Framework in the plugin-boilerplate.
 * Download & extract a copy of [Plugin Boilerplate](http://wppb.me) in `wp-content/plugins/` & pull [Skelet Framework](https://github.com/pressapps/skelet) from the repository and drop the folder `/skelet` in `plugin-boilerplate/admin/`
 * In the `/plugin-boilerplate/` directory, open the plugin main file and add the following codes
 ```PHP
-/*----------------------------------------------------------------- */
-/* Skelet Config Path
-/*----------------------------------------------------------------- */
+/**
+ * Skelet Config Path
+ */
 
 $skelet_paths[] = array(
 	'prefix'	  => 'pabpdemo',
@@ -46,9 +46,9 @@ $skelet_paths[] = array(
 );
 
 
-/*----------------------------------------------------------------- */
-/* Load Skelet Framework
-/*----------------------------------------------------------------- */
+/**
+ * Load Skelet Framework
+ */
 if(! class_exists( 'Skelet_LoadConfig' ) ) 
 		include_once dirname( __FILE__ ) .'/admin/skelet/skelet.php';
 ```
@@ -82,9 +82,9 @@ $settings      = array(
 
 $options = array();
 
-// ----------------------------------------
-// a option section for options overview  -
-// ----------------------------------------
+/**
+ * a option section for options overview  
+ */
 $options[]      = array(
   'name'        => 'overwiew',
   'title'       => 'Overview',
