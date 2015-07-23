@@ -42,10 +42,8 @@ body[class^="pressapps_page_"] #wpcontent, body[class*="pressapps_page_"] #wpcon
 #pa-products .pa-item {
 
 }
-.pa-item:after {
-  content: "";
-  display: table;
-  clear: both;
+.pa-item .button-primary {
+  border-color: #00a0d2;
 }
 #pa-products .pa-item h3 {
   text-align: center;
