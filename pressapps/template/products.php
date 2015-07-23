@@ -6,7 +6,7 @@
 ?>
 
 <header class="pa-header">
-	<h1><?php _e( 'Other Products By PressApps', SK_TEXTDOMAIN ); ?></h1>
+	<h1><?php _e( 'Products By PressApps', SK_TEXTDOMAIN ); ?></h1>
 </header>
 
 <div id="pa-products"></div>

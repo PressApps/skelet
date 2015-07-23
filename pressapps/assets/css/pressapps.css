@@ -4,9 +4,6 @@
 body[class^="pressapps_page_"] #wpcontent, body[class*="pressapps_page_"] #wpcontent {
   padding-left: 0;
 }
-html {
-  background-color: #f9f9f9;
-}
 
 /**
  * Header
@@ -20,7 +17,8 @@ html {
 }
 .pa-header h1 {
   margin: 0;
-  font-size: 4em;
+  font-size: 2.5em;
+  font-weight: 300;
   line-height: 1.4em;
 }
 .pa-header h3 {
@@ -35,21 +33,30 @@ html {
   overflow: hidden;
 }
 
-#pa-products .pa-item {
+#pa-products .pa-item-wrapper {
+  width: 44%;
+  margin-left: 4%;
+  margin-bottom: 6%;
 	float:left;
-	margin-left: 25px;
-  margin-top: 25px;
-  padding: 40px;
-  background-color: rgba(0, 0, 0, 0.06);
+}
+#pa-products .pa-item {
+
+}
+.pa-item:after {
+  content: "";
+  display: table;
+  clear: both;
 }
 #pa-products .pa-item h3 {
   text-align: center;
-  margin: 0 0 30px;
-  text-transform: uppercase;
+  margin: 0 0 25px;
+  font-weight: 400;
+  line-height: 1.4em;
+  height: 24px;
 }
-#pa-products .pa-item img{
-	width:500px;
-	height: 254px;
+#pa-products .pa-item img {
+	max-width: 100%;
+	height: auto;
 }
 #pa-products .pa-item p {
   text-align: center;

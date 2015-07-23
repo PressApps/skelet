@@ -36,19 +36,19 @@ jQuery(document).ready(function($) {
 	  	jQuery.each(d['pressapps_products'],function(i,dd){
 	  		
 		  		var item_large = [
-		  			'<div class="pa-item">',
+		  			'<div class="pa-item-wrapper"><div class="pa-item">',
 		  			'<h3>',
 		  			dd.item,
 		  			//'<span class="marked-purchased">Purchased</span>',
 		  			'</h3>',
 		  			'<a href="'+dd.url+'" target="_blank">',
-		  			'<img src="'+dd.live_preview_url+'" width="500" heigh="254"/>',
+		  			'<img src="'+dd.live_preview_url+'"/>',
 		  			'</a><br/>',
 			  			'<p>',
 			  			'<a href="'+dd.url+'" target="_blank" class="button pullright">Live Demo</a> ',
 			  			'<a href="'+dd.url+'" target="_blank" class="button-primary pullright">Buy $'+dd.cost+'</a>',
 			  			'</p>',
-		  			'</div>'
+		  			'</div></div>'
 
 		  		];
 		  		products.push(item_large.join(""));
@@ -79,19 +79,19 @@ jQuery(document).ready(function($) {
 	  	jQuery.each(d['pressapps_products'],function(i,dd){
 	  		
 		  		var item_large = [
-		  			'<div class="pa-item">',
+		  			'<div class="pa-item-wrapper"><div class="pa-item">',
 		  			'<h3>',
 		  			dd.item,
 		  			//'<span class="marked-purchased">Purchased</span>',
 		  			'</h3>',
 		  			'<a  href="'+dd.url+'" target="_blank">',
-		  			'<img src="'+dd.live_preview_url+'" width="500" heigh="254"/>',
+		  			'<img src="'+dd.live_preview_url+'"/>',
 		  			'</a><br/>',
 			  			'<p>',
 			  			'<a href="'+dd.url+'" target="_blank" class="button pullright">Live Demo</a> ',
 			  			'<a href="'+dd.url+'" target="_blank" class="button-primary pullright">Buy $'+dd.cost+'</a>',
 			  			'</p>',
-		  			'</div>'
+		  			'</div></div>'
 
 		  		];
 		  		products.push(item_large.join(""));
