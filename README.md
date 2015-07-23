@@ -49,8 +49,9 @@ $skelet_paths[] = array(
 /**
  * Load Skelet Framework
  */
-if(! class_exists( 'Skelet_LoadConfig' ) ) 
+if( ! class_exists( 'Skelet_LoadConfig' ) ){
 		include_once dirname( __FILE__ ) .'/admin/skelet/skelet.php';
+}
 ```
 
  after this line or the [Plugin File Header](https://codex.wordpress.org/File_Header)

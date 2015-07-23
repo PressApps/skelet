@@ -16,8 +16,11 @@ if(!class_exists("SkeletFramework_Option_content")){
 	  }
 
 	  public function output() {
-
-	    echo $this->element_before();
+	  	
+	  	// include partial template
+	  	$options    = $this->field["options"];
+	  	$options    = ( is_array( $options ) ) ? $options :  $this->element_data( $options );
+        echo $this->element_before();
 	    echo $this->field['content'];
 	    echo $this->element_after();
 
