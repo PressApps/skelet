@@ -482,17 +482,18 @@ if(!class_exists("SkeletFramework")){
           echo '<div class="sk-nav-background"></div>';
 
         echo '</div>'; // end .sk-body
-        global $skelet_path;
-        echo '<footer class="sk-footer">';
-          echo '<img src="' . $skelet_path["uri"] . '/assets/images/madeby.png">';
-          echo '<a target="_blank" href="http://pressapps.co/"><img src="' . $skelet_path["uri"] . '/assets/images/pressapps.png"></a>';
-        echo '</footer>'; // end .sk-footer
 
         echo '</form>'; // end form
 
         echo '<div class="clear"></div>';
 
       echo '</div>'; // end .sk-framework
+      
+      global $skelet_path;
+      echo '<footer class="sk-footer">';
+        echo '<img src="' . $skelet_path["uri"] . '/assets/images/madeby.png">';
+        echo '<a target="_blank" href="http://pressapps.co/"><img src="' . $skelet_path["uri"] . '/assets/images/pressapps.png"></a>';
+      echo '</footer>'; // end .sk-footer
 
     }
 
