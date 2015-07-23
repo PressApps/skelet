@@ -8,21 +8,24 @@ body[class^="pressapps_page_"] #wpcontent, body[class*="pressapps_page_"] #wpcon
 /**
  * Header
  */
-.pa-header h1, .pa-header h3, .pa-cta h2 {
-  font-weight: 400;
-}
+
 .pa-header {
   padding: 35px 25px;
   text-align: center;
 }
-.pa-header h1 {
+.pa-header h1, .pa-subheader {
   margin: 0;
   font-size: 2.5em;
   font-weight: 300;
   line-height: 1.4em;
 }
+.pa-subheader {
+  text-align: center;
+  padding: 65px 25px 35px;
+}
 .pa-header h3 {
   margin: 20px 0 0;
+  font-weight: 300;
 }
 
 /**
@@ -74,14 +77,15 @@ body[class^="pressapps_page_"] #wpcontent, body[class*="pressapps_page_"] #wpcon
  * Support page
  */
 .pa-boxes {
-  margin: 40px 0 0;
   padding: 0;
+  margin: 0;
   text-align: center;
 }
 .pa-boxes li {
   display: inline-block;
-  width: 30%;
-  margin: 0 2% 0 0;
+  width: 40%;
+  max-width: 400px;
+  margin: 0 4% 0 0;
   padding-bottom: .5em;
   vertical-align: top;
   line-height: 1.5;
@@ -117,12 +121,12 @@ body[class^="pressapps_page_"] #wpcontent, body[class*="pressapps_page_"] #wpcon
 }
 .pa-boxes i {
   font-size: 42px;
-  color: #0C9DE2;
+  color: #269fe5;
 }
 .pa-boxes h3 {
   font-size: 22px;
   font-weight: 400;
-  color: #0C9DE2;
+  color: #269fe5;
 }
 .pa-boxes p {
   margin: 15px 0 0;
@@ -132,12 +136,7 @@ body[class^="pressapps_page_"] #wpcontent, body[class*="pressapps_page_"] #wpcon
   overflow: hidden;
   text-align: center;
   width: 94%;
-  margin: 80px auto 0;
-}
-.pa-faq h2 {
-  margin: 0 0 .75em;
-  font-size: 2.4em;
-  line-height: 1.4em;
+  margin: 0 auto 0;
 }
 .pa-faq ul {
   width: 30%;
@@ -152,7 +151,7 @@ body[class^="pressapps_page_"] #wpcontent, body[class*="pressapps_page_"] #wpcon
   text-decoration: underline;
 }
 .pa-question {
-  color: #0C9DE2;
+  color: #269fe5;
   font-size: 1.1em;
   cursor: pointer;
   margin: 12px 0 0;
@@ -161,14 +160,8 @@ body[class^="pressapps_page_"] #wpcontent, body[class*="pressapps_page_"] #wpcon
   color: #222;
 }
 .pa-cta, .pa-feedback {
-  margin-top: 80px;
   text-align: center;
   padding: 0 40px;
-}
-.pa-cta h2, .pa-feedback h2 {
-  margin: 0 0 .75em;
-  font-size: 2.4em;
-  line-height: 1.4em;
 }
 .pa-cta p, .pa-feedback p {
   font-size: 15px;
@@ -184,9 +177,9 @@ body[class^="pressapps_page_"] #wpcontent, body[class*="pressapps_page_"] #wpcon
   font-size: 1.2em;
   line-height: 1em;
   padding: 1.5em 2.5em;
-  color: #0C9DE2;
+  color: #269fe5;
   background-color: transparent;
-  border: solid 1px #0C9DE2;
+  border: solid 1px #269fe5;
   -webkit-transition: background-color .14s ease-out,color .14s ease-out;
   -moz-transition: background-color .14s ease-out,color .14s ease-out;
   -ms-transition: background-color .14s ease-out,color .14s ease-out;
