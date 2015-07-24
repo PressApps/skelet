@@ -24,7 +24,9 @@
   // ======================================================
   // CSFRAMEWORK TAB NAVIGATION
   // ------------------------------------------------------
+ 
   $.fn.CSFRAMEWORK_TAB_NAVIGATION = function() {
+    
     return this.each(function() {
 
       var $this   = $(this),
@@ -42,20 +44,32 @@
 
         if( $next.is('ul') ) {
 
-          $next.slideToggle( 'fast' );
-          $el.closest('li').toggleClass('sk-tab-active');
-
+          
             if($el.closest('li').hasClass("sk-sub")){
-                var sub_first_item = $el.closest('li').find("ul:first a:first");
-                sub_first_item.click();
+              // set first tab of submenu
+              var sub_first_item = $el.closest('li').find("ul:first a:first");
+              sub_first_item.click();
+              
+              if( ! $el.closest('li').hasClass("sk-tab-active") ){
+                    $next.slideToggle( 'fast' );
+                    $el.closest('li').toggleClass('sk-tab-active');
+              }
+
+            }else{
+                 $next.slideToggle( 'fast' );
+                 $el.closest('li').toggleClass('sk-tab-active');
             }
 
         } else {
-
-          $('#sk-tab-'+$target).fadeIn('fast').siblings().hide();
-          $nav.find('a').removeClass('sk-section-active');
-          $el.addClass('sk-section-active');
-          $reset.val($target);
+              $('#sk-tab-'+$target).fadeIn('fast').siblings().hide();
+              $nav.find('a').removeClass('sk-section-active');
+              $el.addClass('sk-section-active');
+              if( ! $el.closest('ul').closest('li').hasClass('sk-sub')){
+                $nav.find('li.sk-sub.sk-tab-active ul').slideToggle("fast");
+                $nav.find('li.sk-sub.sk-tab-active').removeClass("sk-tab-active");
+              }
+              
+              $reset.val($target);
 
         }
 
@@ -65,6 +79,7 @@
         e.preventDefault();
         $this.find('.sk-body').toggleClass('sk-show-all');
         $(this).find('.fa').toggleClass('fa-eye-slash' ).toggleClass('fa-eye');
+        console.log(4);
       });
 
     });
