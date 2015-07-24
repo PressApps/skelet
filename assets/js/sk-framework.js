@@ -45,6 +45,11 @@
           $next.slideToggle( 'fast' );
           $el.closest('li').toggleClass('sk-tab-active');
 
+            if($el.closest('li').hasClass("sk-sub")){
+                var sub_first_item = $el.closest('li').find("ul:first a:first");
+                sub_first_item.click();
+            }
+
         } else {
 
           $('#sk-tab-'+$target).fadeIn('fast').siblings().hide();
