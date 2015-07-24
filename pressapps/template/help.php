@@ -21,14 +21,14 @@
 	</li>
 	<li>
 		<a href="#">
-			<i class="sk-icon fa fa-book"></i>
+			<i class="sk-icon fa fa-search"></i>
 			<h3><?php _e( 'Knowledge Base', SK_TEXTDOMAIN ); ?></h3>
 			<p>Search articles and screencast with customisation advise</p>
 		</a>
 	</li>
 </ul>
 
-<h2 class="pa-subheader"><?php _e( 'Looking for More?', SK_TEXTDOMAIN ); ?></h2>
+<h2 class="pa-subheader"><?php _e( 'Looking for more?', SK_TEXTDOMAIN ); ?></h2>
 <ul class="pa-boxes">
 	<li>
 		<a href="#">
@@ -48,13 +48,12 @@
 
 <div class="pa-cta">
 	<h2 class="pa-subheader"><?php _e( 'Can’t find what you’re looking for?', SK_TEXTDOMAIN ); ?></h2>
-	<p>We offer ticket support Monday – Friday between the hours of 7am and 3pm GMT time.</p>
-	<p>We reply to every message we receive within 24 hours Monday – Friday. Use our site to create a support ticket, and get help you can read whenever is most convenient.</p>
-	<a class="btn-cta" href="#">Open A Ticket</a>
+	<p>All our products include 6 month of basic support answering functionality and setup queries. We reply to queries within 48 hours Monday to Friday.</p>
+	<a class="btn-cta" target="_blank" href="http://pressapps.co/support/"><?php _e( 'Open A Ticket', SK_TEXTDOMAIN ); ?></a>
 </div>
 
 <div class="pa-feedback">
-	<h2 class="pa-subheader"><?php _e( 'Let Us Know What You Think', SK_TEXTDOMAIN ); ?></h2>
+	<h2 class="pa-subheader"><?php _e( 'Let us know what you think', SK_TEXTDOMAIN ); ?></h2>
 	<p>Your feedback helps us build better products and create better experience for you. Please share you your thoughts and ideas.</p>
-	<a class="btn-cta" target="_blank" href="http://pressapps.co/feedback/">Feedback</a>
+	<a class="btn-cta" target="_blank" href="http://pressapps.co/feedback/"><?php _e( 'Feedback', SK_TEXTDOMAIN ); ?></a>
 </div>

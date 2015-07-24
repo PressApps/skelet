@@ -104,8 +104,8 @@ body[class^="pressapps_page_"] #wpcontent, body[class*="pressapps_page_"] #wpcon
   transition: background-color .14s ease-out;
 }
 .pa-boxes li:hover {
-  border-color: #d6d6d6;
-  box-shadow:0 0 15px #e4e4e4;
+  border-color: #ccc;
+  box-shadow:0 0 10px #e4e4e4;
 }
 .pa-boxes li:last-child {
   padding-bottom: 0;
@@ -139,6 +139,7 @@ body[class^="pressapps_page_"] #wpcontent, body[class*="pressapps_page_"] #wpcon
 }
 .pa-cta p, .pa-feedback p {
   font-size: 14px;
+  margin: -15px 0 20px;
 }
 .btn-cta {
   display: inline-block;
