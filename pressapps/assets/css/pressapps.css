@@ -23,9 +23,9 @@ body[class^="pressapps_page_"] #wpcontent, body[class*="pressapps_page_"] #wpcon
   text-align: center;
   padding: 65px 25px 35px;
 }
-.pa-header h3 {
-  margin: 20px 0 0;
-  font-weight: 300;
+.pa-header p {
+  margin: 12px 0 10px;
+  font-size: 14px;
 }
 
 /**
@@ -112,7 +112,7 @@ body[class^="pressapps_page_"] #wpcontent, body[class*="pressapps_page_"] #wpcon
   margin-right: 0;
 }
 .pa-boxes li a {
-  padding: 30px 25px;
+  padding: 35px 25px;
   text-decoration: none;
   display: block;
   color: #242424;
@@ -151,26 +151,28 @@ body[class^="pressapps_page_"] #wpcontent, body[class*="pressapps_page_"] #wpcon
   font-weight: 500;
   font-size: 1.1em;
   line-height: 1em;
-  padding: 1.5em 2.5em;
+  padding: 1.5em 2.5em 1.4em;
   border-radius: 2px;
   color: #fff;
   background-color: #00a0d2;
-  -webkit-transition: background-color .14s ease-out,color .14s ease-out;
-  -moz-transition: background-color .14s ease-out,color .14s ease-out;
-  -ms-transition: background-color .14s ease-out,color .14s ease-out;
-  -o-transition: background-color .14s ease-out,color .14s ease-out;
-  transition: background-color .14s ease-out,color .14s ease-out;
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.3);
+  transition: background-color .1s ease-out,color .14s ease-out;
+  transition: box-shadow 0.1s cubic-bezier(0.4, 0, 0.2, 1);
 }
-.btn-cta:hover {
-  background-color: #222;
+.btn-cta:hover, .btn-cta:focus {
+  background-color: #0091cd;
+  box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.3);
   color: #fff;
 }
 .pa-feedback {
   margin-bottom: 80px;
 }
 .pa-feedback .btn-cta {
-  padding: 0.8em 1.5em;
+  padding: 0.8em 1em 0.6em;
 }
+
+
+
 
 
 @media screen and (max-width: 678px) {
