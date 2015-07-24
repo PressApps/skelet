@@ -46,64 +46,6 @@
 	</li>
 </ul>
 
-<div class="pa-faq">
-	<h2 class="pa-subheader"><?php _e( 'Frequently Asked Questions', SK_TEXTDOMAIN ); ?></h2>
-	<ul>
-		<li>
-			<h4 class="pa-question">Instalation and Setup</h4>
-			<p class="pa-answer">If you need assistance with a free plugin or theme, please follow the link to the appropriate Support forum on WordPress.org for further assistance.</p>
-		</li>
-		<li>
-			<h4 class="pa-question">Instalation and Setup</h4>
-			<p class="pa-answer">If you need assistance with a free plugin or theme, please follow the link to the appropriate Support forum on WordPress.org for further assistance.</p>
-		</li>
-		<li>
-			<h4 class="pa-question">Instalation and Setup</h4>
-			<p class="pa-answer">If you need assistance with a free plugin or theme, please follow the link to the appropriate Support forum on WordPress.org for further assistance.</p>
-		</li>
-		<li>
-			<h4 class="pa-question">Instalation and Setup</h4>
-			<p class="pa-answer">If you need assistance with a free plugin or theme, please follow the link to the appropriate Support forum on WordPress.org for further assistance.</p>
-		</li>
-	</ul>
-	<ul>
-		<li>
-			<h4 class="pa-question">Instalation and Setup</h4>
-			<p class="pa-answer">If you need assistance with a free plugin or theme, please follow the link to the appropriate Support forum on WordPress.org for further assistance.</p>
-		</li>
-		<li>
-			<h4 class="pa-question">Instalation and Setup</h4>
-			<p class="pa-answer">If you need assistance with a free plugin or theme, please follow the link to the appropriate Support forum on WordPress.org for further assistance.</p>
-		</li>
-		<li>
-			<h4 class="pa-question">Instalation and Setup</h4>
-			<p class="pa-answer">If you need assistance with a free plugin or theme, please follow the link to the appropriate Support forum on WordPress.org for further assistance.</p>
-		</li>
-		<li>
-			<h4 class="pa-question">Instalation and Setup</h4>
-			<p class="pa-answer">If you need assistance with a free plugin or theme, please follow the link to the appropriate Support forum on WordPress.org for further assistance.</p>
-		</li>
-	</ul>
-	<ul class="last">
-		<li>
-			<h4 class="pa-question">Instalation and Setup</h4>
-			<p class="pa-answer">If you need assistance with a free plugin or theme, please follow the link to the appropriate Support forum on WordPress.org for further assistance.</p>
-		</li>
-		<li>
-			<h4 class="pa-question">Instalation and Setup</h4>
-			<p class="pa-answer">If you need assistance with a free plugin or theme, please follow the link to the appropriate Support forum on WordPress.org for further assistance.</p>
-		</li>
-		<li>
-			<h4 class="pa-question">Instalation and Setup</h4>
-			<p class="pa-answer">If you need assistance with a free plugin or theme, please follow the link to the appropriate Support forum on WordPress.org for further assistance.</p>
-		</li>
-		<li>
-			<h4 class="pa-question">Instalation and Setup</h4>
-			<p class="pa-answer">If you need assistance with a free plugin or theme, please follow the link to the appropriate Support forum on WordPress.org for further assistance.</p>
-		</li>
-	</ul>
-</div>
-
 <div class="pa-cta">
 	<h2 class="pa-subheader"><?php _e( 'Can’t find what you’re looking for?', SK_TEXTDOMAIN ); ?></h2>
 	<p>We offer ticket support Monday – Friday between the hours of 7am and 3pm GMT time.</p>

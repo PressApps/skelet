@@ -121,50 +121,24 @@ body[class^="pressapps_page_"] #wpcontent, body[class*="pressapps_page_"] #wpcon
 }
 .pa-boxes i {
   font-size: 42px;
-  color: #269fe5;
+  color: #00a0d2;
 }
 .pa-boxes h3 {
   font-size: 22px;
   font-weight: 400;
-  color: #269fe5;
+  color: #00a0d2;
 }
 .pa-boxes p {
   margin: 15px 0 0;
+  font-size: 14px;
 }
 
-.pa-faq {
-  overflow: hidden;
-  text-align: center;
-  width: 94%;
-  margin: 0 auto 0;
-}
-.pa-faq ul {
-  width: 30%;
-  margin: 0 2%;
-  float: left;
-  text-align: left;
-}
-.pa-faq .last {
-  margin-right: 0;
-}
-.pa-faq li a {
-  text-decoration: underline;
-}
-.pa-question {
-  color: #269fe5;
-  font-size: 1.1em;
-  cursor: pointer;
-  margin: 12px 0 0;
-}
-.pa-question:hover {
-  color: #222;
-}
 .pa-cta, .pa-feedback {
   text-align: center;
   padding: 0 40px;
 }
 .pa-cta p, .pa-feedback p {
-  font-size: 15px;
+  font-size: 14px;
 }
 .btn-cta {
   display: inline-block;
@@ -174,12 +148,12 @@ body[class^="pressapps_page_"] #wpcontent, body[class*="pressapps_page_"] #wpcon
   text-decoration: none;
   letter-spacing: 1px;
   font-weight: 500;
-  font-size: 1.2em;
+  font-size: 1.1em;
   line-height: 1em;
   padding: 1.5em 2.5em;
-  color: #269fe5;
-  background-color: transparent;
-  border: solid 1px #269fe5;
+  border-radius: 2px;
+  color: #fff;
+  background-color: #00a0d2;
   -webkit-transition: background-color .14s ease-out,color .14s ease-out;
   -moz-transition: background-color .14s ease-out,color .14s ease-out;
   -ms-transition: background-color .14s ease-out,color .14s ease-out;
@@ -188,7 +162,6 @@ body[class^="pressapps_page_"] #wpcontent, body[class*="pressapps_page_"] #wpcon
 }
 .btn-cta:hover {
   background-color: #222;
-  border: solid 1px #222;
   color: #fff;
 }
 .pa-feedback {
