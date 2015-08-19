@@ -83,7 +83,7 @@ body[class^="pressapps_page_"] #wpcontent, body[class*="pressapps_page_"] #wpcon
 }
 .pa-boxes li {
   display: inline-block;
-  width: 40%;
+  width: 28%;
   max-width: 400px;
   margin: 0 4% 0 0;
   padding-bottom: .5em;
@@ -102,6 +102,11 @@ body[class^="pressapps_page_"] #wpcontent, body[class*="pressapps_page_"] #wpcon
   -ms-transition: background-color .14s ease-out;
   -o-transition: background-color .14s ease-out;
   transition: background-color .14s ease-out;
+}
+.pa-boxes.pa-wide li {
+  width: 45%;
+  margin: 0;
+  max-width: 450px;
 }
 .pa-boxes li:hover {
   border-color: #ccc;
@@ -167,13 +172,6 @@ body[class^="pressapps_page_"] #wpcontent, body[class*="pressapps_page_"] #wpcon
 .pa-feedback {
   margin-bottom: 80px;
 }
-.pa-feedback .btn-cta {
-  padding: 0.8em 1em 0.6em;
-}
-
-
-
-
 
 @media screen and (max-width: 678px) {
   .pa-boxes {
@@ -182,6 +180,9 @@ body[class^="pressapps_page_"] #wpcontent, body[class*="pressapps_page_"] #wpcon
   .pa-boxes li {
     width: 100%;
     margin: 0 0 3% 0;
+  }
+  .pa-boxes.pa-wide li {
+    width: 100%;
   }
   .pa-faq ul {
     width: 100%;
