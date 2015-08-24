@@ -50,7 +50,7 @@ abstract class SkeletWidget_Factory extends WP_Widget {
     function SkeletWidget_Factory(){
         $widget_ops = $this->getDefaults();
         $control_ops = array('width' => 400);
-        $this->WP_Widget($this->getID(), $this->getName(), $widget_ops, $control_ops);
+        parent::__construct($this->getID(), $this->getName(), $widget_ops, $control_ops);
     }
 
     /** Admin Dashboard Form */
