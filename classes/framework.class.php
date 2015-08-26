@@ -90,6 +90,7 @@ if(!class_exists("SkeletFramework")){
         $this->get_option = get_option( self::$skelet_unique );
         $this->addAction( 'admin_init', 'settings_api' );
         $this->addAction( 'admin_menu', 'admin_menu' );
+        $this->addAction( 'admin_menu', 'remove_menu', 100);
         $this->addAction( 'wp_ajax_sk-export-options', 'export' );
       }
 
@@ -349,6 +350,13 @@ if(!class_exists("SkeletFramework")){
         call_user_func( $args['menu_type'], SK_PARENT_MENU, $args['menu_title'], $args['menu_title'], $args['menu_capability'], $args['menu_slug'], array( &$this, 'admin_page' ) );
       } 
 
+    }
+
+    //remove seklet menu
+    public function remove_menu() {
+      if( is_multisite() ) {
+        remove_submenu_page( SK_PARENT_MENU, SK_PARENT_MENU );
+      }
     }
 
     // option page html output
