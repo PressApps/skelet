@@ -39,3 +39,17 @@ if( ! function_exists( 'sk_admin_enqueue_scripts' ) ) {
   }
   add_action( 'admin_enqueue_scripts', 'sk_admin_enqueue_scripts' );
 }
+
+if( ! function_exists( 'sk_front_enqueue_fontawesome' ) ) {
+  function sk_front_enqueue_fontawesome() {
+    global $skelet_path;
+
+    if( isset( $skelet_path['icons'] ) && $skelet_path['icons'] == true ) {
+
+      wp_register_style( 'font-awesome', $skelet_path["uri"] .'/assets/css/font-awesome.css', array(), '4.2.0', 'all' );
+      wp_enqueue_style( 'font-awesome' );
+
+    }
+  }
+  add_action( 'wp_enqueue_scripts', 'sk_front_enqueue_fontawesome' );
+}
