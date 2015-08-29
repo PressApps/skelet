@@ -12,18 +12,23 @@
 
 }
 
-[class^="ski-"]:before,
-[class*=" ski-"]:before {
-  font-family: "skeleticons" !important;
-  font-style: normal !important;
-  font-weight: normal !important;
-  font-variant: normal !important;
-  text-transform: none !important;
-  speak: none;
-  /**
+[class^="ski-"]:before, [class*="ski-"] {
+  font-size: 1em;
   line-height: 1;
-  **/
-  -webkit-font-smoothing: antialiased;
+  vertical-align: -7%;
+}
+
+[class^="ski-"]:before, [class*="ski-"]:before {
+  display: inline-block; 
+  font-family: "skeleticons"; 
+  speak: none; 
+  font-style: normal; 
+  font-weight: normal; 
+  font-variant: normal; 
+  text-transform: none; 
+  text-rendering: auto; 
+  line-height: 1; 
+  -webkit-font-smoothing: antialiased; 
   -moz-osx-font-smoothing: grayscale;
 }
 
