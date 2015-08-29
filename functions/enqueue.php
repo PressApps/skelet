@@ -20,7 +20,7 @@ if( ! function_exists( 'sk_admin_enqueue_scripts' ) ) {
 
     // framework core styles
     wp_enqueue_style( 'sk-framework', $skelet_path["uri"] .'/assets/css/sk-framework.css', array(), '1.0.0', 'all' );
-    wp_enqueue_style( 'font-awesome', $skelet_path["uri"] .'/assets/css/font-awesome.css', array(), '4.2.0', 'all' );
+    wp_enqueue_style( 'sk-icons', $skelet_path["uri"] .'/assets/css/sk-icons.css', array(), '1.0.0', 'all' );
 
     if ( is_rtl() ) {
       wp_enqueue_style( 'sk-framework-rtl', $skelet_path["uri"] .'/assets/css/sk-framework-rtl.css', array(), '1.0.0', 'all' );
