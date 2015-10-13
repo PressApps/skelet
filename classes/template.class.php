@@ -69,12 +69,22 @@ if(!class_exists("SkeletFramework_Template")){
 
         $current_post_type = get_post_type($post);
          if(in_array($current_post_type,$this->config_post_types)){
-              return $this->get_template($current_post_type) ?: $template;
+             //return $this->get_template($current_post_type) ? : $template;
+             if ( $this->get_template($current_post_type) ) {
+                 return $this->get_template($current_post_type);
+             } else {
+                 return $template;
+             }
          }
 
          foreach ($this->templates as $tpl => $page) {
             if(in_array(array_keys($page), $arr_current_type)){
-                  return $this->get_template($tpl) ?: $template;
+                  //return $this->get_template($tpl) ?: $template;
+                if ( $this->get_template($tpl) ) {
+                    return $this->get_template($tpl);
+                } else {
+                    return $template;
+                }
             }
          }
           
