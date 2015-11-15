@@ -224,10 +224,12 @@ if(!class_exists("Skelet_PressApps_Menu")){
       {
             include_once wp_normalize_path(plugin_dir_path(__FILE__ ) .'/pressapps/pressapps.class.php');
             $pa = new PressApps;
+            $route_param = isset( $_GET["page"] )  ? $_GET["page"] : "";
+
             if ( strstr( PHP_VERSION, '5.2' ) ) {
-              call_user_func( array( $pa, 'route', isset( $_GET["page"] )? $_GET["page"] : "" ) );
+              call_user_func( 'PressApps::route', $route_param );
             } else {
-              $pa::route(isset($_GET["page"])?$_GET["page"]:"");
+              $pa::route( $route_param );
             }
       }
     }
