@@ -5,7 +5,7 @@
  * @author pressapps <support@pressapps.co>
  * 
  */
-    
+
     global  $skelet_paths, 
             $skelet_path, 
             $skelet_shortcodes,
@@ -75,42 +75,35 @@ if(! class_exists( 'Skelet_LoadConfig' ) ){
                       
                         // configs
                         if(file_exists( wp_normalize_path($skelet_path["dir"].'/options/framework.config.php'))){
-                            sk_locate_template ( '../../admin/options/framework.config.php'  ,$skelet_path);
+                            sk_locate_template ( '../../includes/options/framework.config.php'  ,$skelet_path);
                         }
 
                         if(file_exists( wp_normalize_path($skelet_path["dir"].'/options/metabox.config.php'))){
-                            sk_locate_template ( '../../admin/options/metabox.config.php'    ,$skelet_path);
+                            sk_locate_template ( '../../includes/options/metabox.config.php'    ,$skelet_path);
                         }
 
                         if(file_exists( wp_normalize_path($skelet_path["dir"].'/options/shortcode.config.php'))){
-                            sk_locate_template ( '../../admin/options/shortcode.config.php'  ,$skelet_path);
+                            sk_locate_template ( '../../includes/options/shortcode.config.php'  ,$skelet_path);
                         }
 
                         if(file_exists( wp_normalize_path($skelet_path["dir"].'/options/customize.config.php'))){
-                            sk_locate_template ( '../../admin/options/customize.config.php'  ,$skelet_path);
+                            sk_locate_template ( '../../includes/options/customize.config.php'  ,$skelet_path);
                         }
-                        
+
                         if(file_exists( wp_normalize_path($skelet_path["dir"].'/options/taxonomy.config.php'))){
-                            sk_locate_template ( '../../admin/options/taxonomy.config.php'  ,$skelet_path);
+                            sk_locate_template ( '../../includes/options/taxonomy.config.php'  ,$skelet_path);
                         }
-                        
+
                         if(file_exists( wp_normalize_path($skelet_path["dir"].'/options/template.config.php'))){
-                            sk_locate_template ( '../../admin/options/template.config.php'  ,$skelet_path);
+                            sk_locate_template ( '../../includes/options/template.config.php'  ,$skelet_path);
                         }
 
                         if ($arr_last === end($skelet_paths)){
                              do_action("skelet_loaded");
                         }
 
-
-                   
                     }
-
             }
-
-
-
-
     }
 
 
