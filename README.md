@@ -71,7 +71,7 @@ Instructions below assumes that you have already installed composer on your syst
 ```
 
 * Using your terminal type in `cd /path/to/plugin-boilerplate/` - `/path/to/` refers to the exact path of your `plugin-boilerplate`.
-* Once your in the `plugin-boilerplate` directory type in `composer install` and that's it you are not ready to configure some files.
+* Once your in the `plugin-boilerplate` directory type in `composer install` and you are now ready to configure some files.
 * In the `/plugin-boilerplate/includes` directory, open the `class-{plugin-name}-base.php` file and add the following codes in `load_dependencies()`.
 ```PHP
 /**
@@ -91,13 +91,6 @@ $GLOBALS['skelet_paths'][] = array(
 	if( ! class_exists( 'Skelet_LoadConfig' ) ){
 		include_once plugin_dir_path( dirname( __FILE__ ) ) .'includes/skelet/skelet.php';
 	}
-```
-
- after this line or the [Plugin File Header](https://codex.wordpress.org/File_Header)
-```PHP 
-if ( ! defined( 'WPINC' ) ) {
-	die;
-}
 ```
 
 Take Note: the prefix name should be unique per plugin
