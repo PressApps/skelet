@@ -32,26 +32,65 @@ Skelet is a framework for creating WordPress plugins, it eases the creation of:
 
 Let's assume that you want to use Skelet Framework in the plugin-boilerplate.
 
-* Download & extract a copy of [Plugin Boilerplate](http://wppb.me) in `wp-content/plugins/` & pull [Skelet Framework](https://github.com/pressapps/skelet) from the repository and drop the folder `/skelet` in `plugin-boilerplate/admin/`
-* In the `/plugin-boilerplate/` directory, open the plugin main file and add the following codes
+Instructions below assumes that you have already installed composer on your system, if not you can download it [here](https://getcomposer.org/download/).
+
+* Including Skelet has been made easy with the use of composer. First create a `composer.json` file if it's not included on your `/plugin-boilerplate/`.
+* Copy and paste code below on `composer.json`, make sure to edit **name** and **description** of your file to fit on your current plugin.
+
+```
+{
+  "name": "pressapps/plugin-boilerplate ( must be edited )",
+  "description": "This is composer.json file for plugin-boilerplate ( must be edited )",
+  "authors": [
+    {
+      "name": "PressApps Team",
+      "email": "support@pressapps.co"
+    }
+  ],
+  "config" : {
+    "vendor-dir" : "includes"
+  },
+  "repositories" : [
+    {
+      "type" : "package",
+      "package" : {
+        "name" : "skelet",
+        "version" : "1.0.0",
+        "source" : {
+          "url" : "https://github.com/pressapps/skelet.git",
+          "type" : "git",
+          "reference": "master"
+        }
+      }
+    }
+  ],
+  "require": {
+    "skelet" : "1.0.*"
+  }
+}
+```
+
+* Using your terminal type in `cd /path/to/plugin-boilerplate/` - `/path/to/` refers to the exact path of your `plugin-boilerplate`.
+* Once your in the `plugin-boilerplate` directory type in `composer install` and that's it you are not ready to configure some files.
+* In the `/plugin-boilerplate/includes` directory, open the `class-{plugin-name}-base.php` file and add the following codes in `load_dependencies()`.
 ```PHP
 /**
  * Skelet Config Path
  */
 
-$skelet_paths[] = array(
-	'prefix'	  => 'pabpdemo',
-	'dir'		  => wp_normalize_path(  plugin_dir_path( __FILE__ ).'/admin/' ),
-	'uri' 		  => plugin_dir_url( __FILE__ ).'/admin/skelet',
+$GLOBALS['skelet_paths'][] = array(
+	'prefix'      => 'pakb',
+	'dir'         => wp_normalize_path(  plugin_dir_path( dirname( __FILE__ ) ).'includes/' ),
+	'uri'         => plugin_dir_url( dirname( __FILE__ ) ).'includes/skelet',
 );
 
 
 /**
- * Load Skelet Framework
- */
-if( ! class_exists( 'Skelet_LoadConfig' ) ){
-		include_once dirname( __FILE__ ) .'/admin/skelet/skelet.php';
-}
+	 * Load Skelet Framework
+	 */
+	if( ! class_exists( 'Skelet_LoadConfig' ) ){
+		include_once plugin_dir_path( dirname( __FILE__ ) ) .'includes/skelet/skelet.php';
+	}
 ```
 
  after this line or the [Plugin File Header](https://codex.wordpress.org/File_Header)
@@ -63,7 +102,7 @@ if ( ! defined( 'WPINC' ) ) {
 
 Take Note: the prefix name should be unique per plugin
 ```PHP
-$skelet_paths[] = array(
+$GLOBALS['skelet_paths'][] = array(
 	'prefix'	  => 'your_unique_prefix_name',
 	....
 );
