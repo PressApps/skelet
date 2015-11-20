@@ -2,7 +2,7 @@
 /**
  * Skelet Framework
  * @version 1.0.1 
- * @author pressapps <support@pressapps.co>
+ * @author PressApps <support@pressapps.co>
  * 
  */
 
