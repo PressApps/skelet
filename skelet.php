@@ -218,12 +218,9 @@ if(!class_exists("Skelet_PressApps_Menu")){
             include_once wp_normalize_path(plugin_dir_path(__FILE__ ) .'/pressapps/pressapps.class.php');
             $pa = new PressApps;
             $route_param = isset( $_GET["page"] )  ? $_GET["page"] : "";
-
-            if ( strstr( PHP_VERSION, '5.2' ) ) {
-              call_user_func( 'PressApps::route', $route_param );
-            } else {
-              $pa::route( $route_param );
-            }
+            //Line 222 is for PHP 5.2 and below, uncomment it if your running PHP 5.2 and below
+            //call_user_func( 'PressApps::route', $route_param );
+            $pa::route( $route_param );
       }
     }
 
