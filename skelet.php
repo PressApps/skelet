@@ -1,7 +1,7 @@
 <?php if ( ! defined( 'ABSPATH' ) ) { die; } // Cannot access pages directly.
 /**
  * Skelet Framework
- * @version 1.0.2 
+ * @version 1.0.3 
  * @author PressApps <support@pressapps.co>
  * 
  */
