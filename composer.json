@@ -12,7 +12,10 @@
 	"require": {
 		"composer/installers": "~1.0"
 	},
-	"extra": {
-	        "installer-name": "skelet"
-	}
+"extra": {
+        "installer-paths": {
+            "includes/{$name}/": ["xxx", "yyy"]
+        }
+    }
+	
 }
