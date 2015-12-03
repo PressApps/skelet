@@ -14,7 +14,7 @@
 	},
 "extra": {
         "installer-paths": {
-            "includes/{$name}/": ["xxx", "yyy"]
+            "includes/{$name}/": ["skelet", "skelet"]
         }
     }
 	
