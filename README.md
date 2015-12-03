@@ -1,6 +1,6 @@
 ## Skelet Framework
 
-### Introduction
+### Introduction to Skelet
 
 Skelet is a framework for creating WordPress plugins, it eases the creation of:
 
