@@ -30,45 +30,9 @@ Skelet is a framework for creating WordPress plugins, it eases the creation of:
 ### Installation
 ------------
 
-Let's assume that you want to use Skelet Framework in the plugin-boilerplate.
+Let's assume that you want to use Skelet Framework in the plugin-boilerplate. Including Skelet has been made easy with the use of composer.
 
 Instructions below assumes that you have already installed composer on your system, if not you can download it [here](https://getcomposer.org/download/).
-
-* Including Skelet has been made easy with the use of composer. First create a `composer.json` file if it's not included on your `/plugin-boilerplate/`.
-* Copy and paste code below on `composer.json`, make sure to edit **name** and **description** of your file to fit on your current plugin.
-
-```
-{
-  "name": "pressapps/plugin-boilerplate ( must be edited )",
-  "description": "This is composer.json file for plugin-boilerplate ( must be edited )",
-  "authors": [
-    {
-      "name": "PressApps Team",
-      "email": "support@pressapps.co"
-    }
-  ],
-  "config" : {
-    "vendor-dir" : "includes"
-  },
-  "repositories" : [
-    {
-      "type" : "package",
-      "package" : {
-        "name" : "skelet",
-        "version" : "1.0.0",
-        "source" : {
-          "url" : "https://github.com/pressapps/skelet.git",
-          "type" : "git",
-          "reference": "master"
-        }
-      }
-    }
-  ],
-  "require": {
-    "skelet" : "1.0.*"
-  }
-}
-```
 
 * Using your terminal type in `cd /path/to/plugin-boilerplate/` - `/path/to/` refers to the exact path of your `plugin-boilerplate`.
 * Once your in the `plugin-boilerplate` directory type in `composer install` and you are now ready to configure some files.
