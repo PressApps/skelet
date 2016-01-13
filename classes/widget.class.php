@@ -64,7 +64,10 @@ abstract class SkeletWidget_Factory extends WP_Widget {
         extract($args);
         $tfld = $this->getTitleField();        
         echo $before_widget;
-       
+
+        if ( ! empty( $instance['title'] ) ) {
+          echo $args['before_title'] . apply_filters( 'widget_title', $instance['title'] ). $args['after_title'];
+        }
 
         $tpl = $this->getTemplate();
        
@@ -229,7 +232,3 @@ class SkeletFramework_Widget{
           }
       } 
 }
-
-
-
-
