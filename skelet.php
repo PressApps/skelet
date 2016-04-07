@@ -29,7 +29,8 @@ if(! class_exists( 'Skelet_LoadConfig' ) ){
     class Skelet_LoadConfig{
             public static function instance(){
                     global $skelet_paths,$skelet_path;
-                   
+                    $skelet_paths = is_array( $skelet_paths ) ? $skelet_paths : array();
+
                     // active modules
                     defined( 'SK_ACTIVE_FRAMEWORK' )  or  define( 'SK_ACTIVE_FRAMEWORK',  true );
                     defined( 'SK_ACTIVE_METABOX'   )  or  define( 'SK_ACTIVE_METABOX',    true );
@@ -182,7 +183,8 @@ if(!class_exists("Skelet_PA_Widget")){
          */
         public function widgetize(){
              global $skelet_paths,$skelet_path;
-            
+             $skelet_paths = is_array( $skelet_paths ) ? $skelet_paths : array();
+
              foreach ($skelet_paths as $path) {
 
                 $skelet_path = $path;
