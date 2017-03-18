@@ -79,7 +79,7 @@ if(!class_exists("SkeletFramework")){
     public function __construct( $settings, $options, $path ) {
 
       $options = $this->apply_prefix($options);
-     
+
       self::$skelet_unique = $path["option"];
       $this->unique  = $path["option"];
 
@@ -101,12 +101,12 @@ if(!class_exists("SkeletFramework")){
     // instance
     public static function instance( $settings = array(), $options = array() ) {
       global $skelet_path;
-      
+
       self::$skelet_unique = $skelet_path["option"];
       //if ( is_null( self::$instance ) && SK_ACTIVE_FRAMEWORK ) {
         self::$instance = new self( $settings, $options, $skelet_path );
       //}
-                 
+
       return self::$instance;
     }
 
@@ -338,17 +338,17 @@ if(!class_exists("SkeletFramework")){
 
 
       $args = wp_parse_args( $this->settings, $defaults_menu_args );
-     
+
       if(!defined( 'SK_PARENT_MENU' )){
         $set_parent_slug = isset($args["menu_slug"])?$args["menu_slug"]:"pa-main-menu";
         define( 'SK_PARENT_MENU',$set_parent_slug."_");
         call_user_func("add_menu_page", "PressApps", "PressApps", "pa-nonexistent-capability", SK_PARENT_MENU, null, $args['menu_icon'], $args['menu_position'] );
       }
-       
-        
+
+
       if( $args['menu_type'] == 'add_submenu_page' ) {
         call_user_func( $args['menu_type'], SK_PARENT_MENU, $args['menu_title'], $args['menu_title'], $args['menu_capability'], $args['menu_slug'], array( &$this, 'admin_page' ) );
-      } 
+      }
 
     }
 
@@ -391,16 +391,16 @@ if(!class_exists("SkeletFramework")){
         }
 
         settings_fields( $this->unique. '_group' );
-        
+
         echo '<header class="sk-header">';
         echo '<h1>';
 
         echo sprintf('%s',
             isset( $this->settings['header_title'])?
-            //$this->settings['header_title']." <small>".$this->settings['current_version']."</small>":"Skelet Framework <small>by PressApps</small>"); 
-            $this->settings['header_title']:"Skelet Framework"); 
+            //$this->settings['header_title']." <small>".$this->settings['current_version']."</small>":"Skelet Framework <small>by PressApps</small>");
+            $this->settings['header_title']:"Skelet Framework");
         echo '</h1>';
-        echo '<p class="feedback"><a target="_blank" href="http://pressapps.co/feedback/">Feedback</a></p>';
+        //echo '<p class="feedback"><a target="_blank" href="http://pressapps.co/feedback/">Feedback</a></p>';
         echo '<fieldset>';
         echo ( $this->settings['ajax_save'] === true ) ? '<span id="sk-save-ajax">'. __( 'Settings saved.', SK_TEXTDOMAIN ) .'</span>' : '';
         submit_button( __( 'Save Changes', SK_TEXTDOMAIN ), 'sk-save', 'save', false, array( 'data-ajax' => $this->settings['ajax_save'], 'data-save' => __( 'Saving...', SK_TEXTDOMAIN ) ) );
@@ -496,7 +496,7 @@ if(!class_exists("SkeletFramework")){
         echo '<div class="clear"></div>';
 
       echo '</div>'; // end .sk-framework
-      
+
       global $skelet_path;
       echo '<footer class="sk-footer">';
         echo '<img src="' . $skelet_path["uri"] . '/assets/images/madeby.png">';
@@ -522,5 +522,3 @@ if(!class_exists("SkeletFramework")){
 
   }
 }
-
-
