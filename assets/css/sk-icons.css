@@ -1,3 +1,4 @@
+/*
 @font-face {
   font-family: "Skelet";
   src: url("../fonts/Skelet_d6b9c65debffb16508501f4613fa0d49.eot");
@@ -15,6 +16,16 @@
     font-family: "Skelet";
     src: url("../fonts/Skelet_d6b9c65debffb16508501f4613fa0d49.svg#Skelet") format("svg");
   }
+}
+*/
+
+@font-face {
+  font-family: "Skelet";
+  src: url("../fonts/Skelet_d6b9c65debffb16508501f4613fa0d49.woff2") format("woff2"),
+       url("../fonts/Skelet_d6b9c65debffb16508501f4613fa0d49.woff") format("woff"),
+       url("../fonts/Skelet_d6b9c65debffb16508501f4613fa0d49.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
 }
 
 [data-si]:before { content: attr(data-si); }
