@@ -1,29 +1,13 @@
 /*
-@font-face {
-  font-family: "Skelet";
-  src: url("../fonts/Skelet_d6b9c65debffb16508501f4613fa0d49.eot");
-  src: url("../fonts/Skelet_d6b9c65debffb16508501f4613fa0d49.eot?#iefix") format("embedded-opentype"),
-       url("../fonts/Skelet_d6b9c65debffb16508501f4613fa0d49.woff2") format("woff2"),
-       url("../fonts/Skelet_d6b9c65debffb16508501f4613fa0d49.woff") format("woff"),
-       url("../fonts/Skelet_d6b9c65debffb16508501f4613fa0d49.ttf") format("truetype"),
-       url("../fonts/Skelet_d6b9c65debffb16508501f4613fa0d49.svg#Skelet") format("svg");
-  font-weight: normal;
-  font-style: normal;
-}
-
-@media screen and (-webkit-min-device-pixel-ratio:0) {
-  @font-face {
-    font-family: "Skelet";
-    src: url("../fonts/Skelet_d6b9c65debffb16508501f4613fa0d49.svg#Skelet") format("svg");
-  }
-}
+* Icon Font Skelet
 */
 
 @font-face {
   font-family: "Skelet";
-  src: url("../fonts/Skelet_d6b9c65debffb16508501f4613fa0d49.woff2") format("woff2"),
-       url("../fonts/Skelet_d6b9c65debffb16508501f4613fa0d49.woff") format("woff"),
-       url("../fonts/Skelet_d6b9c65debffb16508501f4613fa0d49.ttf") format("truetype");
+  src: url("../fonts/skelet.eot");
+  src: url("../fonts/skelet.woff2") format("woff2"),
+       url("../fonts/skelet.woff") format("woff"),
+       url("../fonts/skelet.ttf") format("truetype");
   font-weight: normal;
   font-style: normal;
 }
@@ -57,6 +41,9 @@
 .si-apple-watch:before,
 .si-archive:before,
 .si-archive-folder:before,
+.si-arrow-pointing-to-right:before,
+.si-arrow-pointing-to-right-2:before,
+.si-arrow-pointing-upward:before,
 .si-asp:before,
 .si-avatar:before,
 .si-avi:before,
@@ -89,6 +76,7 @@
 .si-camera:before,
 .si-canadian-dollar:before,
 .si-car:before,
+.si-cardboard-box:before,
 .si-charging-battery:before,
 .si-chat-message:before,
 .si-check:before,
@@ -128,6 +116,7 @@
 .si-document-with-a-check-mark:before,
 .si-documents-folder:before,
 .si-donate:before,
+.si-down-arrow:before,
 .si-download:before,
 .si-download-from-cloud:before,
 .si-download-from-the-cloud:before,
@@ -159,6 +148,7 @@
 .si-fire:before,
 .si-flag-outline:before,
 .si-flickr:before,
+.si-float:before,
 .si-flower-bouquet:before,
 .si-folder:before,
 .si-fork:before,
@@ -173,6 +163,7 @@
 .si-github:before,
 .si-globe:before,
 .si-google:before,
+.si-google-docs:before,
 .si-google-drive:before,
 .si-google-maps:before,
 .si-google-play:before,
@@ -182,11 +173,13 @@
 .si-gps:before,
 .si-graduate:before,
 .si-hamburger-menu:before,
+.si-hamburger-menu-2:before,
 .si-hand:before,
 .si-happy-emoji:before,
 .si-healthy-food:before,
 .si-heart:before,
 .si-heart-balloon:before,
+.si-heart-health:before,
 .si-heart-outline:before,
 .si-heavy-goods-vehicle:before,
 .si-help:before,
@@ -213,6 +206,7 @@
 .si-key:before,
 .si-laptop:before,
 .si-leaf:before,
+.si-left-arrow:before,
 .si-light-on:before,
 .si-like:before,
 .si-line-chart:before,
@@ -223,14 +217,15 @@
 .si-list:before,
 .si-lock:before,
 .si-long-arrow-left:before,
-.si-long-arrow-up:before,
 .si-low-priority:before,
 .si-mailbox-closed-flag-up:before,
+.si-maintenance:before,
 .si-map-markers:before,
 .si-markdown:before,
 .si-medal:before,
 .si-medium:before,
 .si-medium-priority:before,
+.si-menu-vertical:before,
 .si-microphone:before,
 .si-microsoft-windows:before,
 .si-minus:before,
@@ -253,6 +248,8 @@
 .si-online:before,
 .si-online-support:before,
 .si-open:before,
+.si-open-box:before,
+.si-page-properties-report:before,
 .si-paper-airplane:before,
 .si-party-baloons:before,
 .si-pdf:before,
@@ -279,6 +276,7 @@
 .si-protect:before,
 .si-ps:before,
 .si-psd:before,
+.si-question-mark:before,
 .si-rabbit:before,
 .si-rar:before,
 .si-raw:before,
@@ -286,6 +284,7 @@
 .si-reply-arrow:before,
 .si-responsive:before,
 .si-right-arrow:before,
+.si-right-navigation-toolbar:before,
 .si-rocket:before,
 .si-sad-emoji:before,
 .si-sale:before,
@@ -316,6 +315,7 @@
 .si-start:before,
 .si-storage-box:before,
 .si-student-male:before,
+.si-subtract:before,
 .si-superman:before,
 .si-support:before,
 .si-swift:before,
@@ -327,6 +327,7 @@
 .si-task:before,
 .si-ticket:before,
 .si-todo-list:before,
+.si-toolbox:before,
 .si-trademark:before,
 .si-trash:before,
 .si-trash-can:before,
@@ -405,6 +406,9 @@
 .si-apple-watch:before { content: "\f117"; }
 .si-archive:before { content: "\f243"; }
 .si-archive-folder:before { content: "\f1cc"; }
+.si-arrow-pointing-to-right:before { content: "\f258"; }
+.si-arrow-pointing-to-right-2:before { content: "\f262"; }
+.si-arrow-pointing-upward:before { content: "\f263"; }
 .si-asp:before { content: "\f24f"; }
 .si-avatar:before { content: "\f144"; }
 .si-avi:before { content: "\f1f9"; }
@@ -437,6 +441,7 @@
 .si-camera:before { content: "\f127"; }
 .si-canadian-dollar:before { content: "\f166"; }
 .si-car:before { content: "\f168"; }
+.si-cardboard-box:before { content: "\f25b"; }
 .si-charging-battery:before { content: "\f12a"; }
 .si-chat-message:before { content: "\f17d"; }
 .si-check:before { content: "\f17f"; }
@@ -476,6 +481,7 @@
 .si-document-with-a-check-mark:before { content: "\f181"; }
 .si-documents-folder:before { content: "\f1a1"; }
 .si-donate:before { content: "\f1e1"; }
+.si-down-arrow:before { content: "\f264"; }
 .si-download:before { content: "\f216"; }
 .si-download-from-cloud:before { content: "\f1fb"; }
 .si-download-from-the-cloud:before { content: "\f215"; }
@@ -507,6 +513,7 @@
 .si-fire:before { content: "\f1c6"; }
 .si-flag-outline:before { content: "\f1c7"; }
 .si-flickr:before { content: "\f235"; }
+.si-float:before { content: "\f256"; }
 .si-flower-bouquet:before { content: "\f1c8"; }
 .si-folder:before { content: "\f1c9"; }
 .si-fork:before { content: "\f1bb"; }
@@ -521,6 +528,7 @@
 .si-github:before { content: "\f238"; }
 .si-globe:before { content: "\f1d4"; }
 .si-google:before { content: "\f1d5"; }
+.si-google-docs:before { content: "\f25e"; }
 .si-google-drive:before { content: "\f1b5"; }
 .si-google-maps:before { content: "\f119"; }
 .si-google-play:before { content: "\f1d0"; }
@@ -530,11 +538,13 @@
 .si-gps:before { content: "\f13a"; }
 .si-graduate:before { content: "\f148"; }
 .si-hamburger-menu:before { content: "\f1d6"; }
+.si-hamburger-menu-2:before { content: "\f25f"; }
 .si-hand:before { content: "\f12f"; }
 .si-happy-emoji:before { content: "\f1af"; }
 .si-healthy-food:before { content: "\f1ce"; }
 .si-heart:before { content: "\f1da"; }
 .si-heart-balloon:before { content: "\f16b"; }
+.si-heart-health:before { content: "\f25d"; }
 .si-heart-outline:before { content: "\f1ea"; }
 .si-heavy-goods-vehicle:before { content: "\f217"; }
 .si-help:before { content: "\f1db"; }
@@ -561,6 +571,7 @@
 .si-key:before { content: "\f15a"; }
 .si-laptop:before { content: "\f133"; }
 .si-leaf:before { content: "\f240"; }
+.si-left-arrow:before { content: "\f261"; }
 .si-light-on:before { content: "\f185"; }
 .si-like:before { content: "\f1ed"; }
 .si-line-chart:before { content: "\f199"; }
@@ -571,14 +582,15 @@
 .si-list:before { content: "\f1f1"; }
 .si-lock:before { content: "\f18c"; }
 .si-long-arrow-left:before { content: "\f13f"; }
-.si-long-arrow-up:before { content: "\f13e"; }
 .si-low-priority:before { content: "\f174"; }
 .si-mailbox-closed-flag-up:before { content: "\f18e"; }
+.si-maintenance:before { content: "\f259"; }
 .si-map-markers:before { content: "\f1ee"; }
 .si-markdown:before { content: "\f22d"; }
 .si-medal:before { content: "\f1ac"; }
 .si-medium:before { content: "\f22f"; }
 .si-medium-priority:before { content: "\f173"; }
+.si-menu-vertical:before { content: "\f266"; }
 .si-microphone:before { content: "\f1f2"; }
 .si-microsoft-windows:before { content: "\f223"; }
 .si-minus:before { content: "\f177"; }
@@ -601,6 +613,8 @@
 .si-online:before { content: "\f222"; }
 .si-online-support:before { content: "\f171"; }
 .si-open:before { content: "\f1ca"; }
+.si-open-box:before { content: "\f25a"; }
+.si-page-properties-report:before { content: "\f255"; }
 .si-paper-airplane:before { content: "\f112"; }
 .si-party-baloons:before { content: "\f1b4"; }
 .si-pdf:before { content: "\f201"; }
@@ -627,6 +641,7 @@
 .si-protect:before { content: "\f221"; }
 .si-ps:before { content: "\f130"; }
 .si-psd:before { content: "\f1c4"; }
+.si-question-mark:before { content: "\f265"; }
 .si-rabbit:before { content: "\f14c"; }
 .si-rar:before { content: "\f242"; }
 .si-raw:before { content: "\f202"; }
@@ -634,6 +649,7 @@
 .si-reply-arrow:before { content: "\f17e"; }
 .si-responsive:before { content: "\f227"; }
 .si-right-arrow:before { content: "\f13d"; }
+.si-right-navigation-toolbar:before { content: "\f260"; }
 .si-rocket:before { content: "\f21e"; }
 .si-sad-emoji:before { content: "\f1b0"; }
 .si-sale:before { content: "\f1f0"; }
@@ -664,6 +680,7 @@
 .si-start:before { content: "\f203"; }
 .si-storage-box:before { content: "\f131"; }
 .si-student-male:before { content: "\f152"; }
+.si-subtract:before { content: "\f257"; }
 .si-superman:before { content: "\f1e2"; }
 .si-support:before { content: "\f1dd"; }
 .si-swift:before { content: "\f23d"; }
@@ -675,6 +692,7 @@
 .si-task:before { content: "\f1ff"; }
 .si-ticket:before { content: "\f1f6"; }
 .si-todo-list:before { content: "\f170"; }
+.si-toolbox:before { content: "\f25c"; }
 .si-trademark:before { content: "\f175"; }
 .si-trash:before { content: "\f15b"; }
 .si-trash-can:before { content: "\f24c"; }
