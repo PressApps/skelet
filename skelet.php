@@ -173,7 +173,7 @@ if(!class_exists("Skelet_PressApps_Menu")){
     public static function pa_main_menu(){
         global $skelet_paths, $submenu;
 
-        call_user_func("add_submenu_page", SK_PARENT_MENU, "Products", "Products", "manage_options", "pressapps-product", array("Skelet_PressApps_Menu","get_pa_general_pages"));
+        //call_user_func("add_submenu_page", SK_PARENT_MENU, "Products", "Products", "manage_options", "pressapps-product", array("Skelet_PressApps_Menu","get_pa_general_pages"));
         //call_user_func("add_submenu_page", SK_PARENT_MENU, "Help", "Help", "manage_options", "pressapps-help", array("Skelet_PressApps_Menu","get_pa_general_pages"));
 
    }
