@@ -30,40 +30,36 @@ Skelet is a framework for creating WordPress plugins, it eases the creation of:
 ### Installation
 ------------
 
-Let's assume that you want to use Skelet Framework in the plugin-boilerplate.
+Let's assume that you want to use Skelet Framework in the plugin-boilerplate. Including Skelet has been made easy with the use of composer.
 
-* Download & extract a copy of [Plugin Boilerplate](http://wppb.me) in `wp-content/plugins/` & pull [Skelet Framework](https://github.com/pressapps/skelet) from the repository and drop the folder `/skelet` in `plugin-boilerplate/admin/`
-* In the `/plugin-boilerplate/` directory, open the plugin main file and add the following codes
+Instructions below assumes that you have already installed composer on your system, if not you can download it [here](https://getcomposer.org/download/).
+
+* Using your terminal type in `cd /path/to/plugin-boilerplate/` - `/path/to/` refers to the exact path of your `plugin-boilerplate`.
+* Once your in the `plugin-boilerplate` directory type in `composer install` and you are now ready to configure some files.
+* In the `/plugin-boilerplate/includes` directory, open the `class-{plugin-name}-base.php` file and add the following codes in `load_dependencies()`.
 ```PHP
 /**
  * Skelet Config Path
  */
 
-$skelet_paths[] = array(
-	'prefix'	  => 'pabpdemo',
-	'dir'		  => wp_normalize_path(  plugin_dir_path( __FILE__ ).'/admin/' ),
-	'uri' 		  => plugin_dir_url( __FILE__ ).'/admin/skelet',
+$GLOBALS['skelet_paths'][] = array(
+	'prefix'      => 'pakb',
+	'dir'         => wp_normalize_path(  plugin_dir_path( dirname( __FILE__ ) ).'includes/' ),
+	'uri'         => plugin_dir_url( dirname( __FILE__ ) ).'includes/skelet',
 );
 
 
 /**
- * Load Skelet Framework
- */
-if( ! class_exists( 'Skelet_LoadConfig' ) ){
-		include_once dirname( __FILE__ ) .'/admin/skelet/skelet.php';
-}
-```
-
- after this line or the [Plugin File Header](https://codex.wordpress.org/File_Header)
-```PHP 
-if ( ! defined( 'WPINC' ) ) {
-	die;
-}
+	 * Load Skelet Framework
+	 */
+	if( ! class_exists( 'Skelet_LoadConfig' ) ){
+		include_once plugin_dir_path( dirname( __FILE__ ) ) .'includes/skelet/skelet.php';
+	}
 ```
 
 Take Note: the prefix name should be unique per plugin
 ```PHP
-$skelet_paths[] = array(
+$GLOBALS['skelet_paths'][] = array(
 	'prefix'	  => 'your_unique_prefix_name',
 	....
 );

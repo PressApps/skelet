@@ -1,0 +1,14 @@
+{
+	"name": "skelet",
+	"description": "WordPress plugin admin framework for adding options fields to options pages, shortcodes, metaboxes, widgets and customiser.",
+	"keywords": ["wordpress", "options", "plugin"],
+	"authors": [
+		{
+			"name": "PressApps",
+			"homepage": "http://pressapps.co/"
+		}
+	],
+	"require": {
+
+	}
+}

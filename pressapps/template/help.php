@@ -13,21 +13,21 @@
 
 <ul class="pa-boxes">
 	<li>
-		<a href="http://docs.pressapps.co/">
+		<a href="http://pressapps.co/help-center/">
 			<i class="sk-icon si-file-text2"></i>
-			<h3><?php _e( 'Documentation', SK_TEXTDOMAIN ); ?></h3>
+			<h3><?php _e( 'Help Center', SK_TEXTDOMAIN ); ?></h3>
 			<p><?php _e( 'Learn how to install, setup, use and customize our products in documentation', SK_TEXTDOMAIN ); ?></p>
 		</a>
 	</li>
 	<li>
-		<a href="http://pressapps.co/support/">
+		<a href="http://pressapps.co/help/">
 			<i class="sk-icon si-lifebuoy"></i>
 			<h3><?php _e( 'Standard Support', SK_TEXTDOMAIN ); ?></h3>
 			<p><?php _e( 'Envato market purchases include six month of complimentary standard support', SK_TEXTDOMAIN ); ?></p>
 		</a>
 	</li>
 	<li>
-		<a href="http://pressapps.co/premium-support/">
+		<a href="http://pressapps.co/help/">
 			<i class="sk-icon si-star-empty"></i>
 			<h3><?php _e( 'Premium Support', SK_TEXTDOMAIN ); ?></h3>
 			<p><?php _e( 'Let us help you with rapid response times and advanced technical support', SK_TEXTDOMAIN ); ?></p>

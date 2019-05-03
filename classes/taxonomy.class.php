@@ -101,7 +101,7 @@ if(!class_exists("SkeletFramework_Taxonomy")){
 
     }
 
-    public static function edited_taxonomy_box($post, $taxonomy){
+    public static function edited_taxonomy_box($taxonomy){
        
                 $taxonomy = $_POST['taxonomy'];
                   $term_id = $_POST['tag_ID'];
@@ -136,7 +136,7 @@ if(!class_exists("SkeletFramework_Taxonomy")){
           global $skelet_path;
 
             $taxonomy = $_POST['taxonomy'];
-             $term_id = $_POST['term_id'];
+            //$term_id = $_POST['term_id'];
             $skelet_fields = "_skelet_".$taxonomy;
             $skelet_option = "_skelet_".$taxonomy.'_'.$tag_ID;
 

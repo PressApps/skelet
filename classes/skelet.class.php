@@ -40,16 +40,16 @@ if(!class_exists("Skelet")){
 						return 'Prefix not set. <em>new Skelet("your_prefix_name");</em>'; 
 				}
 				
-				$pao = get_option($this->prefix.'_options', array() );
+				$pao = get_option($this->prefix.'_options');
 				$option_id = $this->prefix.'_'.$option_id;
-				
-				if( strlen( $option_id ) ) {
-				    if( isset( $pao[ $option_id ] ) ) {
-				      return $pao[ $option_id ];
-					}
+
+				if( strlen( $option_id ) && isset( $pao[ $option_id ] ) ) {
+					$pao_value = $pao[ $option_id ];
+				} else {
+					$pao_value = null;
 				}
-				
-				return $pao;
+
+				return $pao_value;
 		}
 
 		/**
